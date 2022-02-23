@@ -119,7 +119,7 @@ Table of Contents
 
    The need for an understandable, scalable and resilient system that
    provides trustworthy transparency for various kinds of existing and
-   emerging supply chains is a global one.  This memo specifies the
+   emerging supply chains is a global one.  This memo specifies an
    architecture for Transparency Service (TS) to systematically protect
    supply chains for digital artifacts.
 
