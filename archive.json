@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-02-22T00:27:02.513823+00:00",
+  "timestamp": "2022-02-24T00:28:10.623940+00:00",
   "repo": "ietf-scitt/draft-birkholz-scitt-architecture",
   "labels": [
     {
@@ -50,5 +50,102 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOG2uWFs4zSxHt",
+      "title": "Intro draft 00",
+      "url": "https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/pull/1",
+      "state": "MERGED",
+      "author": "henkbirkholz",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Preliminary introduction content as a basis for discussion on scope and initial content",
+      "createdAt": "2022-02-22T15:34:57Z",
+      "updatedAt": "2022-02-23T09:21:58Z",
+      "baseRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "2ea8651a8bcf476ba950858d0b94765a49d71ca2",
+      "headRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
+      "headRefName": "intro-draft-00",
+      "headRefOid": "470b2046dc19fadf0bafe01e1b31562ea6261886",
+      "closedAt": "2022-02-23T09:21:58Z",
+      "mergedAt": "2022-02-23T09:21:58Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "96c5c038803deda0f71aad59e791c129998c76c1"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOG2uWFs4zS1k_",
+      "title": "Add initial structure",
+      "url": "https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/pull/2",
+      "state": "MERGED",
+      "author": "ad-l",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-02-22T15:53:38Z",
+      "updatedAt": "2022-02-23T08:11:25Z",
+      "baseRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "2ea8651a8bcf476ba950858d0b94765a49d71ca2",
+      "headRepository": "ad-l/draft-birkholz-scitt-architecture",
+      "headRefName": "main",
+      "headRefOid": "8c16abf3aba4794eb31feeeb74f0282e927a0314",
+      "closedAt": "2022-02-23T08:11:25Z",
+      "mergedAt": "2022-02-23T08:11:25Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "689d3fd8ef155cf91ce694844e060871f3b3763c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOG2uWFs41F2lf",
+          "commit": {
+            "abbreviatedOid": "8c16abf"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "I'll merge this one first and then go with #1, massaging the content from here into #1",
+          "createdAt": "2022-02-23T08:10:27Z",
+          "updatedAt": "2022-02-23T08:10:27Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOG2uWFs4zWa8w",
+      "title": "Starting to scope use cases",
+      "url": "https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/pull/3",
+      "state": "OPEN",
+      "author": "henkbirkholz",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "added two rough use cases illustrating supply chain logistic challenges",
+      "createdAt": "2022-02-23T15:06:23Z",
+      "updatedAt": "2022-02-23T15:06:23Z",
+      "baseRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "a00f1af64f3929a3e29d1837d59b66efc03b6667",
+      "headRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
+      "headRefName": "more-use-cases",
+      "headRefOid": "ae4c6d431ce6da9bc62a4191ae121d4326eab8c0",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
