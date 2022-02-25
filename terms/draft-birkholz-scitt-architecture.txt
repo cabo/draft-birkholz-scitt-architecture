@@ -211,13 +211,15 @@ Table of Contents
    document.  When used in text, the corresponding terms are
    capitalized.  To ensure readability, only a core set of terms is
    included in this section.
-   // This list it a bucket today and subject to churn.
+   // This list is a bucket today and subject to churn.
    //
    // -- Henk
 
-   Artifact:  tbd
+   Artifact:  the physical or non-physical thing that is moving along
+      the supply chain
 
-   Claims:  tbd
+   Claim:  a non-repudiable statement about an artifact encoded in
+      payload provided by the issuer
 
    Feed:  tbd
 
