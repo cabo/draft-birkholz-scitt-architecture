@@ -226,10 +226,11 @@ Table of Contents
       headers, signature, and potentially the statement included as the
       COSE payload.
 
-   Feed:  tbd
+   Feed:  An identifier for a sequence of Transparent Claims
 
-   Issuer:  signing statements, making them a Claim, issuing/sending
-      them to the
+   Issuer:  originator of named statements, signing statements, thereby
+      refining them to a Claim, and issuing/sending Claims to the
+      Transparency Service.
 
    Ledger:  a COSE-based merkle tree allowing for append-only operations
       to add Claims
