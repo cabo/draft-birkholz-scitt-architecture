@@ -223,14 +223,20 @@ Table of Contents
 
    Feed:  tbd
 
-   Issuer:  tbd
+   Issuer:  signing statements, making them a Claim, issuing/sending
+      them to the
 
    Ledger:  a COSE-based merkle tree allowing for append-only operations
       to add Claims
 
    Profile:  tbd
 
-   Receipt:  tbd
+   Receipt:
+
+   :
+
+   Transparent Claim:  a Claim processed by the Transparency Service,
+      added to the ledger, and augmented by a Receipt.
 
    Transparency Service:  the thing that operates on the ledger,
       including auditing and querying via trusted operations
