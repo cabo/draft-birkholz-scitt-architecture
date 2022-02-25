@@ -236,7 +236,8 @@ Table of Contents
 
    Profile:  tbd
 
-   Receipt:  tbd
+   Receipt:  a COSE countersignature that is a proof of inclusion
+      specific to a Claim in a ledger.
 
    Transparent Claim:  a Claim processed by the Transparency Service,
       added to the ledger, and augmented by a Receipt.
