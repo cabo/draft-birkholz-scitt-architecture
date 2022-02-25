@@ -231,6 +231,9 @@ Table of Contents
 
    Receipt:  tbd
 
+   Transparency Service:  the thing that operates on the ledger,
+      including auditing and querying via trusted operations
+
 4.  High-level architecture
 
 4.1.  Principals
