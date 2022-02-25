@@ -225,7 +225,8 @@ Table of Contents
 
    Issuer:  tbd
 
-   Ledger:  tbd
+   Ledger:  a COSE-based merkle tree allowing for append-only operations
+      to add Claims
 
    Profile:  tbd
 
