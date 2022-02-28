@@ -13,11 +13,11 @@
        In this document, the supply chain context is illustrated using problem statements, requirements are derived from use case definitions, and architectural constituents are specified and illustrated in usage scenarios. 
        The resulting architecture is intended to enable multi-layer interoperability to produce and leverage believable trust assertions while maintaining a minimal adoption threshold. 
     " name="description">
-<meta content="xml2rfc 3.12.2" name="generator">
+<meta content="xml2rfc 3.12.3" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-birkholz-scitt-architecture-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.12.2
+  xml2rfc 3.12.3
     Python 3.9.7
     appdirs 1.4.4
     ConfigArgParse 1.3
@@ -27,6 +27,7 @@
     Jinja2 2.11.3
     kitchen 1.2.6
     lxml 4.6.5
+    MarkupSafe 2.0.1
     pycountry 20.7.3
     pyflakes 2.3.1
     PyYAML 5.4.1
@@ -1020,7 +1021,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 29 August 2022</td>
+<td class="center">Expires 1 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1033,12 +1034,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-birkholz-scitt-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-02-25" class="published">25 February 2022</time>
+<time datetime="2022-02-28" class="published">28 February 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-08-29">29 August 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-01">1 September 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1090,7 +1091,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 29 August 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 1 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1134,151 +1135,143 @@ svg [stroke="fill"], svg [fill^="#fff"] {
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-terminology" class="xref">Terminology</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-high-level-architecture" class="xref">High-level architecture</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-principals" class="xref">Principals</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.1">
-                    <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="xref">4.1.1</a>.  <a href="#name-issuers-and-claims" class="xref">Issuers and claims</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.2">
-                    <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="xref">4.1.2</a>.  <a href="#name-transparency-services" class="xref">Transparency services</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.3">
-                    <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="xref">4.1.3</a>.  <a href="#name-verifiers" class="xref">Verifiers</a></p>
-</li>
-                </ul>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
-                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-what-is-transparency" class="xref">What is transparency</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
-                    <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="xref">4.2.1</a>.  <a href="#name-ledgers-and-receipts" class="xref">Ledgers and Receipts</a></p>
-</li>
-                </ul>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
-                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-use-cases-informative-brief" class="xref">Use cases (informative, briefly discussed or entirely omitted)</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-definition-of-transparency" class="xref">Definition of Transparency</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-scitt-transparency-service" class="xref">SCITT Transparency Service</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-high-level-architecture" class="xref">High-level architecture</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-service-identity-and-keying" class="xref">Service Identity and Keying</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-receipt-issuance" class="xref">Receipt Issuance</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-ledger-security-requirement" class="xref">Ledger Security Requirements</a></p>
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-principals" class="xref">Principals</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.1">
-                    <p id="section-toc.1-1.5.2.3.2.1.1"><a href="#section-5.3.1" class="xref">5.3.1</a>.  <a href="#name-attestability-of-service-id" class="xref">Attestability of service identity</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.1">
+                    <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="xref">5.1.1</a>.  <a href="#name-transparency-services" class="xref">Transparency services</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.2">
-                    <p id="section-toc.1-1.5.2.3.2.2.1"><a href="#section-5.3.2" class="xref">5.3.2</a>.  <a href="#name-consistency" class="xref">Consistency</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.2">
+                    <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="xref">5.1.2</a>.  <a href="#name-issuers-and-claims" class="xref">Issuers and claims</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.3">
-                    <p id="section-toc.1-1.5.2.3.2.3.1"><a href="#section-5.3.3" class="xref">5.3.3</a>.  <a href="#name-finality" class="xref">Finality</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.4">
-                    <p id="section-toc.1-1.5.2.3.2.4.1"><a href="#section-5.3.4" class="xref">5.3.4</a>.  <a href="#name-replayability" class="xref">Replayability</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.5">
-                    <p id="section-toc.1-1.5.2.3.2.5.1"><a href="#section-5.3.5" class="xref">5.3.5</a>.  <a href="#name-auditing" class="xref">Auditing</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.6">
-                    <p id="section-toc.1-1.5.2.3.2.6.1"><a href="#section-5.3.6" class="xref">5.3.6</a>.  <a href="#name-governance-and-bootstrappin" class="xref">Governance and Bootstrapping</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.3">
+                    <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="xref">5.1.3</a>.  <a href="#name-verifiers" class="xref">Verifiers</a></p>
 </li>
                 </ul>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
-                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-caching-query-service" class="xref">Caching / Query service</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-scitt-cose-envelopes" class="xref">SCITT COSE Envelopes</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-scitt-transparency-service" class="xref">SCITT Transparency Service</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
-                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-issuer-identity" class="xref">Issuer Identity</a></p>
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-service-identity-and-keying" class="xref">Service Identity and Keying</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-receipt-issuance" class="xref">Receipt Issuance</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-ledger-security-requirement" class="xref">Ledger Security Requirements</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.1">
-                    <p id="section-toc.1-1.6.2.1.2.1.1"><a href="#section-6.1.1" class="xref">6.1.1</a>.  <a href="#name-why" class="xref">Why?</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.1">
+                    <p id="section-toc.1-1.6.2.3.2.1.1"><a href="#section-6.3.1" class="xref">6.3.1</a>.  <a href="#name-attestability-of-service-id" class="xref">Attestability of service identity</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.2">
+                    <p id="section-toc.1-1.6.2.3.2.2.1"><a href="#section-6.3.2" class="xref">6.3.2</a>.  <a href="#name-consistency" class="xref">Consistency</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.3">
+                    <p id="section-toc.1-1.6.2.3.2.3.1"><a href="#section-6.3.3" class="xref">6.3.3</a>.  <a href="#name-finality" class="xref">Finality</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.4">
+                    <p id="section-toc.1-1.6.2.3.2.4.1"><a href="#section-6.3.4" class="xref">6.3.4</a>.  <a href="#name-replayability" class="xref">Replayability</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.5">
+                    <p id="section-toc.1-1.6.2.3.2.5.1"><a href="#section-6.3.5" class="xref">6.3.5</a>.  <a href="#name-auditing" class="xref">Auditing</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.6">
+                    <p id="section-toc.1-1.6.2.3.2.6.1"><a href="#section-6.3.6" class="xref">6.3.6</a>.  <a href="#name-governance-and-bootstrappin" class="xref">Governance and Bootstrapping</a></p>
 </li>
                 </ul>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
-                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-scitt-cose-profile" class="xref">SCITT COSE profile</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+                <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-caching-query-service" class="xref">Caching / Query service</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-protocols" class="xref">Protocols</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-scitt-cose-envelopes" class="xref">SCITT COSE Envelopes</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
-                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-issuing-signed-claims-about" class="xref">Issuing Signed Claims about an Artifact.</a></p>
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-issuer-identity" class="xref">Issuer Identity</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1.2.1">
-                    <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="xref">7.1.1</a>.  <a href="#name-scitt-is-agnostic-to-claim-" class="xref">SCITT is agnostic to claim types and formats (?)</a></p>
+                    <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="xref">7.1.1</a>.  <a href="#name-why" class="xref">Why?</a></p>
 </li>
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
-                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-registering-signed-claims" class="xref">Registering Signed Claims.</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
-                <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-verifying-transparent-signe" class="xref">Verifying Transparent Signed Claims</a></p>
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-scitt-cose-profile" class="xref">SCITT COSE profile</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-federation" class="xref">Federation</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-protocols" class="xref">Protocols</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-issuing-signed-claims-about" class="xref">Issuing Signed Claims about an Artifact.</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1.2.1">
+                    <p id="section-toc.1-1.8.2.1.2.1.1"><a href="#section-8.1.1" class="xref">8.1.1</a>.  <a href="#name-scitt-is-agnostic-to-claim-" class="xref">SCITT is agnostic to claim types and formats (?)</a></p>
+</li>
+                </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-registering-signed-claims" class="xref">Registering Signed Claims.</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
+                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="xref">8.3</a>.  <a href="#name-verifying-transparent-signe" class="xref">Verifying Transparent Signed Claims</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-scitt-rest-api" class="xref">SCITT REST API</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
-                <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-messages" class="xref">Messages</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1.2.1">
-                    <p id="section-toc.1-1.9.2.1.2.1.1"><a href="#section-9.1.1" class="xref">9.1.1</a>.  <a href="#name-register-signed-claims" class="xref">Register Signed Claims</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-federation" class="xref">Federation</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1.2.2">
-                    <p id="section-toc.1-1.9.2.1.2.2.1"><a href="#section-9.1.2" class="xref">9.1.2</a>.  <a href="#name-retrieve-registration-recei" class="xref">Retrieve Registration Receipt</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-scitt-rest-api" class="xref">SCITT REST API</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+                <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-messages" class="xref">Messages</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1.2.1">
+                    <p id="section-toc.1-1.10.2.1.2.1.1"><a href="#section-10.1.1" class="xref">10.1.1</a>.  <a href="#name-register-signed-claims" class="xref">Register Signed Claims</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1.2.2">
+                    <p id="section-toc.1-1.10.2.1.2.2.1"><a href="#section-10.1.2" class="xref">10.1.2</a>.  <a href="#name-retrieve-registration-recei" class="xref">Retrieve Registration Receipt</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a></p>
-</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#section-13" class="xref">13</a>. <a href="#name-references" class="xref">References</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1">
-                <p id="section-toc.1-1.13.2.1.1"><a href="#section-13.1" class="xref">13.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+            <p id="section-toc.1-1.13.1"><a href="#section-13" class="xref">13</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.2">
-                <p id="section-toc.1-1.13.2.2.1"><a href="#section-13.2" class="xref">13.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#section-14" class="xref">14</a>. <a href="#name-references" class="xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1">
+                <p id="section-toc.1-1.14.2.1.1"><a href="#section-14.1" class="xref">14.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.2">
+                <p id="section-toc.1-1.14.2.2.1"><a href="#section-14.2" class="xref">14.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-attic" class="xref">Attic</a></p>
-</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-attic" class="xref">Attic</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+            <p id="section-toc.1-1.16.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1300,29 +1293,31 @@ This memo specifies an architecture for Transparency Service (TS) to systematica
       </ol>
 <p id="section-1-4">Transparency in the context of supply chains is always a well-scoped quality for each instance of a TS.
 Transparency does not imply being transparent to everybody, unconditionally.
-A TS always limits the entities that have the authority to release new claims to the TS.
-Analogously, a TS typically limits the entities to which transparency into released claims is granted.
-Nevertheless, it is of great import to provide global interoperability for a all TS instances as the composition and configuration of involved supply chain entities and their system components is ever changing and always in flux.<a href="#section-1-4" class="pilcrow">¶</a></p>
+Each instance may enforce its own policy for authorizing entities to register their claims on the TS. 
+Nevertheless, it is of great import to provide global interoperability for all TS instances as the composition and configuration of involved supply chain entities and their system components is ever changing and always in flux.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">A TS provides visibility into claims produced by supply chain entities and their sub-systems.
 These claims are called Digital Supply Chain Artifacts (DSCA).
 More importantly, a TS vouches for specific and well-defined metadata about these DSCAs, including "when was the DSCA recorded by the TS", "who issued the DSCA to the TS", or "what type of DSCA are stored in the TS".
-In fact, a DSCA itself can be opaque to the TS, if so desired.
+Conversely, a DSCA itself can be opaque to the TS, if so desired.
 It is the metadata that must always be transparent and that must warrant trust. That metadata includes distinct details and believable trustworthiness characteristics about the distinguishable system components that compose TS instances as well as their operations involving DSCA.<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">These trustworthiness assertions provide an essential basis for holding issuers accountable for the DSCA they release and (more generally) principals accountable for the claims they make about such DSCAs.<a href="#section-1-6" class="pilcrow">¶</a></p>
-<p id="section-1-7">The TS specified in this architecture caters two types of audiences:<a href="#section-1-7" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-1-8">
-<li id="section-1-8.1">DSCA Issuers: entities, stakeholders, and users involved in supply chain interactions that need to release DSCAs to a definable set of peers; and<a href="#section-1-8.1" class="pilcrow">¶</a>
+<p id="section-1-6">These trustworthiness assertions provide an essential basis for holding issuers accountable for the DSCA they release and (more generally) principals accountable for the claims they make about such DSCAs. 
+Hence, issuers may register new claims about their artifacts, but they cannot delete or alter 
+earlier claims, or hide their claims from third parties such as auditors.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-7">Crucially, trust in the TS itself can be supported by providing guarantees about their implementation, based on hardware attestation, and by holding them accountable, based on independent auditing of the correctness and consistency of their whole transparency ledger.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<p id="section-1-8">The TS specified in this architecture caters two types of audiences:<a href="#section-1-8" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-1-9">
+<li id="section-1-9.1">DSCA Issuers: entities, stakeholders, and users involved in supply chain interactions that need to release DSCAs to a definable set of peers; and<a href="#section-1-9.1" class="pilcrow">¶</a>
 </li>
-        <li id="section-1-8.2">DSCA Consumers: entities, stakeholders, and users involved in supply chain interactions that need to access, validate, and trust DSCAs.<a href="#section-1-8.2" class="pilcrow">¶</a>
+        <li id="section-1-9.2">DSCA Consumers: entities, stakeholders, and users involved in supply chain interactions that need to access, validate, and trust DSCAs.<a href="#section-1-9.2" class="pilcrow">¶</a>
 </li>
       </ol>
-<p id="section-1-9">DSCA Issuers rely on being discoverable and represented as the responsible parties for released DSCAs by the TS in a believable manner.
+<p id="section-1-10">DSCA Issuers rely on being discoverable and represented as the responsible parties for released DSCAs by the TS in a believable manner.
 Analogously, DSCA Consumers rely on verifiable trustworthiness assertions associated with DSCAs and their processing in a believable manner.
-If trust can be put into the operations that record DSCAs in a secure, append-only ledger via an online operation, the same trust can be put into a corresponding receipt that is the result of these online operations issued by the TS and that can be validated in offline operations.<a href="#section-1-9" class="pilcrow">¶</a></p>
-<p id="section-1-10">The TS specified in this architecture can be implemented by various different types of services in various types of languages provided via various variants of API layouts.
+If trust can be put into the operations that record DSCAs in a secure, append-only ledger via an online operation, the same trust can be put into a corresponding receipt that is the result of these online operations issued by the TS and that can be validated in offline operations.<a href="#section-1-10" class="pilcrow">¶</a></p>
+<p id="section-1-11">The TS specified in this architecture can be implemented by various different types of services in various types of languages provided via various variants of API layouts.
 The global interoperability enabled and guaranteed by the TS is enabled via core components (architectural constituents) that come with prescriptive requirements (that are typically hidden away from the user audience via APIs later).
 The core components are based on the Concise Signing and Encryption standard specified in <span>[<a href="#RFC8152" class="xref">RFC8152</a>]</span>, which is used to sign released DSCAs and to build and maintain a merkle tree that functions as the append-only ledger for DSCAs.
-The format and verification process for ledger-based transparency receipts are described in <a href="https://ietf-scitt.github.io/draft-birkholz-scitt-receipts/draft-birkholz-scitt-receipts.html">Counter-Signing Receipts</a><a href="#section-1-10" class="pilcrow">¶</a></p>
+The format and verification process for ledger-based transparency receipts are described in <a href="https://ietf-scitt.github.io/draft-birkholz-scitt-receipts/draft-birkholz-scitt-receipts.html">Counter-Signing Receipts</a><a href="#section-1-11" class="pilcrow">¶</a></p>
 <div id="requirements-notation">
 <section id="section-1.1">
         <h3 id="name-requirements-notation">
@@ -1340,7 +1335,40 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <section id="section-2">
       <h2 id="name-use-cases">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-use-cases" class="section-name selfRef">Use Cases</a>
-    </h2>
+      </h2>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-2-1.1">
+          <p id="section-2-1.1.1">Henk has lock on this section. Allen also interested in writing here.
+The plan is to keep application details to this subsection.<a href="#section-2-1.1.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<ul class="normal">
+<li class="normal" id="section-2-2.1">
+          <p id="section-2-2.1.1">Public SBOM ledger
+&gt; No need to separate firmware?.<a href="#section-2-2.1.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2-2.1.2.1">from source code to binaries<a href="#section-2-2.1.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-2-2.1.2.2">can we keep track of the provenance of software artifacts?<a href="#section-2-2.1.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-2-2.1.2.3">can we share the cost of reviewing software across the industry?<a href="#section-2-2.1.2.3" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="section-2-2.2">
+          <p id="section-2-2.2.1">Confidential Computing<a href="#section-2-2.2.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2-2.2.2.1">how can clients that connect to a CC service for the first time validate their attestation reports?<a href="#section-2-2.2.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-2-2.2.2.2">how to automatically patch a CC service? Trust, but audit later.<a href="#section-2-2.2.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-2-2.2.2.3">automated software updates<a href="#section-2-2.2.2.3" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-2-2.2.2.4">in particular for implementing SCITT services.<a href="#section-2-2.2.2.4" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+      </ul>
 </section>
 </div>
 <div id="terminology">
@@ -1350,65 +1378,60 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
       </h2>
 <p id="section-3-1">The terms defined in this section have special meaning in the context of Supply Chain Integrity, Transparency, and Trust throughout this document. When used in text, the corresponding terms are capitalized. To ensure readability, only a core set of terms is included in this section.<span class="cref" id="_1">This list is a bucket today and subject to churn.<span class="crefSource">Henk</span></span><a href="#section-3-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3-2">
-        <dt id="section-3-2.1">
-Artifact:  </dt>
+        <dt id="section-3-2.1">Artifact:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.2">
-          <p id="section-3-2.2.1">the physical or non-physical thing that is moving along the supply chain.<a href="#section-3-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.2.1">the physical or non-physical item that is moving along the supply chain.<a href="#section-3-2.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.3">
-Claim:  </dt>
+<dt id="section-3-2.3">Statement:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.4">
-          <p id="section-3-2.4.1">a non-repudiable statement about an artifact encoded as a COSE payload provided by the issuer.<a href="#section-3-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.4.1">any serializable information about an Artifact. To help interpretation of statement, they must be tagged with a media type (as specified in RFC6838)<a href="#section-3-2.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.5">
-Envelope:  </dt>
+<dt id="section-3-2.5">Claim:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.6">
-          <p id="section-3-2.6.1">a container that includes the metadata added to a Statement, making it a Claim. Effectively, a COSE envelope with headers, signature, and potentially the statement included as the COSE payload.<a href="#section-3-2.6.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.6.1">an identifiable and non-repudiable statement about an Artifact made by an Issuer. In SCITT, claims are encoded as COSE signed objects; the payload of the COSE structure contains the statement.<a href="#section-3-2.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.7">
-Feed:  </dt>
+<dt id="section-3-2.7">Issuer:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.8">
-          <p id="section-3-2.8.1">An identifier of an Artifact for a series of Transparent Claims. Effectively, a new COSE header attribute that contains a name given to the Artifact given by the Issuer.<a href="#section-3-2.8.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.8.1">the originator of named statements, which are signed into claims submitted to a Transparency Service for registration. The Issuer may be the owner or author of the Artifact, or a completely independent third party.<a href="#section-3-2.8.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.9">
-Issuer:  </dt>
+<dt id="section-3-2.9">Envelope:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.10">
-          <p id="section-3-2.10.1">originator of named statements, signing statements, thereby refining them to a Claim, and issuing/sending Claims to the Transparency Service.<a href="#section-3-2.10.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.10.1">the metadata added to the Statement by the Issuer to make it a Claim. It contains the identity of the issuer and other information to help Verifiers identify the Artifact referred in the statement. A Claim binds the Envelope to the statement. In COSE, the envelope consists of protected headers.<a href="#section-3-2.10.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.11">
-Ledger:  </dt>
+<dt id="section-3-2.11">Feed:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.12">
-          <p id="section-3-2.12.1">a COSE-based merkle tree allowing for append-only operations to add Claims<a href="#section-3-2.12.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.12.1">An identifier chosen by the Issuer for the Artifact. For every Issuer and Feed, the Ledger on a Transparency Service contains a sequence of claims about the same Artifact.
+ In COSE, feed is one of the protected headers of the envelope.<a href="#section-3-2.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.13">
-Profile:  </dt>
+<dt id="section-3-2.13">Ledger:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.14">
-          <p id="section-3-2.14.1">tbd<a href="#section-3-2.14.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.14.1">the verifiable data structure that stores Claims in a transparency service. SCITT supports multiple ledger formats to accomodate different transparency service implementations, such as historical Merkle Trees and sparse Merkle Trees.<a href="#section-3-2.14.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.15">
-Receipt:  </dt>
+<dt id="section-3-2.15">Transparency Service:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.16">
-          <p id="section-3-2.16.1">a COSE countersignature that is a proof of inclusion specific to a Claim in a ledger.<a href="#section-3-2.16.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.16.1">the entity that maintains and extends the Ledger, and endorses its state. A Transparency Service can be a complicated distributed system, and SCITT requires the TS to provide many security guarantees about its ledger. The identity of a TS is captured by a public key that must be known by Verifiers in order to validate Receipts.<a href="#section-3-2.16.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.17">
-Transparent Claim:  </dt>
+<dt id="section-3-2.17">Receipt:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.18">
-          <p id="section-3-2.18.1">a Claim processed by the Transparency Service, added to the ledger, and augmented by a Receipt.<a href="#section-3-2.18.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.18.1">a Receipt is a special form of COSE countersignature for claims that embeds cryptographic evidence that the claim is recorded in the ledger. It consists of a ledger-specific inclusion proof, a signature by the transparency service of the state of the ledger, and additional metadata (contained in the countersignature protected headers) to assist in auditing.<a href="#section-3-2.18.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.19">
-Transparency Service:  </dt>
+<dt id="section-3-2.19">Registration:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.20">
-          <p id="section-3-2.20.1">the thing that operates on the ledger, including auditing and querying
-via trusted operations<a href="#section-3-2.20.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.20.1">the process of submitting a claim to a transparency service, storing it in the ledger and producing the Receipt returned to the submitter.<a href="#section-3-2.20.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-3-2.21">Transparent Claim:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.22">
+          <p id="section-3-2.22.1">a Claim that is augmented with a receipt of its registration. A Transparent Claim remains a valid Claim (as the receipt is carred in the countersignature), and may be registered again in a different TS.<a href="#section-3-2.22.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1416,202 +1439,158 @@ via trusted operations<a href="#section-3-2.20.1" class="pilcrow">¶</a></p>
 </div>
 <div id="mybody">
 <section id="section-4">
-      <h2 id="name-high-level-architecture">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-high-level-architecture" class="section-name selfRef">High-level architecture</a>
+      <h2 id="name-definition-of-transparency">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-definition-of-transparency" class="section-name selfRef">Definition of Transparency</a>
       </h2>
-<div id="principals">
-<section id="section-4.1">
-        <h3 id="name-principals">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-principals" class="section-name selfRef">Principals</a>
-        </h3>
-<div id="issuers-and-claims">
-<section id="section-4.1.1">
-          <h4 id="name-issuers-and-claims">
-<a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-issuers-and-claims" class="section-name selfRef">Issuers and claims</a>
-          </h4>
-<p id="section-4.1.1-1">Claims are non-repudiable statements made by issuers. In SCITT, many claims are made by authors, reviewers and distributors of digital artifacts, including source and binary packages, firmware, audit reports, etc.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">In this document, we use a definition of transparency built over abstract notions of ledgers and receipts. Existing transparency systems such as Certificate Transparency (CT) are instances of this definition.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">A <em>claim</em> is an identifiable and non-repudiable statement made by an <em>issuer</em>.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4-3.1">Claims can be issued and endorsed by principals (issuers).<a href="#section-4-3.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-4-3.2">Signed Claims can be counter-signed by SCITT ledgers.<a href="#section-4-3.2" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-4-4">An artifact (e.g. a firmware binary) is transparent if it comes with valid transparent signed claims.<a href="#section-4-4" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4-5.1">The signature proves the artifact has been issued by the signer, with the associated metadata.<a href="#section-4-5.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-4-5.2">The receipt proves this artifact and associated metadata has been recorded by the ledger.<a href="#section-4-5.2" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-4-6">Transparency does not prevent dishonest or compromised issuers, but it holds them accountable:
+any artifact that may be used to target a particular user that checks for receipts must have been recorded in the tamper-proof ledger, and will be subject to scrutiny and auditing by other parties.<a href="#section-4-6" class="pilcrow">¶</a></p>
+<p id="section-4-7">Anyone with access to the ledger can independenly verify the ledger consistency and review the list of claims registered by its issuers.<a href="#section-4-7" class="pilcrow">¶</a></p>
+<p id="section-4-8">Reputable issuers are thus incentivized to carefully review their artifacts before signing them.<a href="#section-4-8" class="pilcrow">¶</a></p>
+<p id="section-4-9">A ledger is a consistent, append-only, publicly available record of entries.<a href="#section-4-9" class="pilcrow">¶</a></p>
+<p id="section-4-10">A receipt is an offline, universally-verifiable proof that an entry has been recorded in the ledger.<a href="#section-4-10" class="pilcrow">¶</a></p>
+<p id="section-4-11">Receipts do not expire, but it is possible to append new entries that subsume older entries.<a href="#section-4-11" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="high-level-architecture">
+<section id="section-5">
+      <h2 id="name-high-level-architecture">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-high-level-architecture" class="section-name selfRef">High-level architecture</a>
+      </h2>
+<p id="section-5-1">SCITT provides an interoperability framework to verify the transparency of arbitrary digital artifacts registered across many different ledgers. Although instances of SCITT transparency services may differ in their implementations, SCITT aims to enforce a common baseline accountability guarantee for auditors and consumers of transparency evidence.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<div id="principals">
+<section id="section-5.1">
+        <h3 id="name-principals">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-principals" class="section-name selfRef">Principals</a>
+        </h3>
 <div id="transparency-services">
-<section id="section-4.1.2">
+<section id="section-5.1.1">
           <h4 id="name-transparency-services">
-<a href="#section-4.1.2" class="section-number selfRef">4.1.2. </a><a href="#name-transparency-services" class="section-name selfRef">Transparency services</a>
+<a href="#section-5.1.1" class="section-number selfRef">5.1.1. </a><a href="#name-transparency-services" class="section-name selfRef">Transparency services</a>
           </h4>
-<p id="section-4.1.2-1">Operating the ledger, its verifiable data structure, plus auxiliary storage/index. We use ledger to refer to the current (final) contents registered at the transparency service.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-1">As a decentralized system, SCITT allows anyone to operate their own instance of a transparency service, which maintains its own ledger<a href="#section-5.1.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="issuers-and-claims">
+<section id="section-5.1.2">
+          <h4 id="name-issuers-and-claims">
+<a href="#section-5.1.2" class="section-number selfRef">5.1.2. </a><a href="#name-issuers-and-claims" class="section-name selfRef">Issuers and claims</a>
+          </h4>
+<p id="section-5.1.2-1">Claims are non-repudiable statements made by issuers. In SCITT, many claims are made by authors, reviewers and distributors of digital artifacts, including source and binary packages, firmware, audit reports, etc.<a href="#section-5.1.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="verifiers">
-<section id="section-4.1.3">
+<section id="section-5.1.3">
           <h4 id="name-verifiers">
-<a href="#section-4.1.3" class="section-number selfRef">4.1.3. </a><a href="#name-verifiers" class="section-name selfRef">Verifiers</a>
+<a href="#section-5.1.3" class="section-number selfRef">5.1.3. </a><a href="#name-verifiers" class="section-name selfRef">Verifiers</a>
           </h4>
-<p id="section-4.1.3-1">including users, and anyone else<a href="#section-4.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.3-1">including users, and anyone else<a href="#section-5.1.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-</section>
-</div>
-<div id="what-is-transparency">
-<section id="section-4.2">
-        <h3 id="name-what-is-transparency">
-<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-what-is-transparency" class="section-name selfRef">What is transparency</a>
-        </h3>
-<ul class="normal">
-<li class="normal" id="section-4.2-1.1">Claims can be issued and endorsed by principals (issuers).<a href="#section-4.2-1.1" class="pilcrow">¶</a>
-</li>
-          <li class="normal" id="section-4.2-1.2">Signed Claims can be counter-signed by SCITT ledgers.<a href="#section-4.2-1.2" class="pilcrow">¶</a>
-</li>
-        </ul>
-<p id="section-4.2-2">An artifact (e.g. a firmware binary) is transparent if it comes with valid transparent signed claims.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-4.2-3.1">The signature proves the artifact has been issued by the signer, with the associated metadata.<a href="#section-4.2-3.1" class="pilcrow">¶</a>
-</li>
-          <li class="normal" id="section-4.2-3.2">The receipt proves this artifact and associated metadata has been recorded by the ledger.<a href="#section-4.2-3.2" class="pilcrow">¶</a>
-</li>
-        </ul>
-<p id="section-4.2-4">Transparency does not prevent dishonest or compromised issuers, but it holds them accountable:
-any artifact that may be used to target a particular user that checks for receipts must have been recorded in the tamper-proof ledger, and will be subject to scrutiny and auditing by other parties.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
-<p id="section-4.2-5">Anyone with access to the ledger can independenly verify the ledger consistency and review the list of claims registered by its issuers.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
-<p id="section-4.2-6">Reputable issuers are thus incentivized to carefully review their artifacts before signing them.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
-<div id="ledgers-and-receipts">
-<section id="section-4.2.1">
-          <h4 id="name-ledgers-and-receipts">
-<a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-ledgers-and-receipts" class="section-name selfRef">Ledgers and Receipts</a>
-          </h4>
-<p id="section-4.2.1-1">A ledger is a consistent, append-only, publicly available record of entries.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.2.1-2">A receipt is an offline, universally-verifiable proof that an entry has been recorded in the ledger.<a href="#section-4.2.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.2.1-3">Receipts do not expire, but it is possible to append new entries that subsume older entries.<a href="#section-4.2.1-3" class="pilcrow">¶</a></p>
-</section>
-</div>
-</section>
-</div>
-<div id="use-cases-informative-briefly-discussed-or-entirely-omitted">
-<section id="section-4.3">
-        <h3 id="name-use-cases-informative-brief">
-<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-use-cases-informative-brief" class="section-name selfRef">Use cases (informative, briefly discussed or entirely omitted)</a>
-        </h3>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-4.3-1.1">
-            <p id="section-4.3-1.1.1">ADL: probably mode to appendix - no application should be discussed in ID body
-The plan is to keep application details to this subsection.<a href="#section-4.3-1.1.1" class="pilcrow">¶</a></p>
-</li>
-        </ul>
-<ul class="normal">
-<li class="normal" id="section-4.3-2.1">
-            <p id="section-4.3-2.1.1">Public SBOM ledger
-&gt; No need to separate firmware?.<a href="#section-4.3-2.1.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-4.3-2.1.2.1">from source code to binaries<a href="#section-4.3-2.1.2.1" class="pilcrow">¶</a>
-</li>
-              <li class="normal" id="section-4.3-2.1.2.2">can we keep track of the provenance of software artifacts?<a href="#section-4.3-2.1.2.2" class="pilcrow">¶</a>
-</li>
-              <li class="normal" id="section-4.3-2.1.2.3">can we share the cost of reviewing software across the industry?<a href="#section-4.3-2.1.2.3" class="pilcrow">¶</a>
-</li>
-            </ul>
-</li>
-          <li class="normal" id="section-4.3-2.2">
-            <p id="section-4.3-2.2.1">Confidential Computing<a href="#section-4.3-2.2.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-4.3-2.2.2.1">how can clients that connect to a CC service for the first time validate their attestation reports?<a href="#section-4.3-2.2.2.1" class="pilcrow">¶</a>
-</li>
-              <li class="normal" id="section-4.3-2.2.2.2">how to automatically patch a CC service? Trust, but audit later.<a href="#section-4.3-2.2.2.2" class="pilcrow">¶</a>
-</li>
-              <li class="normal" id="section-4.3-2.2.2.3">automated software updates<a href="#section-4.3-2.2.2.3" class="pilcrow">¶</a>
-</li>
-              <li class="normal" id="section-4.3-2.2.2.4">in particular for implementing SCITT services.<a href="#section-4.3-2.2.2.4" class="pilcrow">¶</a>
-</li>
-            </ul>
-</li>
-        </ul>
 </section>
 </div>
 </section>
 </div>
 <div id="scitt-transparency-service">
-<section id="section-5">
+<section id="section-6">
       <h2 id="name-scitt-transparency-service">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-scitt-transparency-service" class="section-name selfRef">SCITT Transparency Service</a>
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-scitt-transparency-service" class="section-name selfRef">SCITT Transparency Service</a>
       </h2>
-<p id="section-5-1">SCITT aims to support many different implementations of transparency ledgers, as long as they satisfy a set of requirements that aim to limit the trust that participants need to have in their operators. Unlike Certificate Transparency, we do not assume that the honestly of transparency services is enforced by external audit, as this approach does not scale to the large amount of instances necessary to protect the software supply chain at scale.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">SCITT aims to support many different implementations of transparency ledgers, as long as they satisfy a set of requirements that aim to limit the trust that participants need to have in their operators. Unlike Certificate Transparency, we do not assume that the honestly of transparency services is enforced by external audit, as this approach does not scale to the large amount of instances necessary to protect the software supply chain at scale.<a href="#section-6-1" class="pilcrow">¶</a></p>
 <div id="service-identity-and-keying">
-<section id="section-5.1">
+<section id="section-6.1">
         <h3 id="name-service-identity-and-keying">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-service-identity-and-keying" class="section-name selfRef">Service Identity and Keying</a>
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-service-identity-and-keying" class="section-name selfRef">Service Identity and Keying</a>
         </h3>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-5.1-1.1">
-            <p id="section-5.1-1.1.1">Details TBD, e.g. discovery, rekeying, revocation, delegation (e.g. to replicas); this may  require its own subsection, or left underspecified as ledger-specific details.<a href="#section-5.1-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-6.1-1.1">
+            <p id="section-6.1-1.1.1">Details TBD, e.g. discovery, rekeying, revocation, delegation (e.g. to replicas); this may  require its own subsection, or left underspecified as ledger-specific details.<a href="#section-6.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
 </div>
 <div id="receipt-issuance">
-<section id="section-5.2">
+<section id="section-6.2">
         <h3 id="name-receipt-issuance">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-receipt-issuance" class="section-name selfRef">Receipt Issuance</a>
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-receipt-issuance" class="section-name selfRef">Receipt Issuance</a>
         </h3>
-<p id="section-5.2-1">Compact, universally verifiable proof that claims are registered in the ledger.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2-2">Enabling offline verification of registration in the ledger. Signed with key that chains to service identity<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.2-1">Compact, universally verifiable proof that claims are registered in the ledger.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-2">Enabling offline verification of registration in the ledger. Signed with key that chains to service identity<a href="#section-6.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ledger-security-requirements">
-<section id="section-5.3">
+<section id="section-6.3">
         <h3 id="name-ledger-security-requirement">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-ledger-security-requirement" class="section-name selfRef">Ledger Security Requirements</a>
+<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-ledger-security-requirement" class="section-name selfRef">Ledger Security Requirements</a>
         </h3>
-<p id="section-5.3-1">The main requirements for the transparency service are<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.3-1">The main requirements for the transparency service are<a href="#section-6.3-1" class="pilcrow">¶</a></p>
 <div id="attestability-of-service-identity">
-<section id="section-5.3.1">
+<section id="section-6.3.1">
           <h4 id="name-attestability-of-service-id">
-<a href="#section-5.3.1" class="section-number selfRef">5.3.1. </a><a href="#name-attestability-of-service-id" class="section-name selfRef">Attestability of service identity</a>
+<a href="#section-6.3.1" class="section-number selfRef">6.3.1. </a><a href="#name-attestability-of-service-id" class="section-name selfRef">Attestability of service identity</a>
           </h4>
-<p id="section-5.3.1-1">Enabling remote authentication of the hardware platforms and software TCB that run the transparency service.<a href="#section-5.3.1-1" class="pilcrow">¶</a></p>
-<p id="section-5.3.1-2">Hardware attestation report, binding a public key for receipt verification to the long-term transparency service identity.<a href="#section-5.3.1-2" class="pilcrow">¶</a></p>
-<p id="section-5.3.1-3">RATS? proof-of-work?<a href="#section-5.3.1-3" class="pilcrow">¶</a></p>
+<p id="section-6.3.1-1">Enabling remote authentication of the hardware platforms and software TCB that run the transparency service.<a href="#section-6.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.3.1-2">Hardware attestation report, binding a public key for receipt verification to the long-term transparency service identity.<a href="#section-6.3.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.3.1-3">RATS? proof-of-work?<a href="#section-6.3.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="consistency">
-<section id="section-5.3.2">
+<section id="section-6.3.2">
           <h4 id="name-consistency">
-<a href="#section-5.3.2" class="section-number selfRef">5.3.2. </a><a href="#name-consistency" class="section-name selfRef">Consistency</a>
+<a href="#section-6.3.2" class="section-number selfRef">6.3.2. </a><a href="#name-consistency" class="section-name selfRef">Consistency</a>
           </h4>
-<p id="section-5.3.2-1">Everyone with access to the ledger sees the same sequence of registered entries.<a href="#section-5.3.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.3.2-1">Everyone with access to the ledger sees the same sequence of registered entries.<a href="#section-6.3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="finality">
-<section id="section-5.3.3">
+<section id="section-6.3.3">
           <h4 id="name-finality">
-<a href="#section-5.3.3" class="section-number selfRef">5.3.3. </a><a href="#name-finality" class="section-name selfRef">Finality</a>
+<a href="#section-6.3.3" class="section-number selfRef">6.3.3. </a><a href="#name-finality" class="section-name selfRef">Finality</a>
           </h4>
-<p id="section-5.3.3-1">Ledger is append-only; once registered, its entries cannot be modified or deleted (although they may be superceded by nwer entries).<a href="#section-5.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.3.3-1">Ledger is append-only; once registered, its entries cannot be modified or deleted (although they may be superceded by nwer entries).<a href="#section-6.3.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="replayability">
-<section id="section-5.3.4">
+<section id="section-6.3.4">
           <h4 id="name-replayability">
-<a href="#section-5.3.4" class="section-number selfRef">5.3.4. </a><a href="#name-replayability" class="section-name selfRef">Replayability</a>
+<a href="#section-6.3.4" class="section-number selfRef">6.3.4. </a><a href="#name-replayability" class="section-name selfRef">Replayability</a>
           </h4>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-5.3.4-1.1">
-              <p id="section-5.3.4-1.1.1">Can it cover client authentication and DID resolution?<a href="#section-5.3.4-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-6.3.4-1.1">
+              <p id="section-6.3.4-1.1.1">Can it cover client authentication and DID resolution?<a href="#section-6.3.4-1.1.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
 </div>
 <div id="auditing">
-<section id="section-5.3.5">
+<section id="section-6.3.5">
           <h4 id="name-auditing">
-<a href="#section-5.3.5" class="section-number selfRef">5.3.5. </a><a href="#name-auditing" class="section-name selfRef">Auditing</a>
+<a href="#section-6.3.5" class="section-number selfRef">6.3.5. </a><a href="#name-auditing" class="section-name selfRef">Auditing</a>
         </h4>
 </section>
 </div>
 <div id="governance-and-bootstrapping">
-<section id="section-5.3.6">
+<section id="section-6.3.6">
           <h4 id="name-governance-and-bootstrappin">
-<a href="#section-5.3.6" class="section-number selfRef">5.3.6. </a><a href="#name-governance-and-bootstrappin" class="section-name selfRef">Governance and Bootstrapping</a>
+<a href="#section-6.3.6" class="section-number selfRef">6.3.6. </a><a href="#name-governance-and-bootstrappin" class="section-name selfRef">Governance and Bootstrapping</a>
           </h4>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-5.3.6-1.1">
-              <p id="section-5.3.6-1.1.1">Their specification is out of scope: we rely on ledger-specific, out-of-band protocols for it.<a href="#section-5.3.6-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-6.3.6-1.1">
+              <p id="section-6.3.6-1.1.1">Their specification is out of scope: we rely on ledger-specific, out-of-band protocols for it.<a href="#section-6.3.6-1.1.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -1619,14 +1598,14 @@ The plan is to keep application details to this subsection.<a href="#section-4.3
 </section>
 </div>
 <div id="caching-query-service">
-<section id="section-5.4">
+<section id="section-6.4">
         <h3 id="name-caching-query-service">
-<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-caching-query-service" class="section-name selfRef">Caching / Query service</a>
+<a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-caching-query-service" class="section-name selfRef">Caching / Query service</a>
         </h3>
-<p id="section-5.4-1">Untrusted. Replicated. Indexed.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+<p id="section-6.4-1">Untrusted. Replicated. Indexed.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-5.4-2.1">
-            <p id="section-5.4-2.1.1">This service could extract (read) receipts from the ledger.<a href="#section-5.4-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-6.4-2.1">
+            <p id="section-6.4-2.1.1">This service could extract (read) receipts from the ledger.<a href="#section-6.4-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1634,350 +1613,360 @@ The plan is to keep application details to this subsection.<a href="#section-4.3
 </section>
 </div>
 <div id="scitt-cose-envelopes">
-<section id="section-6">
+<section id="section-7">
       <h2 id="name-scitt-cose-envelopes">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-scitt-cose-envelopes" class="section-name selfRef">SCITT COSE Envelopes</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-scitt-cose-envelopes" class="section-name selfRef">SCITT COSE Envelopes</a>
       </h2>
-<p id="section-6-1"><strong>Format of signed claims / envelope</strong><a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-7-1"><strong>Format of signed claims / envelope</strong><a href="#section-7-1" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-6-2.1">
-          <p id="section-6-2.1.1">Some headers that may be missing:
+<li class="normal ulEmpty" id="section-7-2.1">
+          <p id="section-7-2.1.1">Some headers that may be missing:
   - feed (enabling separation of ids for issuers and artifacts)#
   - svn (enabling versioning and rollback protection)
   - cty (contents type/format descriptor)
-  - timestamp or serial number<a href="#section-6-2.1.1" class="pilcrow">¶</a></p>
+  - timestamp or serial number<a href="#section-7-2.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-6-3.1">
-          <p id="section-6-3.1.1">Envelopes <span class="bcp14">MAY</span> include additional protected and unprotected headers.<a href="#section-6-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-7-3.1">
+          <p id="section-7-3.1.1">Envelopes <span class="bcp14">MAY</span> include additional protected and unprotected headers.<a href="#section-7-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <div id="issuer-identity">
-<section id="section-6.1">
+<section id="section-7.1">
         <h3 id="name-issuer-identity">
-<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-issuer-identity" class="section-name selfRef">Issuer Identity</a>
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-issuer-identity" class="section-name selfRef">Issuer Identity</a>
         </h3>
-<p id="section-6.1-1">SCITT issuers are identified using DID, which provides a flexible, decentralized identity framework.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
-<p id="section-6.1-2"><span class="bcp14">MUST</span> support at least did:web for bootstrapping identities from domain ownership via https certificates.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
-<p id="section-6.1-3">The transparency service <span class="bcp14">MUST</span> resolve the issuer DID before registering their artifacts.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
-<p id="section-6.1-4">The transparency service <span class="bcp14">SHOULD</span> publicly record a transcript of the DID resolution at the time of registration.<a href="#section-6.1-4" class="pilcrow">¶</a></p>
-<p id="section-6.1-5">The service can cache and re-use DID resolution.
+<p id="section-7.1-1">SCITT issuers are identified using DID, which provides a flexible, decentralized identity framework.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.1-2">The service <span class="bcp14">MAY</span> support the <code>did:web</code> method for bootstrapping identities from domain ownership via https certificates.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
+<p id="section-7.1-3">The service <span class="bcp14">MUST</span> resolve the issuer DID before registering their claims.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
+<p id="section-7.1-4">The service <span class="bcp14">SHOULD</span> record a transcript of the DID resolution at the time of registration.<a href="#section-7.1-4" class="pilcrow">¶</a></p>
+<p id="section-7.1-5">The service can cache and re-use DID resolution.
 - Evidence capture?
-- What does it mean in terms of transcript?<a href="#section-6.1-5" class="pilcrow">¶</a></p>
+- What does it mean in terms of transcript?<a href="#section-7.1-5" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-6.1-6.1">
-            <p id="section-6.1-6.1.1">The rest is based on an earlier syntactic spec.<a href="#section-6.1-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-7.1-6.1">
+            <p id="section-7.1-6.1.1">Details TBD. We could e.g. include a digest of the DID document at the time of registration in the leaf, or introduce another kind of record in the ledger.<a href="#section-7.1-6.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-6.1-7">Digital supply chain artifacts are heterogeneous and originated from sources using various formats and encodings Large scale ledger services in support of supply chain authenticity and transparency require a simply and well-supported signing envelope that is easy to use and interoperates with the semantic of the ledger services. In this document, a COSE profile is defined that limits the potential use of a COSE envelope to the requirements of such a supply chain ledger, leveraging solutions and principles from the Concise Signing and Encryption (COSE) space.<a href="#section-6.1-7" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-7.1-7.1">
+            <p id="section-7.1-7.1.1">The rest of this section is based on an earlier syntactic spec.<a href="#section-7.1-7.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-7.1-8">Digital supply chain artifacts are heterogeneous and originated from sources using various formats and encodings Large scale ledger services in support of supply chain authenticity and transparency require a simply and well-supported signing envelope that is easy to use and interoperates with the semantic of the ledger services. In this document, a COSE profile is defined that limits the potential use of a COSE envelope to the requirements of such a supply chain ledger, leveraging solutions and principles from the Concise Signing and Encryption (COSE) space.<a href="#section-7.1-8" class="pilcrow">¶</a></p>
 <div id="why">
-<section id="section-6.1.1">
+<section id="section-7.1.1">
           <h4 id="name-why">
-<a href="#section-6.1.1" class="section-number selfRef">6.1.1. </a><a href="#name-why" class="section-name selfRef">Why?</a>
+<a href="#section-7.1.1" class="section-number selfRef">7.1.1. </a><a href="#name-why" class="section-name selfRef">Why?</a>
           </h4>
-<p id="section-6.1.1-1">COSE is generic, every application needs to constrain it to their own use cases, in this case the SCITT use cases.<a href="#section-6.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.1.1-1">COSE is generic, every application needs to constrain it to their own use cases, in this case the SCITT use cases.<a href="#section-7.1.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="scitt-cose-profile">
-<section id="section-6.2">
+<section id="section-7.2">
         <h3 id="name-scitt-cose-profile">
-<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-scitt-cose-profile" class="section-name selfRef">SCITT COSE profile</a>
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-scitt-cose-profile" class="section-name selfRef">SCITT COSE profile</a>
         </h3>
-<p id="section-6.2-1">[TODO] describe semantics of <code>iss</code> and how it can be used together with <code>kid</code> to identity a verification method in a resolved DID document<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.2-2">A SCITT COSE message is a tagged COSE_Sign1 message.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
-<p id="section-6.2-3">The protected header must contain the following registered parameters:<a href="#section-6.2-3" class="pilcrow">¶</a></p>
+<p id="section-7.2-1">[TODO] describe semantics of <code>iss</code> and how it can be used together with <code>kid</code> to identity a verification method in a resolved DID document<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+<p id="section-7.2-2">A SCITT COSE message is a tagged COSE_Sign1 message.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
+<p id="section-7.2-3">The protected header must contain the following registered parameters:<a href="#section-7.2-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.2-4.1">alg (label: <code>1</code>): Asymmetric signature algorithm as integer, for example <code>-35</code> for ECDSA with SHA-384, see <a href="https://www.iana.org/assignments/cose/cose.xhtml">COSE Algorithms registry</a><a href="#section-6.2-4.1" class="pilcrow">¶</a>
+<li class="normal" id="section-7.2-4.1">alg (label: <code>1</code>): Asymmetric signature algorithm as integer, for example <code>-35</code> for ECDSA with SHA-384, see <a href="https://www.iana.org/assignments/cose/cose.xhtml">COSE Algorithms registry</a><a href="#section-7.2-4.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-6.2-4.2">payload type (label: <code>3</code>): Media type of payload as string, for example <code>application/spdx+json</code><a href="#section-6.2-4.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-7.2-4.2">payload type (label: <code>3</code>): Media type of payload as string, for example <code>application/spdx+json</code><a href="#section-7.2-4.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-6.2-4.3">issuer (label: <code>TBD</code>, to be registered): DID (Decentralized Identifier, see <a href="https://www.w3.org/TR/did-core/">W3C Candidate Recommendation</a>) of the signer as string, for example <code>did:web:example.com</code><a href="#section-6.2-4.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-7.2-4.3">issuer (label: <code>TBD</code>, to be registered): DID (Decentralized Identifier, see <a href="https://www.w3.org/TR/did-core/">W3C Candidate Recommendation</a>) of the signer as string, for example <code>did:web:example.com</code><a href="#section-7.2-4.3" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-6.2-5">Depending on the DID method the protected header must contain one or more of the following registered parameters:<a href="#section-6.2-5" class="pilcrow">¶</a></p>
+<p id="section-7.2-5">Depending on the DID method the protected header must contain one or more of the following registered parameters:<a href="#section-7.2-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.2-6.1">kid (label: <code>4</code>): Key identifier as a UTF-8 string encoded as a byte string, required for <code>did:web</code><a href="#section-6.2-6.1" class="pilcrow">¶</a>
+<li class="normal" id="section-7.2-6.1">kid (label: <code>4</code>): Key identifier as a UTF-8 string encoded as a byte string, required for <code>did:web</code><a href="#section-7.2-6.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-6.2-6.2">x5c (label: <code>33</code>): X.509 certificate chain (including Root CA certificate), required for TBD<a href="#section-6.2-6.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-7.2-6.2">x5c (label: <code>33</code>): X.509 certificate chain (including Root CA certificate), required for TBD<a href="#section-7.2-6.2" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-6.2-7">The unprotected header may contain the following parameters:<a href="#section-6.2-7" class="pilcrow">¶</a></p>
+<p id="section-7.2-7">The unprotected header may contain the following parameters:<a href="#section-7.2-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.2-8.1">receipts (label: <code>TBD</code>, to be registered): Array of SCITT receipts, defined in TBD<a href="#section-6.2-8.1" class="pilcrow">¶</a>
+<li class="normal" id="section-7.2-8.1">receipts (label: <code>TBD</code>, to be registered): Array of SCITT receipts, defined in TBD<a href="#section-7.2-8.1" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-6.2-9">In CDDL (<a href="https://datatracker.ietf.org/doc/html/rfc8610">RFC 8610</a>) notation, the envelope is defined as follows:<a href="#section-6.2-9" class="pilcrow">¶</a></p>
-<p id="section-6.2-10">```
-SCITT_Envelope = COSE_Sign1_Tagged<a href="#section-6.2-10" class="pilcrow">¶</a></p>
-<p id="section-6.2-11">COSE_Sign1_Tagged = #6.18(COSE_Sign1)<a href="#section-6.2-11" class="pilcrow">¶</a></p>
-<p id="section-6.2-12">COSE_Sign1 = [
+<p id="section-7.2-9">In CDDL (<a href="https://datatracker.ietf.org/doc/html/rfc8610">RFC 8610</a>) notation, the envelope is defined as follows:<a href="#section-7.2-9" class="pilcrow">¶</a></p>
+<p id="section-7.2-10">```
+SCITT_Envelope = COSE_Sign1_Tagged<a href="#section-7.2-10" class="pilcrow">¶</a></p>
+<p id="section-7.2-11">COSE_Sign1_Tagged = #6.18(COSE_Sign1)<a href="#section-7.2-11" class="pilcrow">¶</a></p>
+<p id="section-7.2-12">COSE_Sign1 = [
   protected : bstr .cbor Protected_Header,
   unprotected : Unprotected_Header,
   payload : bstr,
   signature : bstr
-]<a href="#section-6.2-12" class="pilcrow">¶</a></p>
-<p id="section-6.2-13">Protected_Header = {
+]<a href="#section-7.2-12" class="pilcrow">¶</a></p>
+<p id="section-7.2-13">Protected_Header = {
   ; mandatory
   1 =&gt; int               ; algorithm identifier
   3 =&gt; tstr              ; payload type
-  258 =&gt; tstr            ; DID of issuer<a href="#section-6.2-13" class="pilcrow">¶</a></p>
-<p id="section-6.2-14">; mandatory depending on DID method
+  258 =&gt; tstr            ; DID of issuer<a href="#section-7.2-13" class="pilcrow">¶</a></p>
+<p id="section-7.2-14">; mandatory depending on DID method
   ? 4 =&gt; bstr            ; key identifier
-  ? 33 =&gt; COSE_X509      ; X.509 certificate chain, excluding Root CA certificate<a href="#section-6.2-14" class="pilcrow">¶</a></p>
-<p id="section-6.2-15">; optional experimental parameters
+  ? 33 =&gt; COSE_X509      ; X.509 certificate chain, excluding Root CA certificate<a href="#section-7.2-14" class="pilcrow">¶</a></p>
+<p id="section-7.2-15">; optional experimental parameters
   ? -65537 =&gt; tstr       ; Feed
   ? -65538 =&gt; uint       ; SVN
-}<a href="#section-6.2-15" class="pilcrow">¶</a></p>
-<p id="section-6.2-16">Unprotected_Header = {
+}<a href="#section-7.2-15" class="pilcrow">¶</a></p>
+<p id="section-7.2-16">Unprotected_Header = {
    ? 259 =&gt; SCITT_Receipt / [+ SCITT_Receipt]
-}<a href="#section-6.2-16" class="pilcrow">¶</a></p>
-<p id="section-6.2-17">COSE_X509 = bstr / [ 2*certs: bstr ]
-```<a href="#section-6.2-17" class="pilcrow">¶</a></p>
+}<a href="#section-7.2-16" class="pilcrow">¶</a></p>
+<p id="section-7.2-17">COSE_X509 = bstr / [ 2*certs: bstr ]
+```<a href="#section-7.2-17" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="protocols">
-<section id="section-7">
+<section id="section-8">
       <h2 id="name-protocols">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-protocols" class="section-name selfRef">Protocols</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-protocols" class="section-name selfRef">Protocols</a>
       </h2>
 <div id="issuing-signed-claims-about-an-artifact">
-<section id="section-7.1">
+<section id="section-8.1">
         <h3 id="name-issuing-signed-claims-about">
-<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-issuing-signed-claims-about" class="section-name selfRef">Issuing Signed Claims about an Artifact.</a>
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-issuing-signed-claims-about" class="section-name selfRef">Issuing Signed Claims about an Artifact.</a>
         </h3>
-<p id="section-7.1-1">Issuance itself is just signing with a key currently associated with the issuer DID.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+<p id="section-8.1-1">Issuance itself is just signing with a key currently associated with the issuer DID.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <div id="scitt-is-agnostic-to-claim-types-and-formats-">
-<section id="section-7.1.1">
+<section id="section-8.1.1">
           <h4 id="name-scitt-is-agnostic-to-claim-">
-<a href="#section-7.1.1" class="section-number selfRef">7.1.1. </a><a href="#name-scitt-is-agnostic-to-claim-" class="section-name selfRef">SCITT is agnostic to claim types and formats (?)</a>
+<a href="#section-8.1.1" class="section-number selfRef">8.1.1. </a><a href="#name-scitt-is-agnostic-to-claim-" class="section-name selfRef">SCITT is agnostic to claim types and formats (?)</a>
           </h4>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-7.1.1-1.1">
-              <p id="section-7.1.1-1.1.1">Are we going to specify formats for envelope payloads, aka "sets of claims" ? How are the types and formats below authenticated? We considered a "cty" protected header for that purpose.<a href="#section-7.1.1-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-8.1.1-1.1">
+              <p id="section-8.1.1-1.1.1">Are we going to specify formats for envelope payloads, aka "sets of claims" ? How are the types and formats below authenticated? We considered a "cty" protected header for that purpose.<a href="#section-8.1.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-7.1.1-2">Claim types include:
+<p id="section-8.1.1-2">Claim types include:
 - SBOMs
 - Malware scans
 - Human audits
-- Policies (= parameterized claims, with subject as input parameter)<a href="#section-7.1.1-2" class="pilcrow">¶</a></p>
-<p id="section-7.1.1-3">Claim formats include:
+- Policies (= parameterized claims, with subject as input parameter)<a href="#section-8.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-8.1.1-3">Claim formats include:
 - JSON-SPDX
 - CBOR-SPDX
 - SWID
 - CoSWID
-- CycloneDX<a href="#section-7.1.1-3" class="pilcrow">¶</a></p>
+- CycloneDX<a href="#section-8.1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="registering-signed-claims">
-<section id="section-7.2">
+<section id="section-8.2">
         <h3 id="name-registering-signed-claims">
-<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-registering-signed-claims" class="section-name selfRef">Registering Signed Claims.</a>
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-registering-signed-claims" class="section-name selfRef">Registering Signed Claims.</a>
         </h3>
-<p id="section-7.2-1">The same signed envelope can be independently registered in multiple ledgers.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
-<p id="section-7.2-2">Registation steps in the ledger<a href="#section-7.2-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-7.2-3">
-<li id="section-7.2-3.1">
-            <p id="section-7.2-3.1.1">Client authentication.<a href="#section-7.2-3.1.1" class="pilcrow">¶</a></p>
-<p id="section-7.2-3.1.2">
-So far, implementation-specific, and unrelated to the issuer identity.<a href="#section-7.2-3.1.2" class="pilcrow">¶</a></p>
+<p id="section-8.2-1">The same claim may be independently registered in multiple TS.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-2">To register a claim, the service performs the following steps:<a href="#section-8.2-2" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-8.2-3">
+<li id="section-8.2-3.1">
+            <p id="section-8.2-3.1.1">Client authentication.<a href="#section-8.2-3.1.1" class="pilcrow">¶</a></p>
+<p id="section-8.2-3.1.2">
+So far, implementation-specific, and unrelated to the issuer identity.<a href="#section-8.2-3.1.2" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-7.2-3.2">Issuer identification: binding the claimed issuer identity to their envelope signing key. See resolution below.<a href="#section-7.2-3.2" class="pilcrow">¶</a>
-</li>
-          <li id="section-7.2-3.3">
-            <p id="section-7.2-3.3.1">Envelope validation.<a href="#section-7.2-3.3.1" class="pilcrow">¶</a></p>
-<p id="section-7.2-3.3.2">
-This involves verifying the headers, but not the payload.<a href="#section-7.2-3.3.2" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-7.2-3.4">Envelope signature verification.<a href="#section-7.2-3.4" class="pilcrow">¶</a>
-</li>
-          <li id="section-7.2-3.5">Commit to the ledger.<a href="#section-7.2-3.5" class="pilcrow">¶</a>
-</li>
-          <li id="section-7.2-3.6">
-            <p id="section-7.2-3.6.1">Issue receipt.<a href="#section-7.2-3.6.1" class="pilcrow">¶</a></p>
-<p id="section-7.2-3.6.2">
-This ordering matters, so that the ledger can back up any receipt.<a href="#section-7.2-3.6.2" class="pilcrow">¶</a></p>
-</li>
-        </ol>
-</section>
-</div>
-<div id="verifying-transparent-signed-claims">
-<section id="section-7.3">
-        <h3 id="name-verifying-transparent-signe">
-<a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-verifying-transparent-signe" class="section-name selfRef">Verifying Transparent Signed Claims</a>
-        </h3>
-<p id="section-7.3-1">Trusted input for receipt verification: the identity
-and the public signature-verification key of the transparency service.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
-<p id="section-7.3-2">These may be included in the verifier's trusted configuration, or determined by a trusted policy.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
-<p id="section-7.3-3">Verification steps:<a href="#section-7.3-3" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-7.3-4">
-<li id="section-7.3-4.1">Verify receipt (see other draft)<a href="#section-7.3-4.1" class="pilcrow">¶</a>
-</li>
-          <li id="section-7.3-4.2">Verify issuer signature.<a href="#section-7.3-4.2" class="pilcrow">¶</a>
-</li>
-          <li id="section-7.3-4.3">Freshness/revocation?<a href="#section-7.3-4.3" class="pilcrow">¶</a>
-</li>
-          <li id="section-7.3-4.4">Validate format of the envelope contents.<a href="#section-7.3-4.4" class="pilcrow">¶</a>
+          <li id="section-8.2-3.2">Issuer identification. The service must check that the ledger records a recent DID document for the <code>issuer</code> protected header of the envelope. This <span class="bcp14">MAY</span> require that the service resolve the issuer DID and record the resulting document. (See issuer identity above.)<a href="#section-8.2-3.2" class="pilcrow">¶</a>
 </li>
         </ol>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-7.3-5.1">
-            <p id="section-7.3-5.1.1">Steps 2 and 3 are still TBD.<a href="#section-7.3-5.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-8.2-4.1">
+            <p id="section-8.2-4.1.1">Still missing any validation step involving prior claims, e.g., if the ledger already records any other claims from the same issuer with the same feed, check that the SVN of the new claim increments the claim of these prior claims.<a href="#section-8.2-4.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-7.3-6">Once verified, the claims together with their authenticated issuer and transparent ledger identities can be used as input to an authorization policy.<a href="#section-7.3-6" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-8.2-5">
+<li id="section-8.2-5.1">Envelope signature verification, as described in COSE signature, using the signature algorithm and verification key of the issuer DID document.<a href="#section-8.2-5.1" class="pilcrow">¶</a>
+</li>
+          <li id="section-8.2-5.2">Envelope validation. The service <span class="bcp14">MUST</span> check that the envelope has a payload and the protected headers listed above. The service <span class="bcp14">MAY</span> additionally verify the payload format and content.<a href="#section-8.2-5.2" class="pilcrow">¶</a>
+</li>
+          <li id="section-8.2-5.3">The service <span class="bcp14">MAY</span> apply an additional service-specific registration policy. The service <span class="bcp14">SHOULD</span> document this step, and <span class="bcp14">MAY</span> record additional evidence to enable its replayability.<a href="#section-8.2-5.3" class="pilcrow">¶</a>
+</li>
+          <li id="section-8.2-5.4">Commit to the ledger.<a href="#section-8.2-5.4" class="pilcrow">¶</a>
+</li>
+          <li id="section-8.2-5.5">Sign and return receipt.<a href="#section-8.2-5.5" class="pilcrow">¶</a>
+</li>
+        </ol>
+<p id="section-8.2-6">The last two steps <span class="bcp14">MAY</span> be shared between a batch of claims recorded in the ledger.<a href="#section-8.2-6" class="pilcrow">¶</a></p>
+<p id="section-8.2-7">The service <span class="bcp14">MUST</span> ensure that the claim is committed before releasing its receipt, so that it can always back up the receipt by releasing the corresponding entry in the ledger. Conversely, the service <span class="bcp14">MAY</span> re-issue receipts for the ledger content, for instance after a transient fault during claim registration.<a href="#section-8.2-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="verifying-transparent-signed-claims">
+<section id="section-8.3">
+        <h3 id="name-verifying-transparent-signe">
+<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-verifying-transparent-signe" class="section-name selfRef">Verifying Transparent Signed Claims</a>
+        </h3>
+<p id="section-8.3-1">Trusted input for receipt verification: the identity
+and the public signature-verification key of the transparency service.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+<p id="section-8.3-2">These may be included in the verifier's trusted configuration, or determined by a trusted policy.<a href="#section-8.3-2" class="pilcrow">¶</a></p>
+<p id="section-8.3-3">Verification steps:<a href="#section-8.3-3" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-8.3-4">
+<li id="section-8.3-4.1">Verify receipt (see other draft)<a href="#section-8.3-4.1" class="pilcrow">¶</a>
+</li>
+          <li id="section-8.3-4.2">Verify issuer signature.<a href="#section-8.3-4.2" class="pilcrow">¶</a>
+</li>
+          <li id="section-8.3-4.3">Freshness/revocation?<a href="#section-8.3-4.3" class="pilcrow">¶</a>
+</li>
+          <li id="section-8.3-4.4">Validate format of the envelope contents.<a href="#section-8.3-4.4" class="pilcrow">¶</a>
+</li>
+        </ol>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-8.3-5.1">
+            <p id="section-8.3-5.1.1">Steps 2 and 3 are still TBD; the client should verify the issuer signature against the issuers' DID document at the time of registration.<a href="#section-8.3-5.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-8.3-6">Once verified, the claims together with their authenticated issuer and transparent ledger identities can be used as input to an authorization policy.<a href="#section-8.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="federation">
-<section id="section-8">
+<section id="section-9">
       <h2 id="name-federation">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-federation" class="section-name selfRef">Federation</a>
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-federation" class="section-name selfRef">Federation</a>
       </h2>
-<p id="section-8-1">We explain how multiple, independent transparency services can be composed to distribute supply chains without a single transparency authority trusted by all parties.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-9-1">We explain how multiple, independent transparency services can be composed to distribute supply chains without a single transparency authority trusted by all parties.<a href="#section-9-1" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-8-2.1">
-          <p id="section-8-2.1.1">Mostly out of scope for the first drafts? We should make sure our architecture supports it.<a href="#section-8-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-9-2.1">
+          <p id="section-9-2.1.1">Mostly out of scope for the first drafts? We should make sure our architecture supports it.<a href="#section-9-2.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-8-3">Multiple SCITT instances, governed and operated by different organizations.<a href="#section-8-3" class="pilcrow">¶</a></p>
-<p id="section-8-4">For example,
+<p id="section-9-3">Multiple SCITT instances, governed and operated by different organizations.<a href="#section-9-3" class="pilcrow">¶</a></p>
+<p id="section-9-4">For example,
 - a small, simple SCITT instance may keep track specifically of the software used for operating SCITT services.
-- an air-gapped data center may operate its own SCITT ledger to retain full control and auditing of its software supplies.<a href="#section-8-4" class="pilcrow">¶</a></p>
-<p id="section-8-5">How?
-- Policy-based. Within an organization, local verifiers contact an authoritative SCITT that records the latest policies associated with classes of artifacts; these policies indicate which issuers and ledgers are trusted for verifying transparent signed claims for these artifacts.<a href="#section-8-5" class="pilcrow">¶</a></p>
+- an air-gapped data center may operate its own SCITT ledger to retain full control and auditing of its software supplies.<a href="#section-9-4" class="pilcrow">¶</a></p>
+<p id="section-9-5">How?
+- Policy-based. Within an organization, local verifiers contact an authoritative SCITT that records the latest policies associated with classes of artifacts; these policies indicate which issuers and ledgers are trusted for verifying transparent signed claims for these artifacts.<a href="#section-9-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8-6.1">Other federation mechanisms?<a href="#section-8-6.1" class="pilcrow">¶</a>
+<li class="normal" id="section-9-6.1">Other federation mechanisms?<a href="#section-9-6.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-8-7">We'd like to attach multiple receipts to the same signed claims, each receipt endorsing the issuer signature and a subset of prior receipts. This involves down-stream ledgers verifying and recording these receipts before issuing their own receipts.<a href="#section-8-7" class="pilcrow">¶</a></p>
+<p id="section-9-7">We'd like to attach multiple receipts to the same signed claims, each receipt endorsing the issuer signature and a subset of prior receipts. This involves down-stream ledgers verifying and recording these receipts before issuing their own receipts.<a href="#section-9-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="scitt-rest-api">
-<section id="section-9">
+<section id="section-10">
       <h2 id="name-scitt-rest-api">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-scitt-rest-api" class="section-name selfRef">SCITT REST API</a>
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-scitt-rest-api" class="section-name selfRef">SCITT REST API</a>
       </h2>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-9-1.1">
-          <p id="section-9-1.1.1">We may omit most of the details, or put it in an appendix.<a href="#section-9-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-10-1.1">
+          <p id="section-10-1.1.1">We may omit most of the details, or put it in an appendix.<a href="#section-10-1.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <div id="messages">
-<section id="section-9.1">
+<section id="section-10.1">
         <h3 id="name-messages">
-<a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-messages" class="section-name selfRef">Messages</a>
+<a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-messages" class="section-name selfRef">Messages</a>
         </h3>
 <div id="register-signed-claims">
-<section id="section-9.1.1">
+<section id="section-10.1.1">
           <h4 id="name-register-signed-claims">
-<a href="#section-9.1.1" class="section-number selfRef">9.1.1. </a><a href="#name-register-signed-claims" class="section-name selfRef">Register Signed Claims</a>
+<a href="#section-10.1.1" class="section-number selfRef">10.1.1. </a><a href="#name-register-signed-claims" class="section-name selfRef">Register Signed Claims</a>
           </h4>
 <div id="request">
-<section id="section-9.1.1.1">
+<section id="section-10.1.1.1">
             <h5 id="name-request">
-<a href="#section-9.1.1.1" class="section-number selfRef">9.1.1.1. </a><a href="#name-request" class="section-name selfRef">Request</a>
+<a href="#section-10.1.1.1" class="section-number selfRef">10.1.1.1. </a><a href="#name-request" class="section-name selfRef">Request</a>
             </h5>
-<div class="alignLeft art-text artwork" id="section-9.1.1.1-1">
+<div class="alignLeft art-text artwork" id="section-10.1.1.1-1">
 <pre>
 POST &lt;Base URL&gt;/entries
-</pre><a href="#section-9.1.1.1-1" class="pilcrow">¶</a>
+</pre><a href="#section-10.1.1.1-1" class="pilcrow">¶</a>
 </div>
-<p id="section-9.1.1.1-2">Body: SCITT COSE_Sign1 message<a href="#section-9.1.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-10.1.1.1-2">Body: SCITT COSE_Sign1 message<a href="#section-10.1.1.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="response">
-<section id="section-9.1.1.2">
+<section id="section-10.1.1.2">
             <h5 id="name-response">
-<a href="#section-9.1.1.2" class="section-number selfRef">9.1.1.2. </a><a href="#name-response" class="section-name selfRef">Response</a>
+<a href="#section-10.1.1.2" class="section-number selfRef">10.1.1.2. </a><a href="#name-response" class="section-name selfRef">Response</a>
             </h5>
-<p id="section-9.1.1.2-1">One of the following:<a href="#section-9.1.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-10.1.1.2-1">One of the following:<a href="#section-10.1.1.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-9.1.1.2-2.1">HTTP Status <code>201</code> - Registration was tentatively successful pending service consensus.<a href="#section-9.1.1.2-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-10.1.1.2-2.1">HTTP Status <code>201</code> - Registration was tentatively successful pending service consensus.<a href="#section-10.1.1.2-2.1" class="pilcrow">¶</a>
 </li>
-              <li class="normal" id="section-9.1.1.2-2.2">
-                <p id="section-9.1.1.2-2.2.1">HTTP Status <code>400</code> - Registration was unsuccessful.<a href="#section-9.1.1.2-2.2.1" class="pilcrow">¶</a></p>
+              <li class="normal" id="section-10.1.1.2-2.2">
+                <p id="section-10.1.1.2-2.2.1">HTTP Status <code>400</code> - Registration was unsuccessful.<a href="#section-10.1.1.2-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-9.1.1.2-2.2.2.1">Error code <code>AwaitingDIDResolutionTryLater</code><a href="#section-9.1.1.2-2.2.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-10.1.1.2-2.2.2.1">Error code <code>AwaitingDIDResolutionTryLater</code><a href="#section-10.1.1.2-2.2.2.1" class="pilcrow">¶</a>
 </li>
-                  <li class="normal" id="section-9.1.1.2-2.2.2.2">Error code <code>InvalidInput</code><a href="#section-9.1.1.2-2.2.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-10.1.1.2-2.2.2.2">Error code <code>InvalidInput</code><a href="#section-10.1.1.2-2.2.2.2" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
             </ul>
-<p id="section-9.1.1.2-3">[TODO] Use 5xx for AwaitingDIDResolutionTryLater<a href="#section-9.1.1.2-3" class="pilcrow">¶</a></p>
-<p id="section-9.1.1.2-4">The <code>201</code> response contains the <code>x-ms-ccf-transaction-id</code>  HTTP header which can be used to retrieve the Registration Receipt with the given transaction ID. [TODO] this has to be made generic<a href="#section-9.1.1.2-4" class="pilcrow">¶</a></p>
-<p id="section-9.1.1.2-5">[TODO] probably a bad idea to define a new header, or is it ok? can we register a new one? https://www.iana.org/assignments/http-fields/http-fields.xhtml<a href="#section-9.1.1.2-5" class="pilcrow">¶</a></p>
-<p id="section-9.1.1.2-6">The <code>400</code> response has a <code>Content-Type: application/json</code> header and a body containing details about the error:<a href="#section-9.1.1.2-6" class="pilcrow">¶</a></p>
-<p id="section-9.1.1.2-7"><code>json
+<p id="section-10.1.1.2-3">[TODO] Use 5xx for AwaitingDIDResolutionTryLater<a href="#section-10.1.1.2-3" class="pilcrow">¶</a></p>
+<p id="section-10.1.1.2-4">The <code>201</code> response contains the <code>x-ms-ccf-transaction-id</code>  HTTP header which can be used to retrieve the Registration Receipt with the given transaction ID. [TODO] this has to be made generic<a href="#section-10.1.1.2-4" class="pilcrow">¶</a></p>
+<p id="section-10.1.1.2-5">[TODO] probably a bad idea to define a new header, or is it ok? can we register a new one? https://www.iana.org/assignments/http-fields/http-fields.xhtml<a href="#section-10.1.1.2-5" class="pilcrow">¶</a></p>
+<p id="section-10.1.1.2-6">The <code>400</code> response has a <code>Content-Type: application/json</code> header and a body containing details about the error:<a href="#section-10.1.1.2-6" class="pilcrow">¶</a></p>
+<p id="section-10.1.1.2-7"><code>json
 {
   "error": {
     "code": "&lt;error code&gt;",
     "message": "&lt;message&gt;"
   }
 }
-</code><a href="#section-9.1.1.2-7" class="pilcrow">¶</a></p>
-<p id="section-9.1.1.2-8"><code>AwaitingDIDResolutionTryLater</code> means the service does not have an up-to-date DID document of the DID referenced in the Signed Claims but is performing or will perform a DID resolution after which the client may retry the request. The response may contain the HTTP header <code>Retry-After</code> to inform the client about the expected wait time.<a href="#section-9.1.1.2-8" class="pilcrow">¶</a></p>
-<p id="section-9.1.1.2-9"><code>InvalidInput</code> means either the Signed Claims message is syntactically malformed, violates the signing profile (e.g. signing algorithm), or has an invalid signature relative to the currently resolved DID document.<a href="#section-9.1.1.2-9" class="pilcrow">¶</a></p>
+</code><a href="#section-10.1.1.2-7" class="pilcrow">¶</a></p>
+<p id="section-10.1.1.2-8"><code>AwaitingDIDResolutionTryLater</code> means the service does not have an up-to-date DID document of the DID referenced in the Signed Claims but is performing or will perform a DID resolution after which the client may retry the request. The response may contain the HTTP header <code>Retry-After</code> to inform the client about the expected wait time.<a href="#section-10.1.1.2-8" class="pilcrow">¶</a></p>
+<p id="section-10.1.1.2-9"><code>InvalidInput</code> means either the Signed Claims message is syntactically malformed, violates the signing profile (e.g. signing algorithm), or has an invalid signature relative to the currently resolved DID document.<a href="#section-10.1.1.2-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="retrieve-registration-receipt">
-<section id="section-9.1.2">
+<section id="section-10.1.2">
           <h4 id="name-retrieve-registration-recei">
-<a href="#section-9.1.2" class="section-number selfRef">9.1.2. </a><a href="#name-retrieve-registration-recei" class="section-name selfRef">Retrieve Registration Receipt</a>
+<a href="#section-10.1.2" class="section-number selfRef">10.1.2. </a><a href="#name-retrieve-registration-recei" class="section-name selfRef">Retrieve Registration Receipt</a>
           </h4>
 <div id="request-1">
-<section id="section-9.1.2.1">
+<section id="section-10.1.2.1">
             <h5 id="name-request-2">
-<a href="#section-9.1.2.1" class="section-number selfRef">9.1.2.1. </a><a href="#name-request-2" class="section-name selfRef">Request</a>
+<a href="#section-10.1.2.1" class="section-number selfRef">10.1.2.1. </a><a href="#name-request-2" class="section-name selfRef">Request</a>
             </h5>
-<div class="alignLeft art-text artwork" id="section-9.1.2.1-1">
+<div class="alignLeft art-text artwork" id="section-10.1.2.1-1">
 <pre>
 GET &lt;Base URL&gt;/entries/&lt;Transaction ID&gt;/receipt
-</pre><a href="#section-9.1.2.1-1" class="pilcrow">¶</a>
+</pre><a href="#section-10.1.2.1-1" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="response-1">
-<section id="section-9.1.2.2">
+<section id="section-10.1.2.2">
             <h5 id="name-response-2">
-<a href="#section-9.1.2.2" class="section-number selfRef">9.1.2.2. </a><a href="#name-response-2" class="section-name selfRef">Response</a>
+<a href="#section-10.1.2.2" class="section-number selfRef">10.1.2.2. </a><a href="#name-response-2" class="section-name selfRef">Response</a>
             </h5>
-<p id="section-9.1.2.2-1">One of the following:<a href="#section-9.1.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-10.1.2.2-1">One of the following:<a href="#section-10.1.2.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-9.1.2.2-2.1">HTTP Status <code>200</code> - Registration was successful and the receipt is returned.<a href="#section-9.1.2.2-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-10.1.2.2-2.1">HTTP Status <code>200</code> - Registration was successful and the receipt is returned.<a href="#section-10.1.2.2-2.1" class="pilcrow">¶</a>
 </li>
-              <li class="normal" id="section-9.1.2.2-2.2">
-                <p id="section-9.1.2.2-2.2.1">HTTP Status <code>400</code> - Transaction exists but does not correspond to a Registration Request.<a href="#section-9.1.2.2-2.2.1" class="pilcrow">¶</a></p>
+              <li class="normal" id="section-10.1.2.2-2.2">
+                <p id="section-10.1.2.2-2.2.1">HTTP Status <code>400</code> - Transaction exists but does not correspond to a Registration Request.<a href="#section-10.1.2.2-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-9.1.2.2-2.2.2.1">Error code <code>TransactionMismatch</code><a href="#section-9.1.2.2-2.2.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-10.1.2.2-2.2.2.1">Error code <code>TransactionMismatch</code><a href="#section-10.1.2.2-2.2.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
-              <li class="normal" id="section-9.1.2.2-2.3">
-                <p id="section-9.1.2.2-2.3.1">HTTP Status <code>404</code> - Transaction is pending, unknown, or invalid.<a href="#section-9.1.2.2-2.3.1" class="pilcrow">¶</a></p>
+              <li class="normal" id="section-10.1.2.2-2.3">
+                <p id="section-10.1.2.2-2.3.1">HTTP Status <code>404</code> - Transaction is pending, unknown, or invalid.<a href="#section-10.1.2.2-2.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-9.1.2.2-2.3.2.1">Error code <code>TransactionPendingOrUnknown</code><a href="#section-9.1.2.2-2.3.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-10.1.2.2-2.3.2.1">Error code <code>TransactionPendingOrUnknown</code><a href="#section-10.1.2.2-2.3.2.1" class="pilcrow">¶</a>
 </li>
-                  <li class="normal" id="section-9.1.2.2-2.3.2.2">Error code <code>TransactionInvalid</code><a href="#section-9.1.2.2-2.3.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-10.1.2.2-2.3.2.2">Error code <code>TransactionInvalid</code><a href="#section-10.1.2.2-2.3.2.2" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
             </ul>
-<p id="section-9.1.2.2-3">The <code>200</code> response contains the SCITT_Receipt in the body.<a href="#section-9.1.2.2-3" class="pilcrow">¶</a></p>
-<p id="section-9.1.2.2-4">The <code>400</code> and <code>404</code> responses return the error details as described earlier.<a href="#section-9.1.2.2-4" class="pilcrow">¶</a></p>
-<p id="section-9.1.2.2-5">The retrieved receipt may be embedded in the corresponding COSE_Sign1 document in the unprotected header, see TBD.<a href="#section-9.1.2.2-5" class="pilcrow">¶</a></p>
-<p id="section-9.1.2.2-6">[TODO] There's also the <code>GET &lt;Base URL&gt;/entries/&lt;Transaction ID&gt;</code> endpoint which returns the submitted COSE_Sign1 with the receipt already embedded. Is this useful?<a href="#section-9.1.2.2-6" class="pilcrow">¶</a></p>
+<p id="section-10.1.2.2-3">The <code>200</code> response contains the SCITT_Receipt in the body.<a href="#section-10.1.2.2-3" class="pilcrow">¶</a></p>
+<p id="section-10.1.2.2-4">The <code>400</code> and <code>404</code> responses return the error details as described earlier.<a href="#section-10.1.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-10.1.2.2-5">The retrieved receipt may be embedded in the corresponding COSE_Sign1 document in the unprotected header, see TBD.<a href="#section-10.1.2.2-5" class="pilcrow">¶</a></p>
+<p id="section-10.1.2.2-6">[TODO] There's also the <code>GET &lt;Base URL&gt;/entries/&lt;Transaction ID&gt;</code> endpoint which returns the submitted COSE_Sign1 with the receipt already embedded. Is this useful?<a href="#section-10.1.2.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1987,36 +1976,36 @@ GET &lt;Base URL&gt;/entries/&lt;Transaction ID&gt;/receipt
 </section>
 </div>
 <div id="privacy-considerations">
-<section id="section-10">
+<section id="section-11">
       <h2 id="name-privacy-considerations">
-<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
       </h2>
-<p id="section-10-1">Privacy Considerations<a href="#section-10-1" class="pilcrow">¶</a></p>
+<p id="section-11-1">Privacy Considerations<a href="#section-11-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-11">
+<section id="section-12">
       <h2 id="name-security-considerations">
-<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-11-1">Security Considerations<a href="#section-11-1" class="pilcrow">¶</a></p>
+<p id="section-12-1">Security Considerations<a href="#section-12-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-12">
+<section id="section-13">
       <h2 id="name-iana-considerations">
-<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-12-1">See Body <a href="#mybody" class="xref">Section 4</a>.<a href="#section-12-1" class="pilcrow">¶</a></p>
+<p id="section-13-1">See Body <a href="#mybody" class="xref">Section 4</a>.<a href="#section-13-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<section id="section-13">
+<section id="section-14">
       <h2 id="name-references">
-<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-14" class="section-number selfRef">14. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
-<section id="section-13.1">
+<section id="section-14.1">
         <h3 id="name-normative-references">
-<a href="#section-13.1" class="section-number selfRef">13.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-14.1" class="section-number selfRef">14.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
@@ -2033,9 +2022,9 @@ GET &lt;Base URL&gt;/entries/&lt;Transaction ID&gt;/receipt
 <dd class="break"></dd>
 </dl>
 </section>
-<section id="section-13.2">
+<section id="section-14.2">
         <h3 id="name-informative-references">
-<a href="#section-13.2" class="section-number selfRef">13.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-14.2" class="section-number selfRef">14.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="I-D.draft-birkholz-scitt-receipts">[I-D.draft-birkholz-scitt-receipts]</dt>
@@ -2050,13 +2039,7 @@ GET &lt;Base URL&gt;/entries/&lt;Transaction ID&gt;/receipt
       <h2 id="name-attic">
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-attic" class="section-name selfRef">Attic</a>
       </h2>
-<p id="appendix-A-1">Not ready to throw these texts into the trash bin yet.
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">=======
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; first paragaphs for next meeting, more to come before then
-=======
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d5d14210d810abc27f9183ea695a2e5c51f775d0<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">Not ready to throw these texts into the trash bin yet.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
