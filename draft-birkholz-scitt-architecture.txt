@@ -562,25 +562,37 @@ Table of Contents
    In CDDL (RFC 8610 (https://datatracker.ietf.org/doc/html/rfc8610))
    notation, the envelope is defined as follows:
 
-   ``` SCITT_Envelope = COSE_Sign1_Tagged
+   SCITT_Envelope = COSE_Sign1_Tagged
 
    COSE_Sign1_Tagged = #6.18(COSE_Sign1)
 
-   COSE_Sign1 = [ protected : bstr .cbor Protected_Header, unprotected :
-   Unprotected_Header, payload : bstr, signature : bstr ]
+   COSE_Sign1 = [
+     protected : bstr .cbor Protected_Header,
+     unprotected : Unprotected_Header,
+     payload : bstr,
+     signature : bstr
+   ]
 
-   Protected_Header = { ; mandatory 1 => int ; algorithm identifier 3 =>
-   tstr ; payload type 258 => tstr ; DID of issuer
+   Protected_Header = {
+     ; mandatory
+     1 => int               ; algorithm identifier
+     3 => tstr              ; payload type
+     258 => tstr            ; DID of issuer
 
-   ; mandatory depending on DID method ? 4 => bstr ; key identifier ? 33
-   => COSE_X509 ; X.509 certificate chain, excluding Root CA certificate
+     ; mandatory depending on DID method
+     ? 4 => bstr            ; key identifier
+     ? 33 => COSE_X509      ; X.509 certificate chain, excluding Root CA certificate
 
-   ; optional experimental parameters ? -65537 => tstr ; Feed ? -65538
-   => uint ; SVN }
+     ; optional experimental parameters
+     ? -65537 => tstr       ; Feed
+     ? -65538 => uint       ; SVN
+   }
 
-   Unprotected_Header = { ? 259 => SCITT_Receipt / [+ SCITT_Receipt] }
+   Unprotected_Header = {
+      ? 259 => SCITT_Receipt / [+ SCITT_Receipt]
+   }
 
-   COSE_X509 = bstr / [ 2*certs: bstr ] ```
+   COSE_X509 = bstr / [ 2*certs: bstr ]
 
 8.  Protocols
 

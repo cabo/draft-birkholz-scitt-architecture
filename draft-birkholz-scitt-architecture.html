@@ -1733,32 +1733,41 @@ any artifact that may be used to target a particular user that checks for receip
 </li>
         </ul>
 <p id="section-7.2-9">In CDDL (<a href="https://datatracker.ietf.org/doc/html/rfc8610">RFC 8610</a>) notation, the envelope is defined as follows:<a href="#section-7.2-9" class="pilcrow">¶</a></p>
-<p id="section-7.2-10">```
-SCITT_Envelope = COSE_Sign1_Tagged<a href="#section-7.2-10" class="pilcrow">¶</a></p>
-<p id="section-7.2-11">COSE_Sign1_Tagged = #6.18(COSE_Sign1)<a href="#section-7.2-11" class="pilcrow">¶</a></p>
-<p id="section-7.2-12">COSE_Sign1 = [
+<div id="section-7.2-10">
+<pre class="lang-CDDL sourcecode">
+SCITT_Envelope = COSE_Sign1_Tagged
+
+COSE_Sign1_Tagged = #6.18(COSE_Sign1)
+
+COSE_Sign1 = [
   protected : bstr .cbor Protected_Header,
   unprotected : Unprotected_Header,
   payload : bstr,
   signature : bstr
-]<a href="#section-7.2-12" class="pilcrow">¶</a></p>
-<p id="section-7.2-13">Protected_Header = {
+]
+
+Protected_Header = {
   ; mandatory
   1 =&gt; int               ; algorithm identifier
   3 =&gt; tstr              ; payload type
-  258 =&gt; tstr            ; DID of issuer<a href="#section-7.2-13" class="pilcrow">¶</a></p>
-<p id="section-7.2-14">; mandatory depending on DID method
+  258 =&gt; tstr            ; DID of issuer
+
+  ; mandatory depending on DID method
   ? 4 =&gt; bstr            ; key identifier
-  ? 33 =&gt; COSE_X509      ; X.509 certificate chain, excluding Root CA certificate<a href="#section-7.2-14" class="pilcrow">¶</a></p>
-<p id="section-7.2-15">; optional experimental parameters
+  ? 33 =&gt; COSE_X509      ; X.509 certificate chain, excluding Root CA certificate
+
+  ; optional experimental parameters
   ? -65537 =&gt; tstr       ; Feed
   ? -65538 =&gt; uint       ; SVN
-}<a href="#section-7.2-15" class="pilcrow">¶</a></p>
-<p id="section-7.2-16">Unprotected_Header = {
+}
+
+Unprotected_Header = {
    ? 259 =&gt; SCITT_Receipt / [+ SCITT_Receipt]
-}<a href="#section-7.2-16" class="pilcrow">¶</a></p>
-<p id="section-7.2-17">COSE_X509 = bstr / [ 2*certs: bstr ]
-```<a href="#section-7.2-17" class="pilcrow">¶</a></p>
+}
+
+COSE_X509 = bstr / [ 2*certs: bstr ]
+</pre><a href="#section-7.2-10" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
