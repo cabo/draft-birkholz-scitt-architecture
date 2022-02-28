@@ -72,44 +72,49 @@ Table of Contents
    1.  Introduction
      1.1.  Requirements Notation
    2.  Use Cases
-   3.  Terminology
-   4.  Definition of Transparency
-   5.  High-level architecture
-     5.1.  Principals
-       5.1.1.  Transparency services
-       5.1.2.  Issuers and claims
-       5.1.3.  Verifiers
-   6.  SCITT Transparency Service
-     6.1.  Service Identity and Keying
-     6.2.  Receipt Issuance
-     6.3.  Ledger Security Requirements
-       6.3.1.  Attestability of service identity
-       6.3.2.  Consistency
-       6.3.3.  Finality
-       6.3.4.  Replayability
-       6.3.5.  Auditing
-       6.3.6.  Governance and Bootstrapping
-     6.4.  Caching / Query service
-   7.  SCITT COSE Envelopes
-     7.1.  Issuer Identity
-       7.1.1.  Why?
-     7.2.  SCITT COSE profile
-   8.  Protocols
-     8.1.  Issuing Signed Claims about an Artifact.
-       8.1.1.  SCITT is agnostic to claim types and formats (?)
-     8.2.  Registering Signed Claims.
-     8.3.  Verifying Transparent Signed Claims
-   9.  Federation
-   10. SCITT REST API
-     10.1.  Messages
-       10.1.1.  Register Signed Claims
-       10.1.2.  Retrieve Registration Receipt
-   11. Privacy Considerations
-   12. Security Considerations
-   13. IANA Considerations
-   14. References
-     14.1.  Normative References
-     14.2.  Informative References
+     2.1.  Cold Chains for Seafood
+     2.2.  Maintenance Telemetry from Truck Fleets
+     2.3.  Public Software Bill of Materials (SBOM) Ledger
+   3.  Public SBOM ledger
+     3.1.  Confidential Computing
+   4.  Terminology
+   5.  Definition of Transparency
+   6.  High-level architecture
+     6.1.  Principals
+       6.1.1.  Transparency services
+       6.1.2.  Issuers and claims
+       6.1.3.  Verifiers
+   7.  SCITT Transparency Service
+     7.1.  Service Identity and Keying
+     7.2.  Receipt Issuance
+     7.3.  Ledger Security Requirements
+       7.3.1.  Attestability of service identity
+       7.3.2.  Consistency
+       7.3.3.  Finality
+       7.3.4.  Replayability
+       7.3.5.  Auditing
+       7.3.6.  Governance and Bootstrapping
+     7.4.  Caching / Query service
+   8.  SCITT COSE Envelopes
+     8.1.  Issuer Identity
+       8.1.1.  Why?
+     8.2.  SCITT COSE profile
+   9.  Protocols
+     9.1.  Issuing Signed Claims about an Artifact.
+       9.1.1.  SCITT is agnostic to claim types and formats (?)
+     9.2.  Registering Signed Claims.
+     9.3.  Verifying Transparent Signed Claims
+   10. Federation
+   11. SCITT REST API
+     11.1.  Messages
+       11.1.1.  Register Signed Claims
+       11.1.2.  Retrieve Registration Receipt
+   12. Privacy Considerations
+   13. Security Considerations
+   14. IANA Considerations
+   15. References
+     15.1.  Normative References
+     15.2.  Informative References
    Appendix A.  Attic
    Authors' Addresses
 
@@ -210,6 +215,44 @@ Table of Contents
       Henk has lock on this section.  Allen also interested in writing
       here.  The plan is to keep application details to this subsection.
 
+   This section presents representative and solution-agnostic use cases
+   to illustrate the scope of SCITT and the processing of Digital Supply
+   Chain Artifacts.
+
+2.1.  Cold Chains for Seafood
+
+   Once seafood is caught, its quality is determined -- amongst other
+   criteria -- via the integrity of a cold chain that ensures a
+   regulatory perspective freshness mandating a continuous storing
+   temperature between 1°C and 0°C (or -18°C and lower for frozen
+   seafood).  The temperature is recorded by cooling units adhering to
+   certain compliance standards automatically.  Batches of seafood can
+   be split or aggregated before arriving in a shelf so that each unit
+   can potentially have a potentially unique cold chain record whose
+   transparency impacts the accuracy of the shelf-life associated with
+   it.  Especially in early links of the supply chain, Internet
+   connection or sophisticated IT equipment are typically not available
+   and sometimes temperature measurements are recorded manually and
+   digital records are created in hindsight.
+
+2.2.  Maintenance Telemetry from Truck Fleets
+
+   Measurements from Electronic Control Units (ECUs) that are components
+   of fleets of trucks are recorded while they are on the road in
+   support of supply chain logistics.  Continuously recorded
+   measurements are aggregated in batches by each truck and handed off
+   to a telemetry store via mobile Internet or whenever the truck is in
+   close proximity to a WiFi gate.  Telemetry records stored are the
+   fuel for machine learning approaches or prediction models based on AI
+   methods.  Telemetry records are considered confidential and are only
+   exposed to other supply chain entities that are able to make their
+   compliance to certain security standards transparent (or can present
+   other contractual trust relationships).
+
+2.3.  Public Software Bill of Materials (SBOM) Ledger
+
+3.  Public SBOM ledger
+
    *  Public SBOM ledger > No need to separate firmware?.
 
       -  from source code to binaries
@@ -219,10 +262,12 @@ Table of Contents
       -  can we share the cost of reviewing software across the
          industry?
 
+3.1.  Confidential Computing
+
    *  Confidential Computing
 
       -  how can clients that connect to a CC service for the first time
-         validate their attestation reports?
+         validate their attestation results?
 
       -  how to automatically patch a CC service?  Trust, but audit
          later.
@@ -231,7 +276,7 @@ Table of Contents
 
       -  in particular for implementing SCITT services.
 
-3.  Terminology
+4.  Terminology
 
    The terms defined in this section have special meaning in the context
    of Supply Chain Integrity, Transparency, and Trust throughout this
@@ -298,7 +343,7 @@ Table of Contents
       receipt is carred in the countersignature), and may be registered
       again in a different TS.
 
-4.  Definition of Transparency
+5.  Definition of Transparency
 
    In this document, we use a definition of transparency built over
    abstract notions of ledgers and receipts.  Existing transparency
@@ -342,7 +387,7 @@ Table of Contents
    Receipts do not expire, but it is possible to append new entries that
    subsume older entries.
 
-5.  High-level architecture
+6.  High-level architecture
 
    SCITT provides an interoperability framework to verify the
    transparency of arbitrary digital artifacts registered across many
@@ -351,25 +396,25 @@ Table of Contents
    baseline accountability guarantee for auditors and consumers of
    transparency evidence.
 
-5.1.  Principals
+6.1.  Principals
 
-5.1.1.  Transparency services
+6.1.1.  Transparency services
 
    As a decentralized system, SCITT allows anyone to operate their own
    instance of a transparency service, which maintains its own ledger
 
-5.1.2.  Issuers and claims
+6.1.2.  Issuers and claims
 
    Claims are non-repudiable statements made by issuers.  In SCITT, many
    claims are made by authors, reviewers and distributors of digital
    artifacts, including source and binary packages, firmware, audit
    reports, etc.
 
-5.1.3.  Verifiers
+6.1.3.  Verifiers
 
    including users, and anyone else
 
-6.  SCITT Transparency Service
+7.  SCITT Transparency Service
 
    SCITT aims to support many different implementations of transparency
    ledgers, as long as they satisfy a set of requirements that aim to
@@ -379,13 +424,13 @@ Table of Contents
    approach does not scale to the large amount of instances necessary to
    protect the software supply chain at scale.
 
-6.1.  Service Identity and Keying
+7.1.  Service Identity and Keying
 
       Details TBD, e.g. discovery, rekeying, revocation, delegation
       (e.g. to replicas); this may require its own subsection, or left
       underspecified as ledger-specific details.
 
-6.2.  Receipt Issuance
+7.2.  Receipt Issuance
 
    Compact, universally verifiable proof that claims are registered in
    the ledger.
@@ -393,11 +438,11 @@ Table of Contents
    Enabling offline verification of registration in the ledger.  Signed
    with key that chains to service identity
 
-6.3.  Ledger Security Requirements
+7.3.  Ledger Security Requirements
 
    The main requirements for the transparency service are
 
-6.3.1.  Attestability of service identity
+7.3.1.  Attestability of service identity
 
    Enabling remote authentication of the hardware platforms and software
    TCB that run the transparency service.
@@ -407,35 +452,35 @@ Table of Contents
 
    RATS? proof-of-work?
 
-6.3.2.  Consistency
+7.3.2.  Consistency
 
    Everyone with access to the ledger sees the same sequence of
    registered entries.
 
-6.3.3.  Finality
+7.3.3.  Finality
 
    Ledger is append-only; once registered, its entries cannot be
    modified or deleted (although they may be superceded by nwer
    entries).
 
-6.3.4.  Replayability
+7.3.4.  Replayability
 
       Can it cover client authentication and DID resolution?
 
-6.3.5.  Auditing
+7.3.5.  Auditing
 
-6.3.6.  Governance and Bootstrapping
+7.3.6.  Governance and Bootstrapping
 
       Their specification is out of scope: we rely on ledger-specific,
       out-of-band protocols for it.
 
-6.4.  Caching / Query service
+7.4.  Caching / Query service
 
    Untrusted.  Replicated.  Indexed.
 
       This service could extract (read) receipts from the ledger.
 
-7.  SCITT COSE Envelopes
+8.  SCITT COSE Envelopes
 
    *Format of signed claims / envelope*
 
@@ -447,7 +492,7 @@ Table of Contents
       Envelopes MAY include additional protected and unprotected
       headers.
 
-7.1.  Issuer Identity
+8.1.  Issuer Identity
 
    SCITT issuers are identified using DID, which provides a flexible,
    decentralized identity framework.
@@ -480,12 +525,12 @@ Table of Contents
    ledger, leveraging solutions and principles from the Concise Signing
    and Encryption (COSE) space.
 
-7.1.1.  Why?
+8.1.1.  Why?
 
    COSE is generic, every application needs to constrain it to their own
    use cases, in this case the SCITT use cases.
 
-7.2.  SCITT COSE profile
+8.2.  SCITT COSE profile
 
    [TODO] describe semantics of iss and how it can be used together with
    kid to identity a verification method in a resolved DID document
@@ -544,14 +589,14 @@ Table of Contents
 
    COSE_X509 = bstr / [ 2*certs: bstr ] ```
 
-8.  Protocols
+9.  Protocols
 
-8.1.  Issuing Signed Claims about an Artifact.
+9.1.  Issuing Signed Claims about an Artifact.
 
    Issuance itself is just signing with a key currently associated with
    the issuer DID.
 
-8.1.1.  SCITT is agnostic to claim types and formats (?)
+9.1.1.  SCITT is agnostic to claim types and formats (?)
 
       Are we going to specify formats for envelope payloads, aka "sets
       of claims" ? How are the types and formats below authenticated?
@@ -563,7 +608,7 @@ Table of Contents
    Claim formats include: - JSON-SPDX - CBOR-SPDX - SWID - CoSWID -
    CycloneDX
 
-8.2.  Registering Signed Claims.
+9.2.  Registering Signed Claims.
 
    The same claim may be independently registered in multiple TS.
 
@@ -610,7 +655,7 @@ Table of Contents
    re-issue receipts for the ledger content, for instance after a
    transient fault during claim registration.
 
-8.3.  Verifying Transparent Signed Claims
+9.3.  Verifying Transparent Signed Claims
 
    Trusted input for receipt verification: the identity and the public
    signature-verification key of the transparency service.
@@ -636,7 +681,7 @@ Table of Contents
    and transparent ledger identities can be used as input to an
    authorization policy.
 
-9.  Federation
+10.  Federation
 
    We explain how multiple, independent transparency services can be
    composed to distribute supply chains without a single transparency
@@ -666,21 +711,21 @@ Table of Contents
    receipts.  This involves down-stream ledgers verifying and recording
    these receipts before issuing their own receipts.
 
-10.  SCITT REST API
+11.  SCITT REST API
 
       We may omit most of the details, or put it in an appendix.
 
-10.1.  Messages
+11.1.  Messages
 
-10.1.1.  Register Signed Claims
+11.1.1.  Register Signed Claims
 
-10.1.1.1.  Request
+11.1.1.1.  Request
 
    POST <Base URL>/entries
 
    Body: SCITT COSE_Sign1 message
 
-10.1.1.2.  Response
+11.1.1.2.  Response
 
    One of the following:
 
@@ -719,13 +764,13 @@ Table of Contents
    has an invalid signature relative to the currently resolved DID
    document.
 
-10.1.2.  Retrieve Registration Receipt
+11.1.2.  Retrieve Registration Receipt
 
-10.1.2.1.  Request
+11.1.2.1.  Request
 
    GET <Base URL>/entries/<Transaction ID>/receipt
 
-10.1.2.2.  Response
+11.1.2.2.  Response
 
    One of the following:
 
@@ -755,21 +800,21 @@ Table of Contents
    endpoint which returns the submitted COSE_Sign1 with the receipt
    already embedded.  Is this useful?
 
-11.  Privacy Considerations
+12.  Privacy Considerations
 
    Privacy Considerations
 
-12.  Security Considerations
+13.  Security Considerations
 
    Security Considerations
 
-13.  IANA Considerations
+14.  IANA Considerations
 
-   See Body Section 4.
+   See Body Section 5.
 
-14.  References
+15.  References
 
-14.1.  Normative References
+15.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -784,7 +829,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-14.2.  Informative References
+15.2.  Informative References
 
    [I-D.draft-birkholz-scitt-receipts]
               "*** BROKEN REFERENCE ***".
