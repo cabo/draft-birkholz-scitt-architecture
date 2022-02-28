@@ -13,11 +13,11 @@
        In this document, the supply chain context is illustrated using problem statements, requirements are derived from use case definitions, and architectural constituents are specified and illustrated in usage scenarios. 
        The resulting architecture is intended to enable multi-layer interoperability to produce and leverage believable trust assertions while maintaining a minimal adoption threshold. 
     " name="description">
-<meta content="xml2rfc 3.12.2" name="generator">
+<meta content="xml2rfc 3.12.3" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-birkholz-scitt-architecture-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.12.2
+  xml2rfc 3.12.3
     Python 3.9.7
     appdirs 1.4.4
     ConfigArgParse 1.3
@@ -27,6 +27,7 @@
     Jinja2 2.11.3
     kitchen 1.2.6
     lxml 4.6.5
+    MarkupSafe 2.0.1
     pycountry 20.7.3
     pyflakes 2.3.1
     PyYAML 5.4.1
@@ -1020,7 +1021,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 29 August 2022</td>
+<td class="center">Expires 1 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1033,12 +1034,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-birkholz-scitt-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-02-25" class="published">25 February 2022</time>
+<time datetime="2022-02-28" class="published">28 February 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-08-29">29 August 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-01">1 September 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1090,7 +1091,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 29 August 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 1 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1304,24 +1305,24 @@ A TS always limits the entities that have the authority to release new claims to
 Analogously, a TS typically limits the entities to which transparency into released claims is granted.
 Nevertheless, it is of great import to provide global interoperability for a all TS instances as the composition and configuration of involved supply chain entities and their system components is ever changing and always in flux.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">A TS provides visibility into claims produced by supply chain entities and their sub-systems.
-These claims are called Digital Supply Chain Artifacts (DSCA).
-More importantly, a TS vouches for specific and well-defined metadata about these DSCAs, including "when was the DSCA recorded by the TS", "who issued the DSCA to the TS", or "what type of DSCA are stored in the TS".
-In fact, a DSCA itself can be opaque to the TS, if so desired.
-It is the metadata that must always be transparent and that must warrant trust. That metadata includes distinct details and believable trustworthiness characteristics about the distinguishable system components that compose TS instances as well as their operations involving DSCA.<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">These trustworthiness assertions provide an essential basis for holding issuers accountable for the DSCA they release and (more generally) principals accountable for the claims they make about such DSCAs.<a href="#section-1-6" class="pilcrow">¶</a></p>
+These claims are called Digital Supply Chain Artifacts (DSCA, typically simply referred to as artifacts in the remainder of this memo).
+More importantly, a TS vouches for specific and well-defined metadata about these artifacts, including "when was the artifact recorded by the TS", "who issued the artifact to the TS", or "what type of artifacts are stored in the TS".
+In fact, a artifacts itself can be opaque to the TS, if so desired.
+It is the metadata that must always be transparent and that must warrant trust. That metadata includes distinct details and believable trustworthiness characteristics about the distinguishable system components that compose TS instances as well as their operations involving artifacts.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-6">These trustworthiness assertions provide an essential basis for holding issuers accountable for the artifacts they release and (more generally) principals accountable for the claims they make about such artifacts.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <p id="section-1-7">The TS specified in this architecture caters two types of audiences:<a href="#section-1-7" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-1-8">
-<li id="section-1-8.1">DSCA Issuers: entities, stakeholders, and users involved in supply chain interactions that need to release DSCAs to a definable set of peers; and<a href="#section-1-8.1" class="pilcrow">¶</a>
+<li id="section-1-8.1">artifact issuers: entities, stakeholders, and users involved in supply chain interactions that need to release artifacts to a definable set of peers; and<a href="#section-1-8.1" class="pilcrow">¶</a>
 </li>
-        <li id="section-1-8.2">DSCA Consumers: entities, stakeholders, and users involved in supply chain interactions that need to access, validate, and trust DSCAs.<a href="#section-1-8.2" class="pilcrow">¶</a>
+        <li id="section-1-8.2">artifact consumers: entities, stakeholders, and users involved in supply chain interactions that need to access, validate, and trust artifacts.<a href="#section-1-8.2" class="pilcrow">¶</a>
 </li>
       </ol>
-<p id="section-1-9">DSCA Issuers rely on being discoverable and represented as the responsible parties for released DSCAs by the TS in a believable manner.
-Analogously, DSCA Consumers rely on verifiable trustworthiness assertions associated with DSCAs and their processing in a believable manner.
-If trust can be put into the operations that record DSCAs in a secure, append-only ledger via an online operation, the same trust can be put into a corresponding receipt that is the result of these online operations issued by the TS and that can be validated in offline operations.<a href="#section-1-9" class="pilcrow">¶</a></p>
+<p id="section-1-9">Artifacts issuers rely on being discoverable and represented as the responsible parties for released artifacts by the TS in a believable manner.
+Analogously, artifact consumers rely on verifiable trustworthiness assertions associated with artifacts and their processing in a believable manner.
+If trust can be put into the operations that record artifacts in a secure, append-only ledger via an online operation, the same trust can be put into a corresponding receipt that is the result of these online operations issued by the TS and that can be validated in offline operations.<a href="#section-1-9" class="pilcrow">¶</a></p>
 <p id="section-1-10">The TS specified in this architecture can be implemented by various different types of services in various types of languages provided via various variants of API layouts.
 The global interoperability enabled and guaranteed by the TS is enabled via core components (architectural constituents) that come with prescriptive requirements (that are typically hidden away from the user audience via APIs later).
-The core components are based on the Concise Signing and Encryption standard specified in <span>[<a href="#RFC8152" class="xref">RFC8152</a>]</span>, which is used to sign released DSCAs and to build and maintain a merkle tree that functions as the append-only ledger for DSCAs.
+The core components are based on the Concise Signing and Encryption standard specified in <span>[<a href="#RFC8152" class="xref">RFC8152</a>]</span>, which is used to sign released artifacts and to build and maintain a merkle tree that functions as the append-only ledger for artifacts.
 The format and verification process for ledger-based transparency receipts are described in <a href="https://ietf-scitt.github.io/draft-birkholz-scitt-receipts/draft-birkholz-scitt-receipts.html">Counter-Signing Receipts</a><a href="#section-1-10" class="pilcrow">¶</a></p>
 <div id="requirements-notation">
 <section id="section-1.1">
@@ -1350,62 +1351,52 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
       </h2>
 <p id="section-3-1">The terms defined in this section have special meaning in the context of Supply Chain Integrity, Transparency, and Trust throughout this document. When used in text, the corresponding terms are capitalized. To ensure readability, only a core set of terms is included in this section.<span class="cref" id="_1">This list is a bucket today and subject to churn.<span class="crefSource">Henk</span></span><a href="#section-3-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3-2">
-        <dt id="section-3-2.1">
-Artifact:  </dt>
+        <dt id="section-3-2.1">Artifact:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.2">
           <p id="section-3-2.2.1">the physical or non-physical thing that is moving along the supply chain.<a href="#section-3-2.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.3">
-Claim:  </dt>
+<dt id="section-3-2.3">Claim:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.4">
           <p id="section-3-2.4.1">a non-repudiable statement about an artifact encoded as a COSE payload provided by the issuer.<a href="#section-3-2.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.5">
-Envelope:  </dt>
+<dt id="section-3-2.5">Envelope:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.6">
           <p id="section-3-2.6.1">a container that includes the metadata added to a Statement, making it a Claim. Effectively, a COSE envelope with headers, signature, and potentially the statement included as the COSE payload.<a href="#section-3-2.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.7">
-Feed:  </dt>
+<dt id="section-3-2.7">Feed:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.8">
           <p id="section-3-2.8.1">An identifier of an Artifact for a series of Transparent Claims. Effectively, a new COSE header attribute that contains a name given to the Artifact given by the Issuer.<a href="#section-3-2.8.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.9">
-Issuer:  </dt>
+<dt id="section-3-2.9">Issuer:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.10">
           <p id="section-3-2.10.1">originator of named statements, signing statements, thereby refining them to a Claim, and issuing/sending Claims to the Transparency Service.<a href="#section-3-2.10.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.11">
-Ledger:  </dt>
+<dt id="section-3-2.11">Ledger:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.12">
           <p id="section-3-2.12.1">a COSE-based merkle tree allowing for append-only operations to add Claims<a href="#section-3-2.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.13">
-Profile:  </dt>
+<dt id="section-3-2.13">Profile:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.14">
           <p id="section-3-2.14.1">tbd<a href="#section-3-2.14.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.15">
-Receipt:  </dt>
+<dt id="section-3-2.15">Receipt:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.16">
           <p id="section-3-2.16.1">a COSE countersignature that is a proof of inclusion specific to a Claim in a ledger.<a href="#section-3-2.16.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.17">
-Transparent Claim:  </dt>
+<dt id="section-3-2.17">Transparent Claim:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.18">
           <p id="section-3-2.18.1">a Claim processed by the Transparency Service, added to the ledger, and augmented by a Receipt.<a href="#section-3-2.18.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.19">
-Transparency Service:  </dt>
+<dt id="section-3-2.19">Transparency Service:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.20">
           <p id="section-3-2.20.1">the thing that operates on the ledger, including auditing and querying
 via trusted operations<a href="#section-3-2.20.1" class="pilcrow">¶</a></p>
