@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-02-27T00:30:04.013517+00:00",
+  "timestamp": "2022-03-01T00:29:41.111100+00:00",
   "repo": "ietf-scitt/draft-birkholz-scitt-architecture",
   "labels": [
     {
@@ -126,24 +126,26 @@
       "id": "PR_kwDOG2uWFs4zWa8w",
       "title": "Starting to scope use cases",
       "url": "https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/pull/3",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "henkbirkholz",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "added two rough use cases illustrating supply chain logistic challenges",
       "createdAt": "2022-02-23T15:06:23Z",
-      "updatedAt": "2022-02-23T15:06:23Z",
+      "updatedAt": "2022-02-28T15:38:56Z",
       "baseRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
       "baseRefName": "main",
-      "baseRefOid": "a00f1af64f3929a3e29d1837d59b66efc03b6667",
+      "baseRefOid": "2cc42b24813be29418571ebccd5e84aa7bea1b9e",
       "headRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
       "headRefName": "more-use-cases",
-      "headRefOid": "ae4c6d431ce6da9bc62a4191ae121d4326eab8c0",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "121f36d2e95a917727f9993fe70c87924f4da323",
+      "closedAt": "2022-02-28T15:38:56Z",
+      "mergedAt": "2022-02-28T15:38:56Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "d9a45e42d5b7b7ce1543c341c4f1574a8d3a785b"
+      },
       "comments": [],
       "reviews": []
     },
@@ -180,26 +182,55 @@
       "id": "PR_kwDOG2uWFs4zd005",
       "title": "Re-arrange terminology and use cases; complete terminology",
       "url": "https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/pull/5",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "ad-l",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2022-02-25T13:42:42Z",
-      "updatedAt": "2022-02-25T13:42:42Z",
+      "updatedAt": "2022-02-28T15:17:06Z",
       "baseRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "6ff841cad5bd0205f16b01f67551b2417d235c76",
       "headRepository": "ad-l/draft-birkholz-scitt-architecture",
       "headRefName": "main",
-      "headRefOid": "e1026cc0f812ab046b1a38464f013ec14e02dfa9",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "7abe7debcf1367b6e3aeb03932c1c325828851d1",
+      "closedAt": "2022-02-28T15:17:06Z",
+      "mergedAt": "2022-02-28T15:17:06Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "2cc42b24813be29418571ebccd5e84aa7bea1b9e"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOG2uWFs41UW8K",
+          "commit": {
+            "abbreviatedOid": "7abe7de"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-02-27T17:44:29Z",
+          "updatedAt": "2022-02-27T17:44:29Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOG2uWFs41W-wV",
+          "commit": {
+            "abbreviatedOid": "7abe7de"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-02-28T15:16:56Z",
+          "updatedAt": "2022-02-28T15:16:56Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
