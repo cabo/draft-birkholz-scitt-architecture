@@ -9,7 +9,8 @@
 <meta content="Antoine Delignat-Lavaud" name="author">
 <meta content="Cedric Fournet" name="author">
 <meta content="
-       A transparent and authentic ledger service in support of a supply chain's integrity, transparency, and trust requires all peers that contribute to the ledgers operations to be trustworthy and authentic. 
+       Supply Chain transparency requires organizations to accurately identify and collect data from all links in the supply chain and to communicate this information both internally and externally at the level of detail required or desired. Supply Chain 
+transparency is of paramount importance in todays digital world, to address security challenges and risks posed to supply chain. 
        In this document, the supply chain context is illustrated using problem statements, requirements are derived from use case definitions, and architectural constituents are specified and illustrated in usage scenarios. 
        The resulting architecture is intended to enable multi-layer interoperability to produce and leverage believable trust assertions while maintaining a minimal adoption threshold. 
     " name="description">
@@ -1017,11 +1018,11 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SCITT Architecture</td>
-<td class="right">February 2022</td>
+<td class="right">March 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 1 September 2022</td>
+<td class="center">Expires 3 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1034,12 +1035,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-birkholz-scitt-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-02-28" class="published">28 February 2022</time>
+<time datetime="2022-03-02" class="published">2 March 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-01">1 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-03">3 September 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1060,7 +1061,8 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <h1 id="title">An Architecture for Trustworthy Digital Supply Chain Transparency Services</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">A transparent and authentic ledger service in support of a supply chain's integrity, transparency, and trust requires all peers that contribute to the ledgers operations to be trustworthy and authentic.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">Supply Chain transparency requires organizations to accurately identify and collect data from all links in the supply chain and to communicate this information both internally and externally at the level of detail required or desired. Supply Chain 
+transparency is of paramount importance in todays digital world, to address security challenges and risks posed to supply chain.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <p id="section-abstract-2">In this document, the supply chain context is illustrated using problem statements, requirements are derived from use case definitions, and architectural constituents are specified and illustrated in usage scenarios.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 <p id="section-abstract-3">The resulting architecture is intended to enable multi-layer interoperability to produce and leverage believable trust assertions while maintaining a minimal adoption threshold.<a href="#section-abstract-3" class="pilcrow">¶</a></p>
 </section>
@@ -1091,7 +1093,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 1 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1308,7 +1310,7 @@ This memo specifies an architecture for Transparency Service (TS) to systematica
 <p id="section-1-4">Transparency in the context of supply chains is always a well-scoped quality for each instance of a TS.
 Transparency does not imply being transparent to everybody, unconditionally.
 Each instance may enforce its own policy for authorizing entities to register their claims on the TS.
-Nevertheless, it is of great import to provide global interoperability for all TS instances as the composition and configuration of involved supply chain entities and their system components is ever changing and always in flux.<a href="#section-1-4" class="pilcrow">¶</a></p>
+Nevertheless, it is of great importance to provide global interoperability for all TS instances as the composition and configuration of involved supply chain entities and their system components is ever changing and always in flux.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">A TS provides visibility into claims produced by supply chain entities and their sub-systems.
 These claims are called Digital Supply Chain Artifacts (DSCA).
 More importantly, a TS vouches for specific and well-defined metadata about these DSCAs, including "when was the DSCA recorded by the TS", "who issued the DSCA to the TS", or "what type of DSCA are stored in the TS".
@@ -1317,7 +1319,7 @@ It is the metadata that must always be transparent and that must warrant trust. 
 <p id="section-1-6">These trustworthiness assertions provide an essential basis for holding issuers accountable for the DSCA they release and (more generally) principals accountable for the claims they make about such DSCAs.
 Hence, issuers may register new claims about their artifacts, but they cannot delete or alter
 earlier claims, or hide their claims from third parties such as auditors.<a href="#section-1-6" class="pilcrow">¶</a></p>
-<p id="section-1-7">Crucially, trust in the TS itself can be supported by providing guarantees about their implementation, based on hardware attestation, and by holding them accountable, based on independent auditing of the correctness and consistency of their whole transparency ledger.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<p id="section-1-7">Crucially, trust in the TS itself can be supported by providing guarantees about their implementation, based on system attestation, and by holding them accountable, based on independent auditing of the correctness and consistency of their whole transparency ledger.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <p id="section-1-8">The TS specified in this architecture caters two types of audiences:<a href="#section-1-8" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-1-9">
 <li id="section-1-9.1">DSCA Issuers: entities, stakeholders, and users involved in supply chain interactions that need to release DSCAs to a definable set of peers; and<a href="#section-1-9.1" class="pilcrow">¶</a>
