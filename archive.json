@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-01T00:29:41.111100+00:00",
+  "timestamp": "2022-03-03T00:31:12.120256+00:00",
   "repo": "ietf-scitt/draft-birkholz-scitt-architecture",
   "labels": [
     {
@@ -231,6 +231,169 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOG2uWFs4zvXX6",
+      "title": "Minor restructuring; we plan to combine format and protocols",
+      "url": "https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/pull/6",
+      "state": "MERGED",
+      "author": "ad-l",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-03-01T16:37:57Z",
+      "updatedAt": "2022-03-02T16:28:37Z",
+      "baseRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "db1120e3ccaa8d21d15eee4d59798531acc1190b",
+      "headRepository": "ad-l/draft-birkholz-scitt-architecture",
+      "headRefName": "main",
+      "headRefOid": "76b02d69e2fb1ecfe205fa2e6c4e34fa7ac2e938",
+      "closedAt": "2022-03-02T16:28:37Z",
+      "mergedAt": "2022-03-02T16:28:37Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "89d4fc26e436fbf5170b7196db718cce23a82266"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOG2uWFs41e9X5",
+          "commit": {
+            "abbreviatedOid": "dc46aff"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-02T09:26:45Z",
+          "updatedAt": "2022-03-02T09:26:46Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\r\nthe service presents attestation evidence that typically includes measurement of the\r\nsoftware it runs in this TEE. and a corresponding endorsement co-located with the\r\nTEE and provisioned by the Endorser. The client verifies the evidence with the help\r\nof a Verifier before using the service as the Relying Party.\r\n```",
+              "createdAt": "2022-03-02T09:26:45Z",
+              "updatedAt": "2022-03-02T09:27:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOG2uWFs41e-vg",
+          "commit": {
+            "abbreviatedOid": "dc46aff"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-02T09:31:04Z",
+          "updatedAt": "2022-03-02T09:31:05Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "RATS defines the solution basically as \"via a Verifier role\". Evidence always comes with a proof of its Authenticity as it is signed by an Attesting Environment of the Attester (usually a RoT, that can be a layered Attesting Environment, sometimes called a Bootstrapped RoT).",
+              "createdAt": "2022-03-02T09:31:05Z",
+              "updatedAt": "2022-03-02T09:31:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOG2uWFs41fBnn",
+          "commit": {
+            "abbreviatedOid": "dc46aff"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-02T09:40:40Z",
+          "updatedAt": "2022-03-02T09:40:40Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "The conceptual messages provided here (in this scope artifacts or assets) are:\r\n* \"recording of their measurements\", which I assume means nominal measurements, that you can compare actual live measurements coming from the confidential services about itself - that would be Reference Values in Reference Integrity Manifests.\r\n* \"recording of their provenance\", which is bit ambiguously phrase but probably is an SBOM and Endorsements.\r\n\r\nProvided here is the Verifier role that can be taken on by the client, of course. The entity that is a client takes on a lot of a responsibility here, if it also takes on the role of a Relying Party. The Verifier role conducts the \"appraisal of Evidence\", consuming Reference Values, and Endorsements (coming from supply chain entities that are usually manufacturers, oem, and certifying organizations). and Evidence coming from the Confidential Computing Service that takes on the role of an Attester.",
+              "createdAt": "2022-03-02T09:40:40Z",
+              "updatedAt": "2022-03-02T09:40:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOG2uWFs41fCiP",
+          "commit": {
+            "abbreviatedOid": "dc46aff"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-02T09:43:45Z",
+          "updatedAt": "2022-03-02T09:43:46Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "In a nutshell:\r\n\r\nCC Service: Attester\r\nClient: Verifier & Relying Party\r\nTransparency Service: Endorser & Reference Value Provider (or a trusted relay for them as the artifact issuer actually take on these roles, I think)",
+              "createdAt": "2022-03-02T09:43:46Z",
+              "updatedAt": "2022-03-02T10:08:07Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOG2uWFs4z0byl",
+      "title": "Corrected Abstract to align with the larger scope of the document",
+      "url": "https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/pull/7",
+      "state": "MERGED",
+      "author": "yogeshbdeshpande",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Request please review this!",
+      "createdAt": "2022-03-02T10:41:21Z",
+      "updatedAt": "2022-03-02T16:25:40Z",
+      "baseRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "16fae14e9eadbd46fdf17b0c6f648f0783e6b2fc",
+      "headRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
+      "headRefName": "correction-branch",
+      "headRefOid": "c3e4416d34a1252c310ddf54056889f5c29676ab",
+      "closedAt": "2022-03-02T16:25:40Z",
+      "mergedAt": "2022-03-02T16:25:40Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "db1120e3ccaa8d21d15eee4d59798531acc1190b"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOG2uWFs4z16O5",
+      "title": "The confidential computing use case now discusses specific machine-learning tasks.",
+      "url": "https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/pull/8",
+      "state": "OPEN",
+      "author": "fournet",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-03-02T16:56:48Z",
+      "updatedAt": "2022-03-02T16:56:49Z",
+      "baseRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "89d4fc26e436fbf5170b7196db718cce23a82266",
+      "headRepository": "ad-l/draft-birkholz-scitt-architecture",
+      "headRefName": "main",
+      "headRefOid": "7523c7ba9472a9af59fb26ae09ca45fbcb465933",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
