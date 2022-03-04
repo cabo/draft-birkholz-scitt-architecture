@@ -9,10 +9,8 @@
 <meta content="Antoine Delignat-Lavaud" name="author">
 <meta content="Cedric Fournet" name="author">
 <meta content="
-       Supply Chain transparency requires organizations to accurately identify and collect data from all links in the supply chain and to communicate this information both internally and externally at the level of detail required or desired. Supply Chain 
-transparency is of paramount importance in todays digital world, to address security challenges and risks posed to supply chain. 
-       In this document, the supply chain context is illustrated using problem statements, requirements are derived from use case definitions, and architectural constituents are specified and illustrated in usage scenarios. 
-       The resulting architecture is intended to enable multi-layer interoperability to produce and leverage believable trust assertions while maintaining a minimal adoption threshold. 
+       Traceability of physical and digital artifacts in supply chains is a long standing, but increasingly serious security concern. The rise in popularity of verifiable data structures as a mechanism to make actors more accountable for breaching their compliance promises has found some successful applications to specific use cases (such as the supply chain for digital certificates), but lacks a generic and scalable architecture that can address a wider range of use cases. 
+       This memo defines a generic and scalable architecture to enable transparency across any supply chain with minimum adoption barriers for producers (who can register their claims on any transparency service, with the guarantee that all consumers will be able to verify them) and enough flexibility to allow different implementations of transparency services with various auditing and compliance requirements. 
     " name="description">
 <meta content="xml2rfc 3.12.3" name="generator">
 <meta content="Internet-Draft" name="keyword">
@@ -1022,7 +1020,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 3 September 2022</td>
+<td class="center">Expires 5 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1035,12 +1033,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-birkholz-scitt-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-03-02" class="published">2 March 2022</time>
+<time datetime="2022-03-04" class="published">4 March 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-03">3 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-05">5 September 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1049,11 +1047,11 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </div>
 <div class="author">
       <div class="author-name">A. Delignat-Lavaud</div>
-<div class="org">Microsoft</div>
+<div class="org">Microsoft Research</div>
 </div>
 <div class="author">
       <div class="author-name">C. Fournet</div>
-<div class="org">Microsoft</div>
+<div class="org">Microsoft Research</div>
 </div>
 </dd>
 </dl>
@@ -1061,10 +1059,8 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <h1 id="title">An Architecture for Trustworthy Digital Supply Chain Transparency Services</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">Supply Chain transparency requires organizations to accurately identify and collect data from all links in the supply chain and to communicate this information both internally and externally at the level of detail required or desired. Supply Chain 
-transparency is of paramount importance in todays digital world, to address security challenges and risks posed to supply chain.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
-<p id="section-abstract-2">In this document, the supply chain context is illustrated using problem statements, requirements are derived from use case definitions, and architectural constituents are specified and illustrated in usage scenarios.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
-<p id="section-abstract-3">The resulting architecture is intended to enable multi-layer interoperability to produce and leverage believable trust assertions while maintaining a minimal adoption threshold.<a href="#section-abstract-3" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">Traceability of physical and digital artifacts in supply chains is a long standing, but increasingly serious security concern. The rise in popularity of verifiable data structures as a mechanism to make actors more accountable for breaching their compliance promises has found some successful applications to specific use cases (such as the supply chain for digital certificates), but lacks a generic and scalable architecture that can address a wider range of use cases.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">This memo defines a generic and scalable architecture to enable transparency across any supply chain with minimum adoption barriers for producers (who can register their claims on any transparency service, with the guarantee that all consumers will be able to verify them) and enough flexibility to allow different implementations of transparency services with various auditing and compliance requirements.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1093,7 +1089,7 @@ transparency is of paramount importance in todays digital world, to address secu
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 5 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1134,16 +1130,16 @@ transparency is of paramount importance in todays digital world, to address secu
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-use-cases" class="xref">Use Cases</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-cold-chains-for-seafood" class="xref">Cold Chains for Seafood</a></p>
+                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-software-bill-of-materials-" class="xref">Software Bill of Materials (SBOM)</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-maintenance-telemetry-from-" class="xref">Maintenance Telemetry from Truck Fleets</a></p>
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-confidential-computing" class="xref">Confidential Computing</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
-                <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-public-software-bill-of-mat" class="xref">Public Software Bill of Materials (SBOM) Ledger</a></p>
+                <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-cold-chains-for-seafood" class="xref">Cold Chains for Seafood</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
-                <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-confidential-computing" class="xref">Confidential Computing</a></p>
+                <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-maintenance-telemetry-from-" class="xref">Maintenance Telemetry from Truck Fleets</a></p>
 </li>
             </ul>
 </li>
@@ -1158,18 +1154,29 @@ transparency is of paramount importance in todays digital world, to address secu
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-claim-issuance" class="xref">Claim Issuance</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.1">
+                    <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="xref">5.1.1</a>.  <a href="#name-issuer-identity" class="xref">Issuer Identity</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.2">
+                    <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="xref">5.1.2</a>.  <a href="#name-naming-artifacts" class="xref">Naming artifacts</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.3">
+                    <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="xref">5.1.3</a>.  <a href="#name-claim-metadata" class="xref">Claim metadata</a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-transparency-service-ts" class="xref">Transparency Service (TS)</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.1">
-                    <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="xref">5.2.1</a>.  <a href="#name-service-identity-and-keying" class="xref">Service Identity and Keying</a></p>
+                    <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="xref">5.2.1</a>.  <a href="#name-service-identity-and-keying" class="xref">Service identity and keying</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.2">
-                    <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="xref">5.2.2</a>.  <a href="#name-ledger-requirements" class="xref">Ledger Requirements</a></p>
+                    <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="xref">5.2.2</a>.  <a href="#name-registration-policies" class="xref">Registration policies</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.3">
-                    <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="xref">5.2.3</a>.  <a href="#name-caching-query-service" class="xref">Caching / Query service</a></p>
+                    <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="xref">5.2.3</a>.  <a href="#name-ledger-security-requirement" class="xref">Ledger security requirements</a></p>
 </li>
                 </ul>
 </li>
@@ -1182,10 +1189,10 @@ transparency is of paramount importance in todays digital world, to address secu
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-claim-issuance-registration" class="xref">Claim Issuance, Registration, and Verification</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
-                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-issuer-identity" class="xref">Issuer Identity</a></p>
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-issuer-identity-2" class="xref">Issuer Identity</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
-                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-scitt-cose-profile" class="xref">SCITT COSE profile</a></p>
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-cose-profile-for-claims" class="xref">COSE profile for claims</a></p>
 </li>
             </ul>
 </li>
@@ -1237,15 +1244,7 @@ transparency is of paramount importance in todays digital world, to address secu
             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#section-13" class="xref">13</a>. <a href="#name-references" class="xref">References</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1">
-                <p id="section-toc.1-1.13.2.1.1"><a href="#section-13.1" class="xref">13.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.2">
-                <p id="section-toc.1-1.13.2.2.1"><a href="#section-13.2" class="xref">13.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.13.1"><a href="#section-13" class="xref">13</a>. <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
             <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-attic" class="xref">Attic</a></p>
@@ -1262,34 +1261,22 @@ transparency is of paramount importance in todays digital world, to address secu
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">The need for an understandable, scalable and resilient system that supports 
-trust and transparency for various kinds of existing and emerging supply chains is a global one.
-This memo specifies an architecture for Transparency Service (TS) to systematically protect supply chains for digital artifacts.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">Supply Chain Integrity, Transparency and Trust (SCITT) involves two complementary security guarantees:<a href="#section-1-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-1-3">
-<li id="section-1-3.1">artifacts must be authenticated by their issuers; and<a href="#section-1-3.1" class="pilcrow">¶</a>
+<p id="section-1-1">This document describes a scalable and flexible decentralized architecture to enhance auditability and accountability in various existing and emerging supply chains.
+It achieves this goal by enforcing the following complementary security guarantees:<a href="#section-1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-1-2">
+<li id="section-1-2.1">statements made by issuers about supply chain artifacts must be identifiable, authentic, and non-repudiable;<a href="#section-1-2.1" class="pilcrow">¶</a>
 </li>
-        <li id="section-1-3.2">artifacts must be recorded in a secure, append-only ledger, so that their provenance and release history can be independently and consistently reviewed.<a href="#section-1-3.2" class="pilcrow">¶</a>
+        <li id="section-1-2.2">such statements must be registered on a secure append-only ledger so that their provenance and history can be independently and consistently audited;<a href="#section-1-2.2" class="pilcrow">¶</a>
+</li>
+        <li id="section-1-2.3">issuers can efficiently prove to any other party the registration of their claims; verifying this proof ensures that the issuer is consistent and non-equivocal when making claims.<a href="#section-1-2.3" class="pilcrow">¶</a>
 </li>
       </ol>
-<p id="section-1-4">Transparency in the context of supply chains is always a well-scoped quality for each instance of a TS.
-Transparency does not imply being transparent to everybody, unconditionally.
-Each instance may enforce its own policy for authorizing entities to register their claims on the TS.
-Nevertheless, it is of great importance to provide global interoperability for all TS instances as the composition and configuration of involved supply chain entities and their system components is ever changing and always in flux.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">A TS provides visibility into claims issued by supply chain entities and their sub-systems.
-These claims are called Digital Supply Chain Artifacts (DSCA).
-A TS vouches for specific and well-defined metadata about these DSCAs.
-Some metadata is selected (and signed) by the issuer, indicating, e.g.,
-"who issued the DSCA" or "what type of DSCA is described" or "what is the DSCA version";<br>
-whereas additional metadata is selected (and countersigned) by the TS, indicating, e.g., 
-"when was the DSCA registered in the ledger".
-The DSCA contents can be opaque to the TS, if so desired: 
-it is the metadata that must always be transparent in order to  warrant trust.<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">Transparent claims provide a common basis for holding issuers accountable for the DSCA they release and (more generally) principals accountable for auxiliary claims they make about DSCAs.
-Hence, issuers may register new claims about their artifacts, but they cannot delete or alter
-earlier claims, or hide their claims from third parties such as auditors.<a href="#section-1-6" class="pilcrow">¶</a></p>
-<p id="section-1-7">Trust in the TS itself is supported both by protecting their implementation (using replication and system attestation) and by enabling independent audits of the correctness and consistency of its ledger, 
-thereby holding the organization that operates it accountable.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<p id="section-1-3">The first guarantee is achieved by requiring issuers to sign their statements and associated metadata using a distributed public key infrastructure. The second guarantee is achieved by storing the signed statement on an, immutable, append-only, transparent ledger. The last guarantee is achieved by implementing the ledger using a verifiable data structure (such as a Merkle Tree), and by the requiring a transparency service (TS) that operates the ledger to endorse its state at the time of registration.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">The guarantees and techniques used in this document generalize those of Certificate Transparency (<span>[<a href="#RFC9162" class="xref">RFC9162</a>]</span>), which can be re-interpreted as an instance of this architecture for the supply chain of X.509 certificates. However, the range of use cases and applications in this document is much broader, which requires much more flexibility in how each TS implements and operates its ledger. Each service may enforce its own policy for authorizing entities to register their claims on the TS. Some TS may also enforce access control policies to limit who can audit the full ledger, or keep some information on the ledger encrypted. Nevertheless, it is critical to provide global interoperability for all TS instances as the composition and configuration of involved supply chain entities and their system components is ever changing and always in flux.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">A TS provides visibility into claims issued by supply chain entities and their sub-systems. These claims are called Digital Supply Chain Artifacts (DSCA).
+A TS vouches for specific and well-defined metadata about these DSCAs. Some metadata is selected (and signed) by the issuer, indicating, e.g., "who issued the DSCA" or "what type of DSCA is described" or "what is the DSCA version"; whereas additional metadata is selected (and countersigned) by the TS, indicating, e.g., "when was the DSCA registered in the ledger". The DSCA contents can be opaque to the TS, if so desired: it is the metadata that must always be transparent in order to  warrant trust.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-6">Transparent claims provide a common basis for holding issuers accountable for the DSCA they release and (more generally) principals accountable for auxiliary claims they make about DSCAs. Hence, issuers may register new claims about their artifacts, but they cannot delete or alter earlier claims, or hide their claims from third parties such as auditors.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-7">Trust in the TS itself is supported both by protecting their implementation (using replication and system attestation) and by enabling independent audits of the correctness and consistency of its ledger, thereby holding the organization that operates it accountable. Unlike CT, where independent auditors are responsible for enforcing the consistency of multiple independent instances of the same global ledger, we require each TS to guarantee the consistency of its own ledger (for instance, through the use of a consensus algorithm between replicas of the ledger), but assume no consistency between different transparency services.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <p id="section-1-8">The TS specified in this architecture caters two types of audiences:<a href="#section-1-8" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-1-9">
 <li id="section-1-9.1">DSCA Issuers: entities, stakeholders, and users involved in supply chain interactions that need to release DSCAs to a definable set of peers; and<a href="#section-1-9.1" class="pilcrow">¶</a>
@@ -1301,8 +1288,7 @@ thereby holding the organization that operates it accountable.<a href="#section-
 Analogously, DSCA Consumers rely on verifiable trustworthiness assertions associated with DSCAs and their processing in a believable manner.
 If trust can be put into the operations that record DSCAs in a secure, append-only ledger via an online operation, the same trust can be put into a corresponding receipt that is the result of these online operations issued by the TS and that can be validated in offline operations.<a href="#section-1-10" class="pilcrow">¶</a></p>
 <p id="section-1-11">The TS specified in this architecture can be implemented by various different types of services in various types of languages provided via various variants of API layouts.
-The global interoperability enabled and guaranteed by the TS is enabled via core components (architectural constituents) that come with prescriptive requirements (that are typically hidden away from the user audience via APIs later).
-The core components are based on the Concise Signing and Encryption standard specified in <span>[<a href="#RFC8152" class="xref">RFC8152</a>]</span>, which is used to sign released DSCAs and to build and maintain a merkle tree that functions as the append-only ledger for DSCAs.
+The global interoperability enabled and guaranteed by the TS is enabled via core components (architectural constituents) that come with prescriptive requirements (that are typically hidden away from the user audience via APIs later). The core components are based on the Concise Signing and Encryption standard specified in <span>[<a href="#RFC8152" class="xref">RFC8152</a>]</span>, which is used to sign released DSCAs and to build and maintain a merkle tree that functions as the append-only ledger for DSCAs.
 The format and verification process for ledger-based transparency receipts are described in <a href="https://ietf-scitt.github.io/draft-birkholz-scitt-receipts/draft-birkholz-scitt-receipts.html">Counter-Signing Receipts</a><a href="#section-1-11" class="pilcrow">¶</a></p>
 <div id="requirements-notation">
 <section id="section-1.1">
@@ -1322,74 +1308,44 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
       <h2 id="name-use-cases">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-use-cases" class="section-name selfRef">Use Cases</a>
       </h2>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-2-1.1">
-          <p id="section-2-1.1.1">Henk has lock on this section. Allen also interested in writing here.
-The plan is to keep application details to this subsection.<a href="#section-2-1.1.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
-<p id="section-2-2">This section presents representative and solution-agnostic use cases to illustrate the scope of SCITT and the processing of Digital Supply Chain Artifacts.<a href="#section-2-2" class="pilcrow">¶</a></p>
-<div id="cold-chains-for-seafood">
+<p id="section-2-1">This section presents representative and solution-agnostic use cases to illustrate the scope of SCITT and the processing of Digital Supply Chain Artifacts.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<div id="software-bill-of-materials-sbom">
 <section id="section-2.1">
-        <h3 id="name-cold-chains-for-seafood">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-cold-chains-for-seafood" class="section-name selfRef">Cold Chains for Seafood</a>
+        <h3 id="name-software-bill-of-materials-">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-software-bill-of-materials-" class="section-name selfRef">Software Bill of Materials (SBOM)</a>
         </h3>
-<p id="section-2.1-1">Once seafood is caught, its quality is determined -- amongst other criteria -- via the integrity of a cold chain that ensures a regulatory perspective freshness mandating a continuous storing temperature between 1<span class="contact-name">°</span>C and 0<span class="contact-name">°</span>C (or -18<span class="contact-name">°</span>C and lower for frozen seafood). The temperature is recorded by cooling units adhering to certain compliance standards automatically. Batches of seafood can be split or aggregated before arriving in a shelf so that each unit can potentially have a potentially unique cold chain record whose transparency impacts the accuracy of the shelf-life associated with it. Especially in early links of the supply chain, Internet connection or sophisticated IT equipment are typically not available and sometimes temperature measurements are recorded manually and digital records are created in hindsight.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="maintenance-telemetry-from-truck-fleets">
-<section id="section-2.2">
-        <h3 id="name-maintenance-telemetry-from-">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-maintenance-telemetry-from-" class="section-name selfRef">Maintenance Telemetry from Truck Fleets</a>
-        </h3>
-<p id="section-2.2-1">Measurements from Electronic Control Units (ECUs) that are components of fleets of trucks are recorded while they are on the road in support of supply chain logistics. Continuously recorded measurements are aggregated in batches by each truck and handed off to a telemetry store via mobile Internet or whenever the truck is in close proximity to a WiFi gate. Telemetry records stored are the fuel for machine learning approaches or prediction models based on AI methods. Telemetry records are considered confidential and are only exposed to other supply chain entities that are able to make their compliance to certain security standards transparent (or can present other contractual trust relationships).<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="public-software-bill-of-materials-sbom-ledger">
-<section id="section-2.3">
-        <h3 id="name-public-software-bill-of-mat">
-<a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-public-software-bill-of-mat" class="section-name selfRef">Public Software Bill of Materials (SBOM) Ledger</a>
-        </h3>
-<p id="section-2.3-1">Public SBOM ledger
-- Public SBOM ledger
-  &gt; No need to separate firmware?.
-  - from source code to binaries
-  - can we keep track of the provenance of software artifacts?
-  - can we share the cost of reviewing software across the industry?<a href="#section-2.3-1" class="pilcrow">¶</a></p>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-2.3-2.1">
-            <p id="section-2.3-2.1.1">While there is no need to limit SBOM to firmware, third-party firmware is a concrete example and may improve readability.<a href="#section-2.3-2.1.1" class="pilcrow">¶</a></p>
-</li>
-        </ul>
+<p id="section-2.1-1">As the ever increasing complexity of large software projects requires more modularity and abstractions to manage, keeping track of their full Trusted Computing Base (TCB) is becoming increasingly difficult. Each component may have its own set of dependencies and libraries. Some of these dependencies are binaries, which means their TCB depends not only on their source, but also on the build environment (compilers and tool-chains). Many source and binary packages are distributed through various channels and repositories that may not be trustworthy.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-2">Software Bills of Materials (SBOM) help the authors, packagers, distributors, auditors and users of software understand its provenance and who may have the ability to introduce a vulnerability that can affect the supply chain downstream. However, the usefulness of SBOM in protecting end users is limited if supply chain actors cannot be held accountable for their contents. For instance, consider a package repository for an open source operating system distribution. The operator of this repository may decide to provide a malicious version of a package only to users who live in a specific country. They can write two equivocal SBOMs for the honest and backdoored versions of the package, so that nobody outside the affected country can discover the malicious version, but victims are not aware they are being targetted.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="confidential-computing">
-<section id="section-2.4">
+<section id="section-2.2">
         <h3 id="name-confidential-computing">
-<a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-confidential-computing" class="section-name selfRef">Confidential Computing</a>
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-confidential-computing" class="section-name selfRef">Confidential Computing</a>
         </h3>
-<p id="section-2.4-1">Confidential Computing leverages trusted execution environments (TEEs)
-to operate services in isolation, with hardware-based integrity and
-confidentiality protection.  When clients connects to such a service,
-the service presents attestation evidence that typically includes a
-platform certificate for its TEE and a measurement of the software it
-runs in this TEE. The client verifies the evidence before using the
-service.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
-<p id="section-2.4-2">But how can clients verify it is a valid measurement for the service?
-And how can operators update the service, e.g., to mitigate a new
-security vulnerability, without notifying all clients that they should
-use a new measurement?<a href="#section-2.4-2" class="pilcrow">¶</a></p>
-<p id="section-2.4-3">A supply chain that maintains a public record of the successive
-software releases for the service, recording both their measurements
-and their provenance (source code, build reports, audit reports,...)
-can provide all clients with this information, while holding service
-developers and operators accountable for the software they release for
-the service.<a href="#section-2.4-3" class="pilcrow">¶</a></p>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-2.4-4.1">
-            <p id="section-2.4-4.1.1">Where to provide more details? Cutting for now: For instance, a signed excerpt of this record can be distributed with the service software, and attached to its attestation evidence, enabling clients to confirm the software image for their service has been released by a given issuer and registered on a given transparency ledger.<a href="#section-2.4-4.1.1" class="pilcrow">¶</a></p>
-</li>
-        </ul>
+<p id="section-2.2-1">Confidential Computing can leverage hardware-protected trusted execution environments (TEEs) to operate cloud services that protect the confidentiality of data that they process. It relies on remote attestation, which allows the service to prove to remote users what is hash of its code, as measured and signed by the hardware.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">For instance, consider a speech recognition service that implements machine learning inference using a deep neural network model. The operator of the service wants to prove to its users that the service preserves the user's privacy, that is, the submitted recordings can only be used to detect voice commands but no other purpose (such as storing the recordings or detecting mentions of brand names for advertisement purposes).
+When the user connects to the TEE implementing the service, the TEE presents attestation evidence that includes a hardware certificate and a software measurement for their task; the user verifies this evidence before sending its recording.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
+<p id="section-2.2-3">But how can users verify the software measurement for their task? And how can operators update their service, e.g., to mitigate security vulnerabilities or improve accuracy,
+without first convincing all users to update the measurements they trust?<a href="#section-2.2-3" class="pilcrow">¶</a></p>
+<p id="section-2.2-4">A supply chain that maintains a transparent record of the successive software releases for machine-learning models and runtimes, recording both their software measurements
+and their provenance (source code, build reports, audit reports,...) can provide users with the information they need to authorize these tasks, while holding the service operator accountable for the software they release for them.<a href="#section-2.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="cold-chains-for-seafood">
+<section id="section-2.3">
+        <h3 id="name-cold-chains-for-seafood">
+<a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-cold-chains-for-seafood" class="section-name selfRef">Cold Chains for Seafood</a>
+        </h3>
+<p id="section-2.3-1">Once seafood is caught, its quality is determined -- amongst other criteria -- via the integrity of a cold chain that ensures a regulatory perspective freshness mandating a continuous storing temperature between 1<span class="contact-name">°</span>C and 0<span class="contact-name">°</span>C (or -18<span class="contact-name">°</span>C and lower for frozen seafood). The temperature is recorded by cooling units adhering to certain compliance standards automatically. Batches of seafood can be split or aggregated before arriving in a shelf so that each unit can potentially have a potentially unique cold chain record whose transparency impacts the accuracy of the shelf-life associated with it. Especially in early links of the supply chain, Internet connection or sophisticated IT equipment are typically not available and sometimes temperature measurements are recorded manually and digital records are created in hindsight.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="maintenance-telemetry-from-truck-fleets">
+<section id="section-2.4">
+        <h3 id="name-maintenance-telemetry-from-">
+<a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-maintenance-telemetry-from-" class="section-name selfRef">Maintenance Telemetry from Truck Fleets</a>
+        </h3>
+<p id="section-2.4-1">Measurements from Electronic Control Units (ECUs) that are components of fleets of trucks are recorded while they are on the road in support of supply chain logistics. Continuously recorded measurements are aggregated in batches by each truck and handed off to a telemetry store via mobile Internet or whenever the truck is in close proximity to a WiFi gate. Telemetry records stored are the fuel for machine learning approaches or prediction models based on AI methods. Telemetry records are considered confidential and are only exposed to other supply chain entities that are able to make their compliance to certain security standards transparent (or can present other contractual trust relationships).<a href="#section-2.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1408,7 +1364,7 @@ the service.<a href="#section-2.4-3" class="pilcrow">¶</a></p>
         <dd class="break"></dd>
 <dt id="section-3-2.3">Statement:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.4">
-          <p id="section-3-2.4.1">any serializable information about an Artifact. To help interpretation of statement, they must be tagged with a media type (as specified in RFC6838)<a href="#section-3-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.4.1">any serializable information about an Artifact. To help interpretation of statements, they must be tagged with a media type (as specified in <span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span>)<a href="#section-3-2.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-3-2.5">Claim:</dt>
@@ -1449,7 +1405,7 @@ the service.<a href="#section-2.4-3" class="pilcrow">¶</a></p>
         <dd class="break"></dd>
 <dt id="section-3-2.19">Registration:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.20">
-          <p id="section-3-2.20.1">the process of submitting a claim to a transparency service, storing it in the ledger and producing the Receipt returned to the submitter.<a href="#section-3-2.20.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.20.1">the process of submitting a claim to a transparency service, applying its registration policy, storing it in the ledger and producing the Receipt returned to the submitter.<a href="#section-3-2.20.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-3-2.21">Transparent Claim:</dt>
@@ -1470,23 +1426,12 @@ the service.<a href="#section-2.4-3" class="pilcrow">¶</a></p>
       <h2 id="name-definition-of-transparency">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-definition-of-transparency" class="section-name selfRef">Definition of Transparency</a>
       </h2>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-4-1.1">
-          <p id="section-4-1.1.1">Overlapping with the terminology and architecture?<a href="#section-4-1.1.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
-<p id="section-4-2">In this document, we use a definition of transparency built over abstract notions of ledgers and receipts. Existing transparency systems such as Certificate Transparency (CT) are instances of this definition.<a href="#section-4-2" class="pilcrow">¶</a></p>
-<p id="section-4-3">A <em>claim</em> is an identifiable and non-repudiable statement made by an <em>issuer</em>. The issuer selects additional metadata and attaches a proof of endorsement, i.e., a signature using the identity key of the issuer that binds the statement and its metadata. Claims can be made <em>transparent</em> by attaching a proof of registration by a TS, i.e., a receipt that countersigns the claim and witnesses its inclusion in the ledger of a TS.<a href="#section-4-3" class="pilcrow">¶</a></p>
-<p id="section-4-4">An artifact (e.g. a firmware binary) is <em>transparent</em> if it comes with valid transparent claims.
-The signature proves the artifact has been issued by the signer, with the associated metadata.
-The receipt proves this artifact and associated metadata has been recorded by the ledger.<a href="#section-4-4" class="pilcrow">¶</a></p>
-<p id="section-4-5">Transparency does not prevent dishonest or compromised issuers, but it holds them accountable:
-any artifact that may be used to target a particular user that checks for receipts must have been recorded in the tamper-proof ledger, and will be subject to scrutiny and auditing by other parties.<a href="#section-4-5" class="pilcrow">¶</a></p>
-<p id="section-4-6">Transparency is implemented by a ledger that provides a consistent, append-only, publicly available record of entries. The TS protects the ledger using a combination of trusted hardware, replication, and cryptographic evidence.<a href="#section-4-6" class="pilcrow">¶</a></p>
-<p id="section-4-7">A receipt is an offline, universally-verifiable proof that an entry is recorded in the ledger.
-Receipts do not expire, but it is possible to append new entries that subsume older entries.<a href="#section-4-7" class="pilcrow">¶</a></p>
-<p id="section-4-8">Anyone with access to the ledger can independenly verify its consistency and review the complete list of claims registered by its issuers.<a href="#section-4-8" class="pilcrow">¶</a></p>
-<p id="section-4-9">Reputable issuers are thus incentivized to carefully review their artifacts before signing them. Similarly, reputable TS are incentivized to secure their ledger, inasmuch as any inconsistency can easily be pinpointed by any third party with read access to the ledger.<a href="#section-4-9" class="pilcrow">¶</a></p>
+<p id="section-4-1">In this document, we use a definition of transparency built over abstract notions of ledgers and receipts. Existing transparency systems such as Certificate Transparency are instances of this definition.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">A <em>claim</em> is an identifiable and non-repudiable statement made by an <em>issuer</em>. The issuer selects additional metadata and attaches a proof of endorsement (in most cases, a signature) using the identity key of the issuer that binds the statement and its metadata. Claims can be made <em>transparent</em> by attaching a proof of registration by a TS, in the form of a receipt that countersigns the claim and witnesses its inclusion in the ledger of a TS. By extension, we may say an artifact (e.g. a firmware binary) is <em>transparent</em> if it comes with one or more transparent claims from its author or owner, though the contect should make it clear what type of claim is expected for a given artifact.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">Transparency does not prevent dishonest or compromised issuers, but it holds them accountable: any artifact that may be used to target a particular user that checks for receipts must have been recorded in the tamper-proof ledger, and will be subject to scrutiny and auditing by other parties.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-4">Transparency is implemented by a ledger that provides a consistent, append-only, publicly available record of entries. Implementations of TS may protect their ledger using a combination of trusted hardware, replication and consensus protocols, and cryptographic evidence. A receipt is an offline, universally-verifiable proof that an entry is recorded in the ledger. Receipts do not expire, but it is possible to append new entries that subsume older entries.<a href="#section-4-4" class="pilcrow">¶</a></p>
+<p id="section-4-5">Anyone with access to the ledger can independenly verify its consistency and review the complete list of claims registered by each issuer. However, the ledgers of separate transparency services are generally disjoint, though it is possible to take a claim from one ledger and register it again on another (if its policy allows it), so the authorization of the issuer and of the ledger by the verifier of the receipt are generally independent.<a href="#section-4-5" class="pilcrow">¶</a></p>
+<p id="section-4-6">Reputable issuers are thus incentivized to carefully review their statements before signing them into claims. Similarly, reputable TS are incentivized to secure their ledger, as any inconsistency can easily be pinpointed by any auditor with read access to the ledger. Some ledger formats may also support consistency auditing through receipts, that is, given two valid receipts the TS may be asked to produce a cryptographic proof that they are consistent. Failure to produce this proof can indicate that the TS operator misbehaved.<a href="#section-4-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="architecture-overview">
@@ -1494,17 +1439,43 @@ Receipts do not expire, but it is possible to append new entries that subsume ol
       <h2 id="name-architecture-overview">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-architecture-overview" class="section-name selfRef">Architecture Overview</a>
       </h2>
-<p id="section-5-1">SCITT provides an interoperability framework to verify the transparency of claims about artifacts that can be registered across many different ledgers. Although instances of SCITT transparency services may differ in their implementations, SCITT aims to enforce a common baseline accountability guarantee for auditors and consumers of transparency evidence. As a decentralized system, SCITT allows anyone to operate their own instance of a transparency service, which maintains its own ledger. Similarly, the issuance of claims is fully decentralized: statements are endorsed by issuers using Distributed Identity schemes, which cover a wide range of distributed PKI implementations.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">The SCITT architecture consists of a very loose federation of transparency services, and a set of common formats and protocols for issuing, registering and auditing claims.
+In order to accomodate as many TS implementations as possible, this document only specifies the format of claims (which must be used by all issuers) and a very thin wrapper format for receipts, which specifies the TS identity and the ledger algorithm. Most of the details of the receipt's contents are specific to the ledger algorithm. The <a href="https://ietf-scitt.github.io/draft-birkholz-scitt-receipts/draft-birkholz-scitt-receipts.html">Counter-Signing Receipts</a> document defines two initial ledger algorithms (for historical and sparse Merkle Trees), but other ledger formats (such as blockchains, or hybrid historical and indexed Merkle Trees) may be proposed later.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">In this section, we describe at a high level the three main roles in SCITT: issuers and the claim issuance process, transparency ledgers and the claim registration process, and verifiers and the receipt validation process.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <div id="claim-issuance">
 <section id="section-5.1">
         <h3 id="name-claim-issuance">
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-claim-issuance" class="section-name selfRef">Claim Issuance</a>
         </h3>
-<p id="section-5.1-1">Before an issuer is able to produce claims, it must first create its (decentralized identifier)[https://www.w3.org/TR/did-core] (also known as a DID).
-There exist many different methods to create an distribute DID. Issuers <span class="bcp14">MAY</span> chose the method they prefer, but with no guarantee that all transparency service will be able to register their claim. To facilitate interoperability, all transparency service implementations <span class="bcp14">SHOULD</span> suport the <code>did:web</code> method from [https://w3c-ccg.github.io/did-method-web/]. For instance, if the issuer publishes its key manifest at <code>https://sample.issuer/user/alice/did.json</code>, the DID of the issuer is <code>did:web:sample.issuer:user:alice</code>.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-<p id="section-5.1-2">While issuers may update their DID document, for instance to add new signing keys or algorithms, 
-they should not change any prior keys---unless they intend to revoke all claims issued with those keys.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+<div id="issuer-identity">
+<section id="section-5.1.1">
+          <h4 id="name-issuer-identity">
+<a href="#section-5.1.1" class="section-number selfRef">5.1.1. </a><a href="#name-issuer-identity" class="section-name selfRef">Issuer Identity</a>
+          </h4>
+<p id="section-5.1.1-1">Before an issuer is able to produce claims, it must first create its <a href="https://www.w3.org/TR/did-core">decentralized identifier</a> (also known as a DID).
+A DID can be <em>resolved</em> into a <em>key manifest</em> (a list of public keys indexed by a <em>key identifier</em>) using many different methods.<a href="#section-5.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-2">Issuers <span class="bcp14">MAY</span> chose the DID method they prefer, but with no guarantee that all TS will be able to register their claim. To facilitate interoperability, all transparency service implementations <span class="bcp14">SHOULD</span> suport the <code>did:web</code> method from [https://w3c-ccg.github.io/did-method-web/]. For instance, if the issuer publishes its manifest at <code>https://sample.issuer/user/alice/did.json</code>, the DID of the issuer is <code>did:web:sample.issuer:user:alice</code>.<a href="#section-5.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-3">Issuers <span class="bcp14">SHOULD</span> use a consistent decentralized identifiers for all their artifacts, to simplify authorization by verifiers and auditing. They <span class="bcp14">MAY</span> update their DID manifest, for instance to refresh their signing keys or algorithms, but they should not remove or change any prior keys unless they intend to revoke all claims issued with those keys. This DID appears in the <code>issuer</code> header of the claim's envelope, while the version of the key from the manifest used to sign the claim is written in the <code>kid</code> header.<a href="#section-5.1.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="naming-artifacts">
+<section id="section-5.1.2">
+          <h4 id="name-naming-artifacts">
+<a href="#section-5.1.2" class="section-number selfRef">5.1.2. </a><a href="#name-naming-artifacts" class="section-name selfRef">Naming artifacts</a>
+          </h4>
+<p id="section-5.1.2-1">Many issuers issue claims about different artifacts under the same DID, so it is important for everyone to be able to immediately recognize by looking at the envelope of a claim what artifact it is referring to. This information is stored in the <code>feed</code> header of the envelope. Issuers <span class="bcp14">MAY</span> use different signing keys (identified by <code>kid</code> in the resolved key manifest) for different artifacts, or sign all claims under the same key.<a href="#section-5.1.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="claim-metadata">
+<section id="section-5.1.3">
+          <h4 id="name-claim-metadata">
+<a href="#section-5.1.3" class="section-number selfRef">5.1.3. </a><a href="#name-claim-metadata" class="section-name selfRef">Claim metadata</a>
+          </h4>
+<p id="section-5.1.3-1">Besides <code>issuer</code>, <code>feed</code> and <code>kid</code>, the only other mandatory metadata in the claim is the type of the payload, indicated in the <code>cty</code> envelope header.
+However, this set of mandatory metadata is not sufficient to express many important registration policies. For example, a ledger may only allow a claim to be registered if it was signed recently. While the issuer is free to add any information in the payload of the claim, the TS (and most of its auditor) can only be expected to interpret information in the envelope.<a href="#section-5.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.3-2">Such metadata, meant to be interpreted by the TS during registration policy evaluation, should be added to the <code>reg_info</code> header. While the header <span class="bcp14">MUST</span> be present in all claims, its contents consist of a map of named attributes. Some attributes (such as the issuer's timestamp) are standardized with a defined type, to help uniformize their semantics across TS. Others are completely customizable and may have arbitrary types. In any case, all attributes are optional so the map <span class="bcp14">MAY</span> be empty.<a href="#section-5.1.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="transparency-service-ts">
@@ -1512,19 +1483,15 @@ they should not change any prior keys---unless they intend to revoke all claims 
         <h3 id="name-transparency-service-ts">
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-transparency-service-ts" class="section-name selfRef">Transparency Service (TS)</a>
         </h3>
-<p id="section-5.2-1">The role of transparency service can be decomposed into several major functions. The most important is maintaining a ledger, the verifiable data structure that records claims. It also maintains a service identity, which is used to endorse the state of the ledger. It must exposes an endpoint for registration of claims, which is the main operation that extends the ledger and returns a receipt.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2-2">These 3 components (identity, ledger and registration endpoint) constitute the trusted part of the transparency service. While the goal of SCITT is to support different implementations of a TS, all implementations <span class="bcp14">MUST</span> satisfy a set of requirements that are designed to minimize the trust required in TS operators and guarantee the auditability of their management.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
-<p id="section-5.2-3">In addition, transparency services may operate additional endpoints for auditing, for instance to query for the history of claims made by a given issuer. Implementations of TS <span class="bcp14">SHOULD</span> avoid using the service identity and extending the ledger in auditing endpoints; as much as possible, the ledger should carry enough evidence to re-construct verifiable proofs that the results returned by the auditing endpoint are consistent with a given state of the ledger.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+<p id="section-5.2-1">The role of transparency service can be decomposed into several major functions. The most important is maintaining a ledger, the verifiable data structure that records claims, and enforcing a registration policy. It also maintains a service key, which is used to endorse the state of the ledger in receipts. All TS <span class="bcp14">MUST</span> expose standard endpoints for registration of claims and receipt issuance, which is described in [Section 9.1]. Each TS also defines its registration policy, which <span class="bcp14">MUST</span> apply to all entries in the ledger.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-2">The combination of ledger, identity, registration policy evaluation, and registration endpoint constitute the trusted part of the TS. Each of these components <span class="bcp14">SHOULD</span> be carefully protected against both external attacks and internal misbehavior by some or all of the operators of the TS. For instance, the code for policy evaluation, ledger extension and endorsement may be protected by running in a TEE; the ledger may be replicated and a consensus algorithm such as PBFT be used to protect against malicious or vulnerable replicas; threshold signatures may be use to protect the service key, etc.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2-3">Beyond the trusted components, transparency services may operate additional endpoints for auditing, for instance to query for the history of claims made by a given issuer and feed. Implementations of TS <span class="bcp14">SHOULD</span> avoid using the service identity and extending the ledger in auditing endpoints; as much as practical, the ledger <span class="bcp14">SHOULD</span> contain enough evidence to re-construct verifiable proofs that the results returned by the auditing endpoint are consistent with a given state of the ledger.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
 <div id="service-identity-and-keying">
 <section id="section-5.2.1">
           <h4 id="name-service-identity-and-keying">
-<a href="#section-5.2.1" class="section-number selfRef">5.2.1. </a><a href="#name-service-identity-and-keying" class="section-name selfRef">Service Identity and Keying</a>
+<a href="#section-5.2.1" class="section-number selfRef">5.2.1. </a><a href="#name-service-identity-and-keying" class="section-name selfRef">Service identity and keying</a>
           </h4>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-5.2.1-1.1">
-              <p id="section-5.2.1-1.1.1">Details TBD, e.g. discovery, rekeying, revocation, delegation (e.g. to replicas); this may  require its own subsection, or left underspecified as ledger-specific details.<a href="#section-5.2.1-1.1.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
+<p id="section-5.2.1-1">We assume that all TS have a public service identity, which must be known by verifiers when validating a receipt, and may have a corresponding private service key. This identity should be stable for the lifetime of the ledger, so that all receipts remain valid. TS operators <span class="bcp14">MAY</span> use a distributed identifier as their public service identity if they wish to rotate their keys, if the ledger algorithm they use for their receipt supports it. Other types of cryptographic identities, such as parameters for non-interactive zero-knowledge proof systems, may also be used in the future.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
 <div id="attestability-of-service-identity">
 <section id="section-5.2.1.1">
             <h5 id="name-attestability-of-service-id">
@@ -1537,80 +1504,126 @@ they should not change any prior keys---unless they intend to revoke all claims 
 </div>
 </section>
 </div>
-<div id="ledger-requirements">
+<div id="registration-policies">
 <section id="section-5.2.2">
-          <h4 id="name-ledger-requirements">
-<a href="#section-5.2.2" class="section-number selfRef">5.2.2. </a><a href="#name-ledger-requirements" class="section-name selfRef">Ledger Requirements</a>
+          <h4 id="name-registration-policies">
+<a href="#section-5.2.2" class="section-number selfRef">5.2.2. </a><a href="#name-registration-policies" class="section-name selfRef">Registration policies</a>
           </h4>
-<p id="section-5.2.2-1">There are many different candidate verifiable datat structures that may be used to implement the ledger, such as historical Merkle Trees, sparse Merkle Trees, full blockchains, and many other variants. SCITT requires the ledger to support concise receipts (i.e. whose size grows at most logarithmically in the number of entries in the ledger). This does not necessarily rule out blockchains as a ledger, but may necessitate advanced receipt schemes that use arguments of knowledge and other verifiable computing techniques.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2.2-2">Since the details of how to verify a receipt are specific to the data strcture, we do not specify any particular ledger format in this document. Instead, we propose two initial formats for ledgers in [draft-birkholw-scitt-receipts] using historical and sparse Merkle Trees. Beyond the format of receipts, we require generic properties that should be satisfied by the components in the TS that have the ability to write to the ledger:<a href="#section-5.2.2-2" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-5.2.2-1.1">
+              <p id="section-5.2.2-1.1.1"><strong>Editor's note</strong><a href="#section-5.2.2-1.1.1" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-1.1.2">The initial version of this document assumes registration policies are set for the lifetime of the ledger, and that they apply to all issuers and feeds uniformly.
+There is an ongoing discussion on how to make the design more flexible to allow per-issuer and per-feed registration policies, and whether such policies should be updatable or if a policy change requires a feed change.
+Please contribute your comments to the SCITT mailing list.<a href="#section-5.2.2-1.1.2" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-5.2.2-2">Each transparency service is initially configured with a set of registration policies, which will be applied for the lifetime of the ledger.
+A registration policy represents a predicate that takes as input the current ledger and the envelope of a new claim (including the <code>reg_info</code> header which contains customizable additional attributes) to register, and returns a boolean decision on whether the claim should be included on the ledger or not. A TS <span class="bcp14">MUST</span> ensure that all its registration policies return a positive decision before adding a claim to the ledger.<a href="#section-5.2.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-3">While registration policies are a burden for issuers (some may require them to maintain state to remember what they have signed before), they greatly help auditors and verifiers in making sense of the information on the ledger. For instance, if a TS doesn't apply any policy, all claims may be registered in a different order than they have been created, and old claims may be arbitrarily replayed, which makes it difficult to understand the logical history of an artifact.<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-4">There are two kinds of registration policies: named policies have standardized semantics that are uniform across all implementations of SCITT transparency services, while custom policies are opaque and may contain pointers to (or even inlined) policy descriptions (declarative or programmable).<a href="#section-5.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-5">Transparency services <span class="bcp14">MUST</span> advertise what registration policies are enforced by their service, including the list of required <code>reg_info</code> attributes, both to minimize the risk of rejecting claims presented by issuers, and to advertise the properties implied by receipt verification. Implementation of receipt verifiers <span class="bcp14">SHOULD</span> persist the list of registration policies associated with a service identity, and return the list of registration policies as an output of receipt validation. Auditors <span class="bcp14">MUST</span> re-apply the registration policy of every entry in the ledger to ensure that the ledger applied them correctly.<a href="#section-5.2.2-5" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-6">Custom policies may use additional information present in the ledger outside of claims. For instance, issuers may have to register on the TS before claims can be accepted; a custom policy may be used to enforce access control to the transparency service. Similarly, policies may be used<a href="#section-5.2.2-6" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-7">The table below defined an initial set of named policies that TS may decide to enforce. This may be evolved in future drafts.<a href="#section-5.2.2-7" class="pilcrow">¶</a></p>
+<table class="center" id="table-1">
+            <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
+<thead>
+              <tr>
+                <th class="text-left" rowspan="1" colspan="1">Policy Name</th>
+                <th class="text-left" rowspan="1" colspan="1">Required  attributes</th>
+                <th class="text-left" rowspan="1" colspan="1">Implementation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">TimeLimited</td>
+                <td class="text-left" rowspan="1" colspan="1">
+                  <code>register_by: uint</code>
+</td>
+                <td class="text-left" rowspan="1" colspan="1">Returns true if now () &lt; register_by. The ledger <span class="bcp14">MUST</span> store the ledger time at registration along with the claim, and <span class="bcp14">SHOULD</span> indicate it in receipts</td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Sequential</td>
+                <td class="text-left" rowspan="1" colspan="1">
+                  <code>sequence_no: uint</code>
+</td>
+                <td class="text-left" rowspan="1" colspan="1">First, lookup in the ledger for a claim with the same issuer and feed. If one is found, returns true if and only if the <code>sequence_no</code> of the new claim is incremented by one. Otherwise, returns true if and only if <code>sequence_no = 0</code>.</td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Temporal</td>
+                <td class="text-left" rowspan="1" colspan="1">
+                  <code>issuance_ts: uint</code>
+</td>
+                <td class="text-left" rowspan="1" colspan="1">Returns true if and only if there is no claim in the ledger with the same issuer and feed with a greater <code>issuance_ts</code>
+</td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">NoReplay</td>
+                <td class="text-left" rowspan="1" colspan="1">None</td>
+                <td class="text-left" rowspan="1" colspan="1">Returns true if and only if the claim doesn't already appear in the ledger</td>
+              </tr>
+            </tbody>
+          </table>
+</section>
+</div>
+<div id="ledger-security-requirements">
+<section id="section-5.2.3">
+          <h4 id="name-ledger-security-requirement">
+<a href="#section-5.2.3" class="section-number selfRef">5.2.3. </a><a href="#name-ledger-security-requirement" class="section-name selfRef">Ledger security requirements</a>
+          </h4>
+<p id="section-5.2.3-1">There are many different candidate verifiable data structures that may be used to implement the ledger, such as chronological Merkle Trees, sparse/indexed Merkle Trees, full blockchains, and many other variants. We only require the ledger to support concise receipts (i.e. whose size grows at most logarithmically in the number of entries in the ledger). This does not necessarily rule out blockchains as a ledger, but may necessitate advanced receipt schemes that use arguments of knowledge and other verifiable computing techniques.<a href="#section-5.2.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.3-2">Since the details of how to verify a receipt are specific to the data strcture, we do not specify any particular ledger format in this document. Instead, we propose two initial formats for ledgers in [draft-birkholw-scitt-receipts] using historical and sparse Merkle Trees. Beyond the format of receipts, we require generic properties that should be satisfied by the components in the TS that have the ability to write to the ledger.<a href="#section-5.2.3-2" class="pilcrow">¶</a></p>
 <div id="finality">
-<section id="section-5.2.2.1">
+<section id="section-5.2.3.1">
             <h5 id="name-finality">
-<a href="#section-5.2.2.1" class="section-number selfRef">5.2.2.1. </a><a href="#name-finality" class="section-name selfRef">Finality</a>
+<a href="#section-5.2.3.1" class="section-number selfRef">5.2.3.1. </a><a href="#name-finality" class="section-name selfRef">Finality</a>
             </h5>
-<p id="section-5.2.2.1-1">The ledger is append-only: once a claim is registered, it cannot be modified, deleted, or moved.<a href="#section-5.2.2.1-1" class="pilcrow">¶</a></p>
-<p id="section-5.2.2.1-2">In particular, once a receipt is returned for a given claim, the claim and any preceding entry in the ledger become immutable, and the receipt provides universally-verifiable evidence of this property.<a href="#section-5.2.2.1-2" class="pilcrow">¶</a></p>
+<p id="section-5.2.3.1-1">The ledger is append-only: once a claim is registered, it cannot be modified, deleted, or moved. In particular, once a receipt is returned for a given claim, the claim and any preceding entry in the ledger become immutable, and the receipt provides universally-verifiable evidence of this property.<a href="#section-5.2.3.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="consistency">
-<section id="section-5.2.2.2">
+<section id="section-5.2.3.2">
             <h5 id="name-consistency">
-<a href="#section-5.2.2.2" class="section-number selfRef">5.2.2.2. </a><a href="#name-consistency" class="section-name selfRef">Consistency</a>
+<a href="#section-5.2.3.2" class="section-number selfRef">5.2.3.2. </a><a href="#name-consistency" class="section-name selfRef">Consistency</a>
             </h5>
-<p id="section-5.2.2.2-1">There is no fork in the ledger: everyone with access to its contents sees the same sequence of entries, and can check its consistency with any receipts they have collected.<a href="#section-5.2.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.3.2-1">There is no fork in the ledger: everyone with access to its contents sees the same sequence of entries, and can check its consistency with any receipts they have collected.
+TS implementations <span class="bcp14">SHOULD</span> provide a mechanism to verify that the state of the ledger encoded in an old receipt is consistent with the current ledger state.<a href="#section-5.2.3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="replayability-and-auditing">
-<section id="section-5.2.2.3">
+<section id="section-5.2.3.3">
             <h5 id="name-replayability-and-auditing">
-<a href="#section-5.2.2.3" class="section-number selfRef">5.2.2.3. </a><a href="#name-replayability-and-auditing" class="section-name selfRef">Replayability and Auditing</a>
+<a href="#section-5.2.3.3" class="section-number selfRef">5.2.3.3. </a><a href="#name-replayability-and-auditing" class="section-name selfRef">Replayability and Auditing</a>
             </h5>
-<p id="section-5.2.2.3-1">Everyone with access to the ledger can check the correctness of its contents. In particular,<a href="#section-5.2.2.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.3.3-1">Everyone with access to the ledger can check the correctness of its contents. In particular,<a href="#section-5.2.3.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.2.2.3-2.1">the TS defines and enforces deterministic registration policies
-that can be re-evaluated based solely on the contents of the ledger,
-and must then yield the same result.<a href="#section-5.2.2.3-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.2.3.3-2.1">the TS defines and enforces deterministic registration policies that can be re-evaluated based solely on the contents of the ledger at the time of registraton, and must then yield the same result.<a href="#section-5.2.3.3-2.1" class="pilcrow">¶</a>
 </li>
-              <li class="normal" id="section-5.2.2.3-2.2">The ordering of entries, their cryptographic contents, and the ledger governance
-may be non-deterministic, but they must be verifiable.<a href="#section-5.2.2.3-2.2" class="pilcrow">¶</a>
+              <li class="normal" id="section-5.2.3.3-2.2">The ordering of entries, their cryptographic contents, and the ledger governance may be non-deterministic, but they must be verifiable.<a href="#section-5.2.3.3-2.2" class="pilcrow">¶</a>
 </li>
-              <li class="normal" id="section-5.2.2.3-2.3">The TS may additionally support verifiability of client authentication and access control.<a href="#section-5.2.2.3-2.3" class="pilcrow">¶</a>
+              <li class="normal" id="section-5.2.3.3-2.3">The TS <span class="bcp14">SHOULD</span> store evidence about the resolution of distributed identifiers into manifests.<a href="#section-5.2.3.3-2.3" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-5.2.3.3-2.4">The TS <span class="bcp14">MAY</span> additionally support verifiability of client authentication and access control.<a href="#section-5.2.3.3-2.4" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="governance-and-bootstrapping">
-<section id="section-5.2.2.4">
+<section id="section-5.2.3.4">
             <h5 id="name-governance-and-bootstrappin">
-<a href="#section-5.2.2.4" class="section-number selfRef">5.2.2.4. </a><a href="#name-governance-and-bootstrappin" class="section-name selfRef">Governance and Bootstrapping</a>
+<a href="#section-5.2.3.4" class="section-number selfRef">5.2.3.4. </a><a href="#name-governance-and-bootstrappin" class="section-name selfRef">Governance and Bootstrapping</a>
             </h5>
-<p id="section-5.2.2.4-1">The TS must support governance, with well-defined procedures for allocating resources to operate the ledger (e.g., for provisioning trusted hardware and registering their attestation materials in the ledger) and for updating its code (e.g., relying on transparent claims about code updates, secured on the ledger itself, or on some auxiliary TS ).<a href="#section-5.2.2.4-1" class="pilcrow">¶</a></p>
-<p id="section-5.2.2.4-2">Governance procedures, their auditing, and their transparency are implementation specific. The TS <span class="bcp14">SHOULD</span> document them.<a href="#section-5.2.2.4-2" class="pilcrow">¶</a></p>
+<p id="section-5.2.3.4-1">The TS must support governance, with well-defined procedures for allocating resources to operate the ledger (e.g., for provisioning trusted hardware and registering their attestation materials in the ledger) and for updating its code (e.g., relying on transparent claims about code updates, secured on the ledger itself, or on some auxiliary TS ).<a href="#section-5.2.3.4-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.3.4-2">Governance procedures, their auditing, and their transparency are implementation specific. The TS <span class="bcp14">SHOULD</span> document them.<a href="#section-5.2.3.4-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.2.2.4-3.1">Governance may be based in a consortium of members that are jointly responsible for the TS,
-or automated based on the contents of an auxiliary governance TS.<a href="#section-5.2.2.4-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.2.3.4-3.1">Governance may be based in a consortium of members that are jointly responsible for the TS, or automated based on the contents of an auxiliary governance TS.<a href="#section-5.2.3.4-3.1" class="pilcrow">¶</a>
 </li>
-              <li class="normal" id="section-5.2.2.4-3.2">Governance typically involves additional records in the ledger to enable its auditing. Hence, the ledger may contain both transparent claims and governance entries.<a href="#section-5.2.2.4-3.2" class="pilcrow">¶</a>
+              <li class="normal" id="section-5.2.3.4-3.2">Governance typically involves additional records in the ledger to enable its auditing. Hence, the ledger may contain both transparent claims and governance entries.<a href="#section-5.2.3.4-3.2" class="pilcrow">¶</a>
 </li>
-              <li class="normal" id="section-5.2.2.4-3.3">Issuers, verifiers, and third-party auditors may review the TS governance before trusting the service, or on a regular basis.<a href="#section-5.2.2.4-3.3" class="pilcrow">¶</a>
+              <li class="normal" id="section-5.2.3.4-3.3">Issuers, verifiers, and third-party auditors may review the TS governance before trusting the service, or on a regular basis.<a href="#section-5.2.3.4-3.3" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
-</section>
-</div>
-<div id="caching-query-service">
-<section id="section-5.2.3">
-          <h4 id="name-caching-query-service">
-<a href="#section-5.2.3" class="section-number selfRef">5.2.3. </a><a href="#name-caching-query-service" class="section-name selfRef">Caching / Query service</a>
-          </h4>
-<p id="section-5.2.3-1">Untrusted. Replicated. Indexed.<a href="#section-5.2.3-1" class="pilcrow">¶</a></p>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-5.2.3-2.1">
-              <p id="section-5.2.3-2.1.1">This service could extract (read) receipts from the ledger.<a href="#section-5.2.3-2.1.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
 </section>
 </div>
 </section>
@@ -1620,23 +1633,14 @@ or automated based on the contents of an auxiliary governance TS.<a href="#secti
         <h3 id="name-verifying-transparent-claim">
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-verifying-transparent-claim" class="section-name selfRef">Verifying Transparent Claims</a>
         </h3>
-<p id="section-5.3-1">For a given Artifact, Verifiers take as trusted inputs 
-its Issuer identity and DID document,
-its Feed, and 
-its TS receipt-verification key.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<p id="section-5.3-2">When presented with a transparent claim for the Artifact, 
-they verify its Issuer identity, signature, and receipt.
-They may additionally apply a validation policy based on the protected headers 
-and the statement itself, which may include security-critical Artifact-specific details.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
-<p id="section-5.3-3">Some verifiers may systematically resolve the issuer DID to fetch<br>
-their latest DID document. This strictly enforces the revocation of compromised keys: 
-once the issuer has updated its document to mark a key as revoked, 
-all claims signed with this key will be rejected. 
-Others may delegate DID resolution to a trusted third party and/or cache its results.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
-<p id="section-5.3-4">Some verifiers may decide to skip the DID-based signature verification, 
-relying on the TS registration policy and the scrutiny of other verifiers. 
-Although this weakens their guarantees against key revocation, or against a corrupt TS, 
-they can still keep the receipt and blame the issuer or the TS at a later point.<a href="#section-5.3-4" class="pilcrow">¶</a></p>
+<p id="section-5.3-1">For a given Artifact, Verifiers take as trusted inputs:
+1. the distributed identifier of the issuer (or its resolved key manifest)
+2. the expected name of the artifact (i.e. the <code>feed</code>)
+3. the list of service identities of trusted TS<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3-2">When presented with a transparent claim for the Artifact, they verify its Issuer identity, signature, and receipt.
+They may additionally apply a validation policy based on the protected headers present both in the envelope or in the countersignature and the statement itself, which may include security-critical Artifact-specific details.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.3-3">Some verifiers may systematically resolve the issuer DID to fetch their latest DID document. This strictly enforces the revocation of compromised keys: once the issuer has updated its document to remove a key identifier, all claims signed with this <code>kid</code> will be rejected. However, Others may delegate DID resolution to a trusted third party and/or cache its results.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
+<p id="section-5.3-4">Some verifiers may decide to skip the DID-based signature verification, relying on the TS registration policy and the scrutiny of other verifiers. Although this weakens their guarantees against key revocation, or against a corrupt TS, they can still keep the receipt and blame the issuer or the TS at a later point.<a href="#section-5.3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1666,10 +1670,10 @@ they can still keep the receipt and blame the issuer or the TS at a later point.
           <p id="section-6-4.1.1">Envelopes <span class="bcp14">MAY</span> include additional protected and unprotected headers.<a href="#section-6-4.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<div id="issuer-identity">
+<div id="issuer-identity-1">
 <section id="section-6.1">
-        <h3 id="name-issuer-identity">
-<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-issuer-identity" class="section-name selfRef">Issuer Identity</a>
+        <h3 id="name-issuer-identity-2">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-issuer-identity-2" class="section-name selfRef">Issuer Identity</a>
         </h3>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-6.1-1.1">
@@ -1696,36 +1700,34 @@ they can still keep the receipt and blame the issuer or the TS at a later point.
 <p id="section-6.1-9">Digital supply chain artifacts are heterogeneous and originated from sources using various formats and encodings Large scale ledger services in support of supply chain authenticity and transparency require a simply and well-supported signing envelope that is easy to use and interoperates with the semantic of the ledger services. In this document, a COSE profile is defined that limits the potential use of a COSE envelope to the requirements of such a supply chain ledger, leveraging solutions and principles from the Concise Signing and Encryption (COSE) space.<a href="#section-6.1-9" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="scitt-cose-profile">
+<div id="cose-profile-for-claims">
 <section id="section-6.2">
-        <h3 id="name-scitt-cose-profile">
-<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-scitt-cose-profile" class="section-name selfRef">SCITT COSE profile</a>
+        <h3 id="name-cose-profile-for-claims">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-cose-profile-for-claims" class="section-name selfRef">COSE profile for claims</a>
         </h3>
-<p id="section-6.2-1">[TODO] describe semantics of <code>iss</code> and how it can be used together with <code>kid</code> to identity a verification method in a resolved DID document<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.2-2">A SCITT COSE message is a tagged COSE_Sign1 message.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
-<p id="section-6.2-3">The protected header must contain the following registered parameters:<a href="#section-6.2-3" class="pilcrow">¶</a></p>
+<p id="section-6.2-1">A claim is a tagged COSE_Sign1 message.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-2">The protected header must contain the following registered parameters:<a href="#section-6.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.2-4.1">alg (label: <code>1</code>): Asymmetric signature algorithm as integer, for example <code>-35</code> for ECDSA with SHA-384, see <a href="https://www.iana.org/assignments/cose/cose.xhtml">COSE Algorithms registry</a><a href="#section-6.2-4.1" class="pilcrow">¶</a>
+<li class="normal" id="section-6.2-3.1">alg (label: <code>1</code>): Asymmetric signature algorithm as integer, for example <code>-35</code> for ECDSA with SHA-384, see <a href="https://www.iana.org/assignments/cose/cose.xhtml">COSE Algorithms registry</a><a href="#section-6.2-3.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-6.2-4.2">payload type (label: <code>3</code>): Media type of payload as string, for example <code>application/spdx+json</code><a href="#section-6.2-4.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.2-3.2">payload type (label: <code>3</code>): Media type of payload as string, for example <code>application/spdx+json</code><a href="#section-6.2-3.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-6.2-4.3">issuer (label: <code>TBD</code>, to be registered): DID (Decentralized Identifier, see <a href="https://www.w3.org/TR/did-core/">W3C Candidate Recommendation</a>) of the signer as string, for example <code>did:web:example.com</code><a href="#section-6.2-4.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.2-3.3">issuer (label: <code>TBD</code>, to be registered): DID (Decentralized Identifier, see <a href="https://www.w3.org/TR/did-core/">W3C Candidate Recommendation</a>) of the signer as string, for example <code>did:web:example.com</code><a href="#section-6.2-3.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-6.2-3.4">feed (label: <code>TBD</code>): the issuer's name for the artifact<a href="#section-6.2-3.4" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-6.2-3.5">registration policy info (label: <code>TBD</code>): a map of additional attributes to help enforce registration policies<a href="#section-6.2-3.5" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-6.2-3.6">DID key selection hint (label: <code>TBD</code>): a DID method-specific selector for the signing key<a href="#section-6.2-3.6" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-6.2-5">Depending on the DID method the protected header must contain one or more of the following registered parameters:<a href="#section-6.2-5" class="pilcrow">¶</a></p>
+<p id="section-6.2-4">The unprotected header may contain the following parameters:<a href="#section-6.2-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.2-6.1">kid (label: <code>4</code>): Key identifier as a UTF-8 string encoded as a byte string, required for <code>did:web</code><a href="#section-6.2-6.1" class="pilcrow">¶</a>
-</li>
-          <li class="normal" id="section-6.2-6.2">x5c (label: <code>33</code>): X.509 certificate chain (including Root CA certificate), required for TBD<a href="#section-6.2-6.2" class="pilcrow">¶</a>
+<li class="normal" id="section-6.2-5.1">receipts (label: <code>TBD</code>, to be registered): Array of receipts, defined in <a href="https://ietf-scitt.github.io/draft-birkholz-scitt-receipts/draft-birkholz-scitt-receipts.html">Counter-Signing Receipts</a><a href="#section-6.2-5.1" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-6.2-7">The unprotected header may contain the following parameters:<a href="#section-6.2-7" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-6.2-8.1">receipts (label: <code>TBD</code>, to be registered): Array of SCITT receipts, defined in TBD<a href="#section-6.2-8.1" class="pilcrow">¶</a>
-</li>
-        </ul>
-<p id="section-6.2-9">In CDDL (<a href="https://datatracker.ietf.org/doc/html/rfc8610">RFC 8610</a>) notation, the envelope is defined as follows:<a href="#section-6.2-9" class="pilcrow">¶</a></p>
-<div id="section-6.2-10">
+<p id="section-6.2-6">In CDDL <span>[<a href="#RFC8610" class="xref">RFC8610</a>]</span> notation, the envelope is defined as follows:<a href="#section-6.2-6" class="pilcrow">¶</a></p>
+<div id="section-6.2-7">
 <pre class="lang-CDDL sourcecode">
 SCITT_Envelope = COSE_Sign1_Tagged
 
@@ -1738,27 +1740,28 @@ COSE_Sign1 = [
   signature : bstr
 ]
 
+Reg_Info = {
+  ? "register_by": uint,
+  ? "sequence_no": uint,
+  ? "issuance_ts": uint,
+  * tstr =&gt; any
+}
+
+; All protected headers are mandatory, to protect against faulty implementations of COSE
+; that may accidentally read a missing protected header from the unprotected headers.
 Protected_Header = {
-  ; mandatory
   1 =&gt; int               ; algorithm identifier
   3 =&gt; tstr              ; payload type
   258 =&gt; tstr            ; DID of issuer
-
-  ; mandatory depending on DID method
-  ? 4 =&gt; bstr            ; key identifier
-  ? 33 =&gt; COSE_X509      ; X.509 certificate chain, excluding Root CA certificate
-
-  ; optional experimental parameters
-  ? -65537 =&gt; tstr       ; Feed
-  ? -65538 =&gt; uint       ; SVN
+  259 =&gt; tstr            ; Feed
+  260 =&gt; Reg_Info        ; Registration policy info
+  261 =&gt; bstr            ; key selector
 }
 
 Unprotected_Header = {
-   ? 259 =&gt; SCITT_Receipt / [+ SCITT_Receipt]
+   ? 257 =&gt; SCITT_Receipt / [+ SCITT_Receipt]
 }
-
-COSE_X509 = bstr / [ 2*certs: bstr ]
-</pre><a href="#section-6.2-10" class="pilcrow">¶</a>
+</pre><a href="#section-6.2-7" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -2040,39 +2043,35 @@ GET &lt;Base URL&gt;/entries/&lt;Transaction ID&gt;/receipt
 </section>
 </div>
 <section id="section-13">
-      <h2 id="name-references">
-<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-references" class="section-name selfRef">References</a>
+      <h2 id="name-normative-references">
+<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
-<section id="section-13.1">
-        <h3 id="name-normative-references">
-<a href="#section-13.1" class="section-number selfRef">13.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
-        </h3>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
-        <dd>
+      <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC6838">[RFC6838]</dt>
+      <dd>
+<span class="refAuthor">Freed, N.</span>, <span class="refAuthor">Klensin, J.</span>, and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"Media Type Specifications and Registration Procedures"</span>, <span class="seriesInfo">BCP 13</span>, <span class="seriesInfo">RFC 6838</span>, <span class="seriesInfo">DOI 10.17487/RFC6838</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6838">https://www.rfc-editor.org/rfc/rfc6838</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8152">[RFC8152]</dt>
-        <dd>
+      <dd>
 <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE)"</span>, <span class="seriesInfo">RFC 8152</span>, <span class="seriesInfo">DOI 10.17487/RFC8152</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8152">https://www.rfc-editor.org/rfc/rfc8152</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
       <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-</dl>
-</section>
-<section id="section-13.2">
-        <h3 id="name-informative-references">
-<a href="#section-13.2" class="section-number selfRef">13.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
-        </h3>
-<dl class="references">
-<dt id="I-D.draft-birkholz-scitt-receipts">[I-D.draft-birkholz-scitt-receipts]</dt>
+<dt id="RFC8610">[RFC8610]</dt>
       <dd>
-<span class="refTitle">"*** BROKEN REFERENCE ***"</span>. </dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9162">[RFC9162]</dt>
+    <dd>
+<span class="refAuthor">Laurie, B.</span>, <span class="refAuthor">Messeri, E.</span>, and <span class="refAuthor">R. Stradling</span>, <span class="refTitle">"Certificate Transparency Version 2.0"</span>, <span class="seriesInfo">RFC 9162</span>, <span class="seriesInfo">DOI 10.17487/RFC9162</span>, <time datetime="2021-12" class="refDate">December 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9162">https://www.rfc-editor.org/rfc/rfc9162</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
-</section>
 </section>
 <div id="attic">
 <section id="appendix-A">
@@ -2102,7 +2101,10 @@ GET &lt;Base URL&gt;/entries/&lt;Transaction ID&gt;/receipt
 </address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Antoine Delignat-Lavaud</span></div>
-<div dir="auto" class="left"><span class="org">Microsoft</span></div>
+<div dir="auto" class="left"><span class="org">Microsoft Research</span></div>
+<div dir="auto" class="left"><span class="street-address">21 Station Road</span></div>
+<div dir="auto" class="left"><span class="locality">Cambridge</span></div>
+<div dir="auto" class="left"><span class="postal-code">CB1 2FB</span></div>
 <div dir="auto" class="left"><span class="country-name">United Kingdom</span></div>
 <div class="email">
 <span>Email:</span>
@@ -2111,7 +2113,10 @@ GET &lt;Base URL&gt;/entries/&lt;Transaction ID&gt;/receipt
 </address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Cedric Fournet</span></div>
-<div dir="auto" class="left"><span class="org">Microsoft</span></div>
+<div dir="auto" class="left"><span class="org">Microsoft Research</span></div>
+<div dir="auto" class="left"><span class="street-address">21 Station Road</span></div>
+<div dir="auto" class="left"><span class="locality">Cambridge</span></div>
+<div dir="auto" class="left"><span class="postal-code">CB1 2FB</span></div>
 <div dir="auto" class="left"><span class="country-name">United Kingdom</span></div>
 <div class="email">
 <span>Email:</span>
