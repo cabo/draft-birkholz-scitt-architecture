@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-03T00:31:12.120256+00:00",
+  "timestamp": "2022-03-06T00:29:09.521111+00:00",
   "repo": "ietf-scitt/draft-birkholz-scitt-architecture",
   "labels": [
     {
@@ -374,26 +374,162 @@
       "id": "PR_kwDOG2uWFs4z16O5",
       "title": "The confidential computing use case now discusses specific machine-learning tasks.",
       "url": "https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/pull/8",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "fournet",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2022-03-02T16:56:48Z",
-      "updatedAt": "2022-03-02T16:56:49Z",
+      "updatedAt": "2022-03-04T13:36:11Z",
       "baseRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "89d4fc26e436fbf5170b7196db718cce23a82266",
       "headRepository": "ad-l/draft-birkholz-scitt-architecture",
       "headRefName": "main",
-      "headRefOid": "7523c7ba9472a9af59fb26ae09ca45fbcb465933",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "29729155426c5448df59834889b060803c2ee977",
+      "closedAt": "2022-03-04T13:36:11Z",
+      "mergedAt": "2022-03-04T13:36:11Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "c9e4084103906f1052e7f1f9e0b0707129cb07a4"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOG2uWFs41pnnh",
+          "commit": {
+            "abbreviatedOid": "463b08b"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-03-04T11:15:00Z",
+          "updatedAt": "2022-03-04T11:32:29Z",
+          "comments": [
+            {
+              "originalPosition": 34,
+              "body": "```suggestion\r\nThe first guarantee is achieved by requiring issuers to sign their statements and associated metadata using a distributed public key infrastructure. The second guarantee is achieved by storing the signed statement on an, immutable, append-only, transparent ledger. The last guarantee is achieved by implementing the ledger using a verifiable data structure (such as a Merkle Tree), and by the requiring a transparency service (TS) that operates the ledger to endorse its state at the time of registration.\r\n```",
+              "createdAt": "2022-03-04T11:15:00Z",
+              "updatedAt": "2022-03-04T11:32:29Z"
+            },
+            {
+              "originalPosition": 40,
+              "body": "```suggestion\r\nThe guarantees and techniques used in this document generalize those of Certificate Transparency ({{-CT}}), which can be re-interpreted as an instance of this architecture for the supply chain of X.509 certificates. However, the range of use cases and applications in this document is much broader, which requires much more flexibility in how each TS implements and operates its ledger. Each service may enforce its own policy for authorizing entities to register their claims on the TS. Some TS may also enforce access control policies to limit who can audit the full ledger, or keep some information on the ledger encrypted. Nevertheless, it is critical to provide global interoperability for all TS instances as the composition and configuration of involved supply chain entities and their system components is ever changing and always in flux.\r\n```",
+              "createdAt": "2022-03-04T11:20:04Z",
+              "updatedAt": "2022-03-04T11:32:29Z"
+            },
+            {
+              "originalPosition": 93,
+              "body": "```suggestion\r\nAs the ever increasing complexity of large software projects requires more modularity and abstractions to manage, keeping track of their full Trusted Computing Base (TCB) is becoming increasingly difficult. Each component may have its own set of dependencies and libraries. Some of these dependencies are binaries, which means their TCB depends not only on their source, but also on the build environment (compilers and tool-chains). Many source and binary packages are distributed through various channels and repositories that may not be trustworthy.\r\n```",
+              "createdAt": "2022-03-04T11:23:27Z",
+              "updatedAt": "2022-03-04T11:32:29Z"
+            },
+            {
+              "originalPosition": 238,
+              "body": "```suggestion\r\nThe combination of ledger, identity, registration policy evaluation, and registration endpoint constitute the trusted part of the TS. Each of these components SHOULD be carefully protected against both external attacks and internal misbehavior by some or all of the operators of the TS. For instance, the code for policy evaluation, ledger extension and endorsement may be protected by running in a TEE; the ledger may be replicated and a consensus algorithm such as PBFT be used to protect against malicious or vulnerable replicas; threshold signatures may be use to protect the service key, etc.\r\n```",
+              "createdAt": "2022-03-04T11:30:57Z",
+              "updatedAt": "2022-03-04T11:32:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOG2uWFs41qEXx",
+          "commit": {
+            "abbreviatedOid": "46fb241"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-04T13:25:20Z",
+          "updatedAt": "2022-03-04T13:25:21Z",
+          "comments": [
+            {
+              "originalPosition": 36,
+              "body": "```suggestion\r\nTraceability of physical and digital artifacts in supply chains is a long standing, but increasingly serious security concern. The rise in popularity of verifiable data structures as a mechanism to make actors more accountable for breaching their compliance promises has found some successful applications to specific use cases (such as the supply chain for digital certificates), but lacks a generic and scalable architecture that can address a wider range of use cases.\r\n```",
+              "createdAt": "2022-03-04T13:25:20Z",
+              "updatedAt": "2022-03-04T13:25:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOG2uWFs41qEqE",
+          "commit": {
+            "abbreviatedOid": "46fb241"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-04T13:26:29Z",
+          "updatedAt": "2022-03-04T13:26:30Z",
+          "comments": [
+            {
+              "originalPosition": 39,
+              "body": "```suggestion\r\nThis memo defines a generic and scalable architecture to enable transparency across any supply chain with minimum adoption barriers for producers (who can register their claims on any transparency service, with the guarantee that all consumers will be able to verify them) and enough flexibility to allow different implementations of transparency services with various auditing and compliance requirements.\r\n```",
+              "createdAt": "2022-03-04T13:26:29Z",
+              "updatedAt": "2022-03-04T13:26:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOG2uWFs41qHGa",
+          "commit": {
+            "abbreviatedOid": "2972915"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-03-04T13:36:04Z",
+          "updatedAt": "2022-03-04T13:36:04Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOG2uWFs4z41TQ",
+      "title": "Update draft-birkholz-scitt-architecture.md",
+      "url": "https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/pull/9",
+      "state": "MERGED",
+      "author": "knight-brian",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "These changes address some spelling and grammatical errors.",
+      "createdAt": "2022-03-03T12:24:52Z",
+      "updatedAt": "2022-03-04T13:41:27Z",
+      "baseRepository": "ietf-scitt/draft-birkholz-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "c9e4084103906f1052e7f1f9e0b0707129cb07a4",
+      "headRepository": "knight-brian/draft-birkholz-scitt-architecture",
+      "headRefName": "main",
+      "headRefOid": "b8d414f264f740b330fdd3e57781442f012b4714",
+      "closedAt": "2022-03-04T13:41:26Z",
+      "mergedAt": "2022-03-04T13:41:26Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "9afc2bd492a195dc13d4b877bab026edf2492fd5"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOG2uWFs41prqY",
+          "commit": {
+            "abbreviatedOid": "4b1906e"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-03-04T11:33:41Z",
+          "updatedAt": "2022-03-04T11:33:41Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
